@@ -78,6 +78,9 @@ async function getOwnerId() {
       env: 'node',
       buildCommand: 'npm install',
       startCommand: 'npm start',
+      envSpecificDetails: {
+        nodeVersion: '18'
+      },
       healthCheckPath: '/api/health'
     }
   };
@@ -96,7 +99,10 @@ async function getOwnerId() {
       runtime: 'node',
       env: 'node',
       buildCommand: 'npm run build',
-      startCommand: 'npm start'
+      startCommand: 'npm start',
+      envSpecificDetails: {
+        nodeVersion: '18'
+      }
     }
   };
 
