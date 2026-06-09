@@ -44,6 +44,20 @@ async function createService(payload) {
   return { status: res.status, body };
 }
 
+async function getOwnerId() {
+  const res = await fetch('https://api.render.com/v1/owners', {
+    method: 'GET',
+    headers: { 'Authorization': `Bearer ${env.RENDER_API_KEY}` }
+  });
+  const text = await res.text();
+  let body;
+  try { body = JSON.parse(text); } catch(e) { body = text; }
+  if (Array.isArray(body) && body.length > 0 && body[0].owner && body[0].owner.id) {
+    return body[0].owner.id;
+  }
+  throw new Error('No ownerId found in /v1/owners response');
+}
+
 (async () => {
   console.log('Repositorio:', repo);
   console.log('Creando servicios en Render...');
