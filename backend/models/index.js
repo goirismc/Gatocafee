@@ -22,6 +22,8 @@ const clienteSchema = new mongoose.Schema(
     },
     telefono: { type: String, trim: true },
     fechaNacimiento: { type: Date },
+    // Documento nacional / RUC (CI o RUC según país)
+    ci_ruc: { type: String, unique: true, sparse: true, trim: true },
 
     // --- Fidelización ---
     puntos: { type: Number, default: 0 },

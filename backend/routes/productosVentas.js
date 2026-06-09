@@ -24,6 +24,7 @@ module.exports = router;
 // ============================================
 const ventasRouter = express.Router();
 const ventasCtrl = require('../controllers/ventasController');
+const facturasCtrl = require('../controllers/facturasController');
 
 ventasRouter.use(protegerRuta);
 
@@ -34,5 +35,7 @@ ventasRouter.get('/comparacion', ventasCtrl.getComparacion);
 ventasRouter.get('/:id', ventasCtrl.getVenta);
 ventasRouter.post('/', ventasCtrl.crearVenta);
 ventasRouter.post('/:id/devolucion', adminOGerente, ventasCtrl.registrarDevolucion);
+// Generar factura (PDF) para una venta
+ventasRouter.post('/:id/factura', facturasCtrl.generarFactura);
 
 module.exports = { productosRouter: router, ventasRouter };

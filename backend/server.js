@@ -9,6 +9,7 @@ const cors = require('cors');
 const helmet = require('helmet');
 const morgan = require('morgan');
 const rateLimit = require('express-rate-limit');
+const path = require('path');
 const connectDB = require('./config/database');
 
 // Cargar todos los modelos
@@ -77,6 +78,9 @@ app.use('/api/ventas',      ventasRouter);
 app.use('/api/inventario',  inventarioRouter);
 app.use('/api/clientes',    clientesRouter);
 app.use('/api/uploads',     require('./routes/uploads'));
+
+// Servir facturas generadas localmente (si no se usa Cloudinary)
+app.use('/invoices', express.static(path.join(__dirname, 'public', 'invoices')));
 
 // PARTE 3 — Caja, Financiero, Reportes, Promociones
 try {

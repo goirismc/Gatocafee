@@ -91,6 +91,24 @@ export default function VentasPage() {
     }
   };
 
+  const generarFactura = async (id) => {
+    try {
+      const res = await api.post('/ventas/' + id + '/factura');
+      const archivoUrl = res.data.archivoUrl || res.data.archivoUrl;
+      if (!archivoUrl) return toast.error('No se recibió URL de la factura');
+
+      // Construir URL absoluta si el backend devolvió ruta relativa
+      const apiUrl = (process.env.NEXT_PUBLIC_API_URL || '').replace(/\/api$/, '');
+      const fileUrl = archivoUrl.startsWith('http') ? archivoUrl : (apiUrl || '') + archivoUrl;
+
+      // Abrir en nueva pestaña
+      window.open(fileUrl, '_blank');
+      toast.success('Factura generada');
+    } catch (err) {
+      toast.error(err.response?.data?.mensaje || 'Error al generar factura');
+    }
+  };
+
   return (
     <AppLayout>
       <div className="p-6">
@@ -145,6 +163,8 @@ export default function VentasPage() {
                         <button onClick={() => verDetalle(v._id)} className="p-1.5 rounded-lg bg-crema-100 text-cafe-600 hover:bg-crema-200"><Eye size={14}/></button>
                         <button onClick={() => descargarFactura(v._id)}
                           className="p-1.5 rounded-lg bg-cafe-100 text-cafe-700 hover:bg-cafe-200"><Download size={14}/></button>
+                        <button onClick={() => generarFactura(v._id)}
+                          className="p-1.5 rounded-lg bg-blue-100 text-blue-700 hover:bg-blue-200" title="Generar factura">F</button>
                         {v.estado === 'completada' && (
                           <button onClick={() => setDevModal(v)} className="p-1.5 rounded-lg bg-red-100 text-red-600 hover:bg-red-200"><RotateCcw size={14}/></button>
                         )}

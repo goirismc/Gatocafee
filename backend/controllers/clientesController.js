@@ -22,6 +22,7 @@ exports.getClientes = async (req, res) => {
         { nombre: { $regex: search, $options: 'i' } },
         { email: { $regex: search, $options: 'i' } },
         { telefono: { $regex: search, $options: 'i' } },
+        { ci_ruc: { $regex: search, $options: 'i' } },
       ];
     }
 
@@ -57,7 +58,9 @@ exports.crearCliente = async (req, res) => {
     });
   } catch (error) {
     if (error.code === 11000) {
-      return res.status(400).json({ success: false, mensaje: 'Ya existe un cliente con ese email' });
+      // Obtener el campo duplicado y generar mensaje claro
+      const campo = error.keyValue ? Object.keys(error.keyValue)[0] : 'campo';
+      return res.status(400).json({ success: false, mensaje: `Ya existe un cliente con ese ${campo}` });
     }
     res.status(500).json({ success: false, mensaje: 'Error al crear cliente' });
   }

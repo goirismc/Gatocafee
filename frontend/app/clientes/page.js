@@ -16,7 +16,7 @@ const NIVEL_CONFIG = {
   platinum: { label: 'Platinum', color: 'bg-purple-100 text-purple-700', icon: <Crown size={12}/> },
 };
 
-const FORM_VACIO = { nombre:'', apellido:'', email:'', telefono:'', notas:'' };
+const FORM_VACIO = { nombre:'', apellido:'', email:'', telefono:'', ci_ruc:'', notas:'' };
 
 export default function ClientesPage() {
   const [clientes, setClientes]   = useState([]);
@@ -150,6 +150,10 @@ export default function ClientesPage() {
                     <label className="label">Apellido</label>
                     <input className="input" value={form.apellido} onChange={e => setForm({...form, apellido: e.target.value})}/>
                   </div>
+                </div>
+                <div>
+                  <label className="label">CI / RUC</label>
+                  <input className="input" value={form.ci_ruc} onChange={e => setForm({...form, ci_ruc: e.target.value})} placeholder="1234567-8 / 80012345-6" />
                 </div>
                 <div>
                   <label className="label">Email</label>
