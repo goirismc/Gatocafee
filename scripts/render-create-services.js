@@ -1,0 +1,95 @@
+#!/usr/bin/env node
+/**
+ * render-create-services.js
+ *
+ * Script para crear 2 Web Services en Render (backend y frontend) usando la API pública.
+ * Uso (en tu máquina):
+ *   - Exporta tu API key: set RENDER_API_KEY=... (Windows) o export RENDER_API_KEY=... (mac/linux)
+ *   - node scripts/render-create-services.js <owner/repo>
+ *
+ * Ejemplo:
+ *   RENDER_API_KEY=xxxx node scripts/render-create-services.js goirismc/Gatocafee
+ *
+ * Nota: Render puede cambiar su API. Este script hace llamadas a /v1/services y muestra la respuesta completa.
+ * Si la API cambia, revisa https://api.render.com v1 docs para adaptar los campos.
+ */
+
+const { argv, env } = require('process');
+const fetch = globalThis.fetch || require('node-fetch');
+
+if (!env.RENDER_API_KEY) {
+  console.error('ERROR: debes exportar RENDER_API_KEY antes de ejecutar el script.');
+  console.error('Windows (PowerShell): $env:RENDER_API_KEY = "<KEY>"; node scripts/render-create-services.js goirismc/Gatocafee');
+  console.error('mac/linux: export RENDER_API_KEY="<KEY>"; node scripts/render-create-services.js goirismc/Gatocafee');
+  process.exit(1);
+}
+
+const repo = argv[2] || 'goirismc/Gatocafee';
+const branch = 'main';
+const api = 'https://api.render.com/v1/services';
+
+async function createService(payload) {
+  const res = await fetch(api, {
+    method: 'POST',
+    headers: {
+      'Authorization': `Bearer ${env.RENDER_API_KEY}`,
+      'Content-Type': 'application/json',
+      'Accept': 'application/json'
+    },
+    body: JSON.stringify(payload),
+  });
+  const text = await res.text();
+  let body;
+  try { body = JSON.parse(text); } catch(e) { body = text; }
+  return { status: res.status, body };
+}
+
+(async () => {
+  console.log('Repositorio:', repo);
+  console.log('Creando servicios en Render...');
+
+  // Backend payload
+  const backendPayload = {
+    name: 'gatocafee-backend',
+    repo: `https://github.com/${repo}`,
+    branch,
+    type: 'web',
+    env: 'node',
+    plan: 'free',
+    buildCommand: 'npm install',
+    startCommand: 'npm start',
+    healthCheckPath: '/api/health',
+    // Nota: envVars no incluirán secretos aquí. CONFIGURALOS EN EL DASHBOARD RENDER.
+  };
+
+  // Frontend payload
+  const frontendPayload = {
+    name: 'gatocafee-frontend',
+    repo: `https://github.com/${repo}`,
+    branch,
+    type: 'web',
+    env: 'node',
+    plan: 'free',
+    buildCommand: 'npm run build',
+    startCommand: 'npm start',
+    // frontend will need NEXT_PUBLIC_API_URL set in Render dashboard
+  };
+
+  try {
+    console.log('\n1) Creando backend...');
+    const backendRes = await createService(backendPayload);
+    console.log('Backend status:', backendRes.status);
+    console.log('Backend response:', JSON.stringify(backendRes.body, null, 2));
+
+    console.log('\n2) Creando frontend...');
+    const frontendRes = await createService(frontendPayload);
+    console.log('Frontend status:', frontendRes.status);
+    console.log('Frontend response:', JSON.stringify(frontendRes.body, null, 2));
+
+    console.log('\nHecho. Si las llamadas devuelven error 400/422, revisa la respuesta y adapta los campos según la API de Render.');
+    console.log('Por seguridad, configura las variables de entorno y secretos desde el dashboard de Render tras crear los servicios.');
+  } catch (err) {
+    console.error('Error durante la petición:', err);
+    process.exit(1);
+  }
+})();
