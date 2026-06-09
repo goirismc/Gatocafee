@@ -8,9 +8,10 @@ if (!serviceId) { console.error('SERVICE_ID missing'); process.exit(1); }
 const headers = { Authorization: `Bearer ${env.RENDER_API_KEY}`, 'Content-Type': 'application/json' };
 async function add(key, value, secure=true) {
   if (!value) return;
-  const res = await fetch(`https://api.render.com/v1/services/${serviceId}/env-vars`, { method: 'POST', headers, body: JSON.stringify({ key, value, secure }) });
+  // Use PUT to create or update env var by key
+  const res = await fetch(`https://api.render.com/v1/services/${serviceId}/env-vars/${encodeURIComponent(key)}`, { method: 'PUT', headers, body: JSON.stringify({ value, secure }) });
   const txt = await res.text();
-  if (res.status>=200 && res.status<300) console.log(`✅ ${key} added to ${serviceId}`);
+  if (res.status>=200 && res.status<300) console.log(`✅ ${key} set on ${serviceId}`);
   else console.error(`❌ ${key} failed (${res.status}): ${txt}`);
 }
 (async ()=>{
