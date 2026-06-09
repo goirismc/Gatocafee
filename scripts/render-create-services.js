@@ -90,6 +90,14 @@ async function getOwnerId() {
   };
 
   try {
+    const ownerId = await getOwnerId();
+    // attach owner fields required by Render API
+    backendPayload.ownerID = ownerId;
+    backendPayload.ownerId = ownerId;
+
+    frontendPayload.ownerID = ownerId;
+    frontendPayload.ownerId = ownerId;
+
     console.log('\n1) Creando backend...');
     const backendRes = await createService(backendPayload);
     console.log('Backend status:', backendRes.status);
