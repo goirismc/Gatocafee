@@ -19,12 +19,26 @@ export default function ReportesPage() {
   const [turnoData, setTurnoData] = useState(null);
   const [loadingTurno, setLoadingTurno] = useState(false);
 
-  const descargarExcel = () => {
+  const descargarExcel = async () => {
     const p = new URLSearchParams();
     if (desde) p.append('desde', desde);
     if (hasta) p.append('hasta', hasta);
-    window.open(process.env.NEXT_PUBLIC_API_URL + '/reportes/ventas/excel?' + p, '_blank');
-    toast.success('Descargando Excel...');
+    try {
+      const res = await api.get('/reportes/ventas/excel?' + p.toString(), { responseType: 'blob' });
+      const blob = new Blob([res.data], { type: res.headers['content-type'] || 'application/octet-stream' });
+      const url = window.URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      const filename = (res.headers['content-disposition'] || '').split('filename=')[1] || `reporte-ventas-${Date.now()}.xlsx`;
+      a.download = filename.replace(/"/g, '');
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+      window.URL.revokeObjectURL(url);
+      toast.success('Descarga iniciada');
+    } catch (err) {
+      toast.error(err.response?.data?.mensaje || 'Error al descargar Excel');
+    }
   };
 
   const verTurno = async (turno) => {

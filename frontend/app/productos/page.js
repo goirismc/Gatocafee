@@ -72,9 +72,6 @@ export default function ProductosPage() {
             <motion.div key={p._id} initial={{opacity:0,y:16}} animate={{opacity:1,y:0}} transition={{delay:idx*0.04}}
               className={`card hover:shadow-cafe transition-shadow ${!p.disponible?'opacity-60':''}`}>
               <div className="flex items-start justify-between mb-3">
-                <div className="w-10 h-10 rounded-xl bg-crema-200 flex items-center justify-center text-xl">
-                  {p.categoria==='bebidas_calientes'?'♨️':p.categoria==='bebidas_frias'?'❄️':p.categoria==='comidas'?'🍞':'🍞'}
-                </div>
                 <div className="flex items-center gap-1">
                   {!p.disponible && <span className="badge badge-agotado">Inactivo</span>}
                   <button onClick={()=>abrirEditar(p)} className="btn-ghost p-1.5"><Edit size={14}/></button>

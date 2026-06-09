@@ -50,6 +50,47 @@ export default function VentasPage() {
     devuelta:   <span className="badge bg-red-100 text-red-700">Devuelta</span>,
   }[e] || <span className="badge bg-gray-100 text-gray-600">{e}</span>);
 
+  const descargarExcel = async () => {
+    const p = new URLSearchParams();
+    if (desde) p.append('desde', desde);
+    if (hasta) p.append('hasta', hasta);
+    try {
+      const res = await api.get('/reportes/ventas/excel?' + p.toString(), { responseType: 'blob' });
+      const blob = new Blob([res.data], { type: res.headers['content-type'] || 'application/octet-stream' });
+      const url = window.URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      const filename = (res.headers['content-disposition'] || '').split('filename=')[1] || `reporte-ventas-${Date.now()}.xlsx`;
+      a.download = filename.replace(/"/g, '');
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+      window.URL.revokeObjectURL(url);
+      toast.success('Descarga iniciada');
+    } catch (err) {
+      toast.error(err.response?.data?.mensaje || 'Error al descargar Excel');
+    }
+  };
+
+  const descargarFactura = async (id) => {
+    try {
+      const res = await api.get('/reportes/factura/' + id, { responseType: 'blob' });
+      const blob = new Blob([res.data], { type: res.headers['content-type'] || 'application/pdf' });
+      const url = window.URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      const filename = (res.headers['content-disposition'] || '').split('filename=')[1] || `factura-${id}.pdf`;
+      a.download = filename.replace(/"/g, '');
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+      window.URL.revokeObjectURL(url);
+      toast.success('Descarga iniciada');
+    } catch (err) {
+      toast.error(err.response?.data?.mensaje || 'Error al descargar factura');
+    }
+  };
+
   return (
     <AppLayout>
       <div className="p-6">
@@ -58,8 +99,7 @@ export default function VentasPage() {
             <h1 className="font-display text-2xl font-bold text-cafe-900">Ventas</h1>
             <p className="text-cafe-500 text-sm">{ventas.length} registros</p>
           </div>
-          <button onClick={() => window.open(process.env.NEXT_PUBLIC_API_URL + '/reportes/ventas/excel', '_blank')}
-            className="btn-secondary flex items-center gap-2">
+          <button onClick={descargarExcel} className="btn-secondary flex items-center gap-2">
             <Download size={14}/> Excel
           </button>
         </div>
@@ -103,7 +143,7 @@ export default function VentasPage() {
                     <td className="px-4 py-3">
                       <div className="flex gap-1">
                         <button onClick={() => verDetalle(v._id)} className="p-1.5 rounded-lg bg-crema-100 text-cafe-600 hover:bg-crema-200"><Eye size={14}/></button>
-                        <button onClick={() => window.open(process.env.NEXT_PUBLIC_API_URL + '/reportes/factura/' + v._id, '_blank')}
+                        <button onClick={() => descargarFactura(v._id)}
                           className="p-1.5 rounded-lg bg-cafe-100 text-cafe-700 hover:bg-cafe-200"><Download size={14}/></button>
                         {v.estado === 'completada' && (
                           <button onClick={() => setDevModal(v)} className="p-1.5 rounded-lg bg-red-100 text-red-600 hover:bg-red-200"><RotateCcw size={14}/></button>
