@@ -1,5 +1,5 @@
 'use client';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import AppLayout from '../../components/layout/AppLayout';
 import Spinner from '../../components/ui/Spinner';
@@ -38,6 +38,12 @@ export default function POSPage() {
   const [clienteQuery, setClienteQuery] = useState('');
   const [sugerenciasClientes, setSugerenciasClientes] = useState([]);
   const [selectedCliente, setSelectedCliente] = useState(null);
+  const rightPanelRef = useRef(null);
+  const itemsRef = useRef(null);
+  const contentInnerRef = useRef(null);
+  const prevCountRef = useRef(0);
+  const [contentHeight, setContentHeight] = useState(0);
+  const [expandedAuto, setExpandedAuto] = useState(false);
 
   useEffect(() => {
     api.get('/productos?disponible=true')
@@ -59,6 +65,36 @@ export default function POSPage() {
       return [...prev, { producto, cantidad: 1 }];
     });
   };
+
+  // Collapsed when no items
+  const collapsed = carrito.length === 0;
+
+  // Measure content height and handle smooth expand/collapse
+  useEffect(() => {
+    const prev = prevCountRef.current;
+    const curr = carrito.length;
+    // reset auto flag to allow animation
+    setExpandedAuto(false);
+
+    // measure after DOM updates
+    setTimeout(() => {
+      try {
+        const h = contentInnerRef.current ? contentInnerRef.current.scrollHeight : 0;
+        setContentHeight(h + 0); // px
+      } catch (e) { /* ignore */ }
+    }, 30);
+
+    if (prev === 0 && curr > 0) {
+      // wait for expansion animation to finish, then scroll the internal list only
+      setTimeout(() => {
+        try {
+          if (itemsRef.current) itemsRef.current.scrollTo({ top: itemsRef.current.scrollHeight, behavior: 'smooth' });
+        } catch (e) { /* ignore */ }
+      }, 420); // allow animation to complete
+    }
+
+    prevCountRef.current = curr;
+  }, [carrito.length]);
 
   const cambiarCantidad = (id, delta) => {
     setCarrito(prev => prev
@@ -174,7 +210,7 @@ export default function POSPage() {
         </div>
 
         {/* ── Panel derecho: carrito ── */}
-        <div className="w-80 flex flex-col bg-white overflow-hidden">
+        <div ref={rightPanelRef} className="w-80 flex flex-col bg-white overflow-hidden sticky top-0 self-start max-h-screen">
           <div className="p-4 border-b border-crema-200">
             <h2 className="font-display font-bold text-cafe-800 flex items-center gap-2">
               <ShoppingCart size={18}/> Carrito
@@ -205,35 +241,74 @@ export default function POSPage() {
           </div>
 
           {/* Items */}
-          <div className="flex-1 overflow-y-auto p-3 space-y-2">
-            <AnimatePresence>
-              {carrito.length===0 ? (
-                <div className="flex flex-col items-center justify-center h-32 text-cafe-300">
-                  <ShoppingCart size={32}/>
-                  <p className="text-sm mt-2">Carrito vacío</p>
+            {expandedAuto ? (
+              <div ref={itemsRef} className="flex-1 overflow-y-auto p-3 space-y-2">
+                <div ref={contentInnerRef}>
+                  <AnimatePresence>
+                    {carrito.length===0 ? (
+                      <div className="flex flex-col items-center justify-center h-32 text-cafe-300">
+                        <ShoppingCart size={32}/>
+                        <p className="text-sm mt-2">Carrito vacío</p>
+                      </div>
+                    ) : carrito.map(item=>(
+                      <motion.div key={item.producto._id}
+                        initial={{opacity:0,x:20}} animate={{opacity:1,x:0}} exit={{opacity:0,x:-20}}
+                        className="flex items-center gap-2 p-2 rounded-xl bg-crema-50 border border-crema-200"
+                      >
+                        <div className="flex-1 min-w-0">
+                          <p className="text-xs font-semibold text-cafe-800 truncate">{item.producto.nombre}</p>
+                          <p className="text-xs text-cafe-500">{GS(item.producto.precioVenta * item.cantidad)}</p>
+                        </div>
+                        <div className="flex items-center gap-1">
+                          <button onClick={()=>cambiarCantidad(item.producto._id,-1)} className="w-6 h-6 rounded-lg bg-crema-200 flex items-center justify-center text-cafe-700 hover:bg-crema-300">
+                            <Minus size={12}/>
+                          </button>
+                          <span className="w-6 text-center text-sm font-bold text-cafe-800">{item.cantidad}</span>
+                          <button onClick={()=>cambiarCantidad(item.producto._id,1)} className="w-6 h-6 rounded-lg bg-cafe-800 flex items-center justify-center text-crema-100 hover:bg-cafe-700">
+                            <Plus size={12}/>
+                          </button>
+                        </div>
+                      </motion.div>
+                    ))}
+                  </AnimatePresence>
                 </div>
-              ) : carrito.map(item=>(
-                <motion.div key={item.producto._id}
-                  initial={{opacity:0,x:20}} animate={{opacity:1,x:0}} exit={{opacity:0,x:-20}}
-                  className="flex items-center gap-2 p-2 rounded-xl bg-crema-50 border border-crema-200"
-                >
-                  <div className="flex-1 min-w-0">
-                    <p className="text-xs font-semibold text-cafe-800 truncate">{item.producto.nombre}</p>
-                    <p className="text-xs text-cafe-500">{GS(item.producto.precioVenta * item.cantidad)}</p>
-                  </div>
-                  <div className="flex items-center gap-1">
-                    <button onClick={()=>cambiarCantidad(item.producto._id,-1)} className="w-6 h-6 rounded-lg bg-crema-200 flex items-center justify-center text-cafe-700 hover:bg-crema-300">
-                      <Minus size={12}/>
-                    </button>
-                    <span className="w-6 text-center text-sm font-bold text-cafe-800">{item.cantidad}</span>
-                    <button onClick={()=>cambiarCantidad(item.producto._id,1)} className="w-6 h-6 rounded-lg bg-cafe-800 flex items-center justify-center text-crema-100 hover:bg-cafe-700">
-                      <Plus size={12}/>
-                    </button>
-                  </div>
-                </motion.div>
-              ))}
-            </AnimatePresence>
-          </div>
+              </div>
+            ) : (
+              <motion.div ref={itemsRef} className="flex-1 overflow-hidden p-3" initial={false}
+                animate={{ height: collapsed ? 104 : contentHeight }} transition={{ duration: 0.36, ease: 'easeInOut' }}
+                onAnimationComplete={() => { if (!collapsed) setExpandedAuto(true); }}
+              >
+                <div ref={contentInnerRef} className="space-y-2" style={{ paddingRight: 8 }}>
+                  <AnimatePresence>
+                    {carrito.length===0 ? (
+                      <div className="flex flex-col items-center justify-center h-32 text-cafe-300">
+                        <ShoppingCart size={32}/>
+                        <p className="text-sm mt-2">Carrito vacío</p>
+                      </div>
+                    ) : carrito.map(item=>(
+                      <motion.div key={item.producto._id}
+                        initial={{opacity:0,x:20}} animate={{opacity:1,x:0}} exit={{opacity:0,x:-20}}
+                        className="flex items-center gap-2 p-2 rounded-xl bg-crema-50 border border-crema-200"
+                      >
+                        <div className="flex-1 min-w-0">
+                          <p className="text-xs font-semibold text-cafe-800 truncate">{item.producto.nombre}</p>
+                          <p className="text-xs text-cafe-500">{GS(item.producto.precioVenta * item.cantidad)}</p>
+                        </div>
+                        <div className="flex items-center gap-1">
+                          <button onClick={()=>cambiarCantidad(item.producto._id,-1)} className="w-6 h-6 rounded-lg bg-crema-200 flex items-center justify-center text-cafe-700 hover:bg-crema-300">
+                            <Minus size={12}/>
+                          </button>
+                          <span className="w-6 text-center text-sm font-bold text-cafe-800">{item.cantidad}</span>
+                          <button onClick={()=>cambiarCantidad(item.producto._id,1)} className="w-6 h-6 rounded-lg bg-cafe-800 flex items-center justify-center text-crema-100 hover:bg-cafe-700">
+                            <Plus size={12}/>
+                          </button>
+                        </div>
+                      </motion.div>
+                    ))}
+                  </AnimatePresence>
+                </div>
+              </motion.div>
+            )}
 
           {/* Totales y pago */}
           <div className="border-t border-crema-200 p-4 space-y-4">
