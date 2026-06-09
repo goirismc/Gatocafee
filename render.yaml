@@ -1,0 +1,40 @@
+# Render YAML para despliegue de Gatocafee
+# Rellena los valores de env vars en el dashboard de Render o reemplaza los placeholders aquí.
+services:
+  - type: web
+    name: gatocafee-backend
+    env: node
+    plan: free
+    buildCommand: npm install
+    startCommand: npm start
+    envVars:
+      - key: MONGODB_URI
+        value: "<REPLACE_WITH_MONGODB_URI>"
+      - key: JWT_SECRET
+        value: "<REPLACE_WITH_JWT_SECRET>"
+      - key: CLOUDINARY_URL
+        value: "<OPTIONAL_CLOUDINARY_URL_or_leave_blank>"
+      - key: CLOUDINARY_CLOUD_NAME
+        value: "<OPTIONAL_CLOUD_NAME>"
+      - key: CLOUDINARY_API_KEY
+        value: "<OPTIONAL_CLOUDINARY_API_KEY>"
+      - key: CLOUDINARY_API_SECRET
+        value: "<OPTIONAL_CLOUDINARY_API_SECRET>"
+      - key: FRONTEND_URL
+        value: "<REPLACE_WITH_FRONTEND_URL>"
+
+  - type: web
+    name: gatocafee-frontend
+    env: node
+    plan: free
+    buildCommand: npm run build
+    startCommand: npm start
+    envVars:
+      - key: NEXT_PUBLIC_API_URL
+        value: "<REPLACE_WITH_BACKEND_API_URL>" # e.g. https://your-backend.onrender.com/api
+      - key: NODE_ENV
+        value: "production"
+
+# Notas:
+# - Tras añadir este archivo al repo, conecta el repositorio en https://dashboard.render.com
+# - Crea los servicios desde Render y completa las env vars en el panel si prefieres no guardarlas en el repo.
