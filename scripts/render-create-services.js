@@ -65,28 +65,31 @@ async function getOwnerId() {
   // Backend payload
   const backendPayload = {
     name: 'gatocafee-backend',
-    repo: `https://github.com/${repo}`,
-    branch,
     type: 'web_service',
-    env: 'node',
     plan: 'free',
-    buildCommand: 'npm install',
-    startCommand: 'npm start',
-    healthCheckPath: '/api/health',
-    // Nota: envVars no incluirán secretos aquí. CONFIGURALOS EN EL DASHBOARD RENDER.
+    // serviceDetails required for non-static services
+    serviceDetails: {
+      repo: `https://github.com/${repo}`,
+      branch,
+      env: 'node',
+      buildCommand: 'npm install',
+      startCommand: 'npm start',
+      healthCheckPath: '/api/health'
+    }
   };
 
   // Frontend payload
   const frontendPayload = {
     name: 'gatocafee-frontend',
-    repo: `https://github.com/${repo}`,
-    branch,
     type: 'web_service',
-    env: 'node',
     plan: 'free',
-    buildCommand: 'npm run build',
-    startCommand: 'npm start',
-    // frontend will need NEXT_PUBLIC_API_URL set in Render dashboard
+    serviceDetails: {
+      repo: `https://github.com/${repo}`,
+      branch,
+      env: 'node',
+      buildCommand: 'npm run build',
+      startCommand: 'npm start'
+    }
   };
 
   try {
