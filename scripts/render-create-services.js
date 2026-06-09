@@ -67,10 +67,14 @@ async function getOwnerId() {
     name: 'gatocafee-backend',
     type: 'web_service',
     plan: 'free',
+    repo: `https://github.com/${repo}`,
     // serviceDetails required for non-static services
     serviceDetails: {
-      repo: `https://github.com/${repo}`,
-      branch,
+      repository: {
+        name: repo,
+        branch
+      },
+      runtime: 'node',
       env: 'node',
       buildCommand: 'npm install',
       startCommand: 'npm start',
@@ -83,9 +87,13 @@ async function getOwnerId() {
     name: 'gatocafee-frontend',
     type: 'web_service',
     plan: 'free',
+    repo: `https://github.com/${repo}`,
     serviceDetails: {
-      repo: `https://github.com/${repo}`,
-      branch,
+      repository: {
+        name: repo,
+        branch
+      },
+      runtime: 'node',
       env: 'node',
       buildCommand: 'npm run build',
       startCommand: 'npm start'
