@@ -144,6 +144,24 @@ export default function POSPage() {
     }
   };
 
+  const agregarClienteRapido = async (tipo) => {
+    try {
+      const id = window.prompt(`Ingrese ${tipo} del cliente (sin espacios)`);
+      if (!id) return;
+      const nombre = window.prompt('Ingrese nombre del cliente', clienteQuery || 'Cliente');
+      if (!nombre) return;
+      const body = { nombre, ci_ruc: id };
+      const { data } = await api.post('/clientes', body);
+      setSelectedCliente(data.cliente);
+      setClienteQuery(`${data.cliente.nombre} ${data.cliente.apellido || ''}`);
+      setSugerenciasClientes([]);
+      toast.success('Cliente creado');
+    } catch (err) {
+      console.error('Error creando cliente', err);
+      toast.error(err.response?.data?.mensaje || 'Error creando cliente');
+    }
+  };
+
   if (loading) return <AppLayout><div className="p-8"><Spinner size="lg"/></div></AppLayout>;
 
   return (

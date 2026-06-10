@@ -147,7 +147,7 @@ exports.getClientesFrecuentes = async (req, res) => {
 
 // ============================================
 // GET /api/clientes/buscar-rapido
-// Búsqueda rápida para el POS (por nombre o teléfono)
+// Búsqueda rápida para el POS (por nombre, teléfono o documento)
 // ============================================
 exports.buscarRapido = async (req, res) => {
   try {
@@ -156,16 +156,19 @@ exports.buscarRapido = async (req, res) => {
       return res.json({ success: true, clientes: [] });
     }
 
+    const regex = { $regex: q, $options: 'i' };
+
     const clientes = await Cliente.find({
       activo: true,
       $or: [
-        { nombre: { $regex: q, $options: 'i' } },
-        { apellido: { $regex: q, $options: 'i' } },
-        { telefono: { $regex: q, $options: 'i' } },
+        { nombre: regex },
+        { apellido: regex },
+        { telefono: regex },
+        { ci_ruc: regex },
       ],
     })
       .limit(5)
-      .select('nombre apellido telefono puntos nivel');
+      .select('nombre apellido telefono ci_ruc puntos nivel');
 
     res.json({ success: true, clientes });
   } catch (error) {
