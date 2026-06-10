@@ -543,7 +543,18 @@ export default function POSPage() {
                   const ticketHtml = document.getElementById('ticket-printable').innerHTML;
                   const w = window.open('', '_blank');
                   if (w) {
-                    w.document.write(`<!doctype html><html><head><title>Ticket</title><meta charset="utf-8"><style>body{font-family:Arial,Helvetica,sans-serif;padding:20px;color:#2d1b1a}table{width:100%;border-collapse:collapse}td,th{padding:4px}hr{border:none;border-top:1px solid #e8dccc;margin:8px 0}</style></head><body>${ticketHtml}</body></html>`);
+                    w.document.write(`<!doctype html><html><head><title>Ticket</title><meta charset="utf-8"><style>
+                      @media print { @page { margin: 6mm; } body { -webkit-print-color-adjust: exact; } }
+                      body{font-family:Arial,Helvetica,sans-serif;padding:12px;color:#2d1b1a}
+                      .header{text-align:center;margin-bottom:8px}
+                      .header .title{font-weight:700;font-size:16px}
+                      .small{font-size:12px}
+                      table{width:100%;border-collapse:collapse;font-size:12px}
+                      td,th{padding:6px}
+                      .text-right{text-align:right}
+                      .divider{border-top:1px solid #e8dccc;margin:8px 0}
+                      .total{font-weight:700;font-size:14px}
+                      </style></head><body>${ticketHtml}</body></html>`);
                     w.document.close();
                     w.focus();
                     setTimeout(()=>{ w.print(); w.close(); }, 500);

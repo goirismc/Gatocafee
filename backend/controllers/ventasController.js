@@ -255,7 +255,7 @@ exports.getVenta = async (req, res) => {
   try {
     const venta = await Venta.findById(req.params.id)
       .populate('usuario', 'nombre apellido')
-      .populate('cliente', 'nombre apellido email telefono')
+      .populate('cliente', 'nombre apellido email telefono ci_ruc')
       .populate('items.producto', 'nombre categoria imagen');
 
     if (!venta) return res.status(404).json({ success: false, mensaje: 'Venta no encontrada' });
