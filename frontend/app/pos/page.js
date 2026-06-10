@@ -34,7 +34,8 @@ export default function POSPage() {
   const [canal, setCanal]           = useState('mostrador');
   const [loading, setLoading]       = useState(true);
   const [procesando, setProcesando] = useState(false);
-  const [ticket, setTicket]         = useState(null);
+  const [ticket, setTicket]         = useState(null); // legacy raw text
+  const [ticketData, setTicketData] = useState(null); // structured venta for rendering printable ticket
   const [clienteQuery, setClienteQuery] = useState('');
   const [sugerenciasClientes, setSugerenciasClientes] = useState([]);
   const [selectedCliente, setSelectedCliente] = useState(null);
@@ -129,7 +130,19 @@ export default function POSPage() {
         canal,
       });
       toast.success(`Venta ${data.venta.numeroTicket} registrada ✓`);
-      setTicket(data.ticket);
+      // Obtener venta completa para renderizado profesional del ticket
+      try {
+        const ventaResp = await api.get(`/ventas/${data.venta.id}`);
+        if (ventaResp.data && ventaResp.data.venta) {
+          setTicketData(ventaResp.data.venta);
+        } else if (ventaResp.data && ventaResp.data.ticket) {
+          // fallback
+          setTicket(ventaResp.data.ticket);
+        }
+      } catch (e) {
+        // fallback to raw ticket text if fetching failed
+        setTicket(data.ticket);
+      }
       setCarrito([]);
       setMontoPagado('');
     } catch (err) {
@@ -440,24 +453,105 @@ export default function POSPage() {
 
       {/* ── Modal ticket ── */}
       <AnimatePresence>
-        {ticket && (
+        {(ticketData || ticket) && (
           <motion.div initial={{opacity:0}} animate={{opacity:1}} exit={{opacity:0}}
             className="fixed inset-0 bg-cafe-900/70 flex items-center justify-center z-50 p-4"
-            onClick={()=>setTicket(null)}
+            onClick={()=>{ setTicketData(null); setTicket(null); }}
           >
             <motion.div initial={{scale:0.9,opacity:0}} animate={{scale:1,opacity:1}} exit={{scale:0.9,opacity:0}}
-              className="bg-white rounded-2xl p-6 max-w-sm w-full shadow-cafe-lg" onClick={e=>e.stopPropagation()}
+              className="bg-white rounded-2xl p-6 max-w-md w-full shadow-cafe-lg" onClick={e=>e.stopPropagation()}
             >
-              <div className="text-center mb-4">
+              <div className="text-center mb-2">
                 <h3 className="font-display font-bold text-cafe-800 text-lg">Venta registrada</h3>
                 <p className="text-cafe-500 text-sm">El ticket fue generado correctamente</p>
               </div>
-              <pre className="bg-crema-100 rounded-xl p-3 text-xs font-mono text-cafe-700 overflow-x-auto max-h-64 overflow-y-auto whitespace-pre-wrap">
-                {ticket}
-              </pre>
+
+              {/* Ticket printable area */}
+              <div id="ticket-printable" className="bg-crema-100 rounded-xl p-4 text-xs text-cafe-700 max-h-96 overflow-y-auto">
+                {ticketData ? (
+                  <div className="text-left font-sans">
+                    <div className="text-center font-bold text-base">GATOCAFEE</div>
+                    <div className="text-center text-xs">Sistema de Gestión de Cafetería</div>
+                    <div className="text-center text-xs">{process.env.NEXT_PUBLIC_BUSINESS_ADDRESS || 'Villarrica, Paraguay'}</div>
+                    <div className="text-center text-xs">{process.env.NEXT_PUBLIC_BUSINESS_PHONE || '+595 981 000 000'}</div>
+                    <div className="text-center text-xs">RUC: {process.env.NEXT_PUBLIC_BUSINESS_RUC || '12345678-9'}</div>
+                    <hr className="my-2 border-cafe-300" />
+
+                    <div className="grid grid-cols-2 text-xs gap-1">
+                      <div>Ticket N°: <strong>{ticketData.numeroTicket}</strong></div>
+                      <div className="text-right">Fecha: <strong>{new Date(ticketData.createdAt).toLocaleString('es-PY')}</strong></div>
+                      <div>Cajero: <strong>{ticketData.usuario?.nombre} {ticketData.usuario?.apellido}</strong></div>
+                      <div className="text-right">Canal: <strong>{(ticketData.canal||'').toUpperCase()}</strong></div>
+                      <div>Cliente: <strong>{ticketData.cliente ? `${ticketData.cliente.nombre} ${ticketData.cliente.apellido||''}` : ticketData.nombreClienteRapido}</strong></div>
+                      <div className="text-right">CI/RUC: <strong>{ticketData.cliente?.ci_ruc || ''}</strong></div>
+                      <div>Turno: <strong>{(ticketData.turno||'').toUpperCase()}</strong></div>
+                    </div>
+
+                    <hr className="my-2 border-cafe-300" />
+
+                    <table className="w-full text-xs table-fixed">
+                      <thead>
+                        <tr>
+                          <th className="text-left">PRODUCTO</th>
+                          <th className="text-right">CANT</th>
+                          <th className="text-right">PRECIO</th>
+                          <th className="text-right">TOTAL</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {ticketData.items.map((it, idx) => (
+                          <tr key={idx} className="align-top">
+                            <td>{it.nombreProducto}</td>
+                            <td className="text-right">{it.cantidad}</td>
+                            <td className="text-right">Gs. {Math.round(it.precioUnitario).toLocaleString('es-PY')}</td>
+                            <td className="text-right">Gs. {Math.round(it.subtotal).toLocaleString('es-PY')}</td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+
+                    <hr className="my-2 border-cafe-300" />
+
+                    <div className="text-right text-sm font-semibold">
+                      <div>Subtotal (sin IVA): Gs. {Math.round(ticketData.subtotalSinIVA).toLocaleString('es-PY')}</div>
+                      <div>IVA: Gs. {Math.round(ticketData.totalIVA).toLocaleString('es-PY')}</div>
+                      <div className="text-base">TOTAL A PAGAR: Gs. {Math.round(ticketData.total).toLocaleString('es-PY')}</div>
+                    </div>
+
+                    <hr className="my-2 border-cafe-300" />
+
+                    <div className="text-xs">
+                      <div>Método de pago: {ticketData.metodoPago}</div>
+                      {ticketData.metodoPago === 'efectivo' && (
+                        <>
+                          <div>Monto recibido: Gs. {Math.round(ticketData.montoPagado).toLocaleString('es-PY')}</div>
+                          <div>Cambio: Gs. {Math.round(ticketData.cambio).toLocaleString('es-PY')}</div>
+                        </>
+                      )}
+                    </div>
+
+                    <div className="text-center mt-3 text-xs">Gracias por su visita. Vuelva pronto.</div>
+                  </div>
+                ) : (
+                  <pre className="whitespace-pre-wrap">{ticket}</pre>
+                )}
+              </div>
+
               <div className="flex gap-2 mt-4">
-                <button onClick={()=>{window.print()}} className="btn-secondary flex-1 text-sm">🖨️ Imprimir</button>
-                <button onClick={()=>setTicket(null)} className="btn-primary flex-1 text-sm">✓ Cerrar</button>
+                <button onClick={() => {
+                  // Print only ticket area by opening a new window with the ticket HTML
+                  const ticketHtml = document.getElementById('ticket-printable').innerHTML;
+                  const w = window.open('', '_blank');
+                  if (w) {
+                    w.document.write(`<!doctype html><html><head><title>Ticket</title><meta charset="utf-8"><style>body{font-family:Arial,Helvetica,sans-serif;padding:20px;color:#2d1b1a}table{width:100%;border-collapse:collapse}td,th{padding:4px}hr{border:none;border-top:1px solid #e8dccc;margin:8px 0}</style></head><body>${ticketHtml}</body></html>`);
+                    w.document.close();
+                    w.focus();
+                    setTimeout(()=>{ w.print(); w.close(); }, 500);
+                  } else {
+                    window.print();
+                  }
+                }} className="btn-secondary flex-1 text-sm">Imprimir</button>
+                <button onClick={()=>{ setTicketData(null); setTicket(null); }} className="btn-primary flex-1 text-sm">Cerrar</button>
               </div>
             </motion.div>
           </motion.div>

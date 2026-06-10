@@ -160,7 +160,7 @@ exports.crearVenta = async (req, res) => {
     });
 
     // Generar texto del ticket
-    const ventaPopulada = await Venta.findById(venta._id).populate('usuario', 'nombre apellido').populate('cliente', 'nombre apellido');
+    const ventaPopulada = await Venta.findById(venta._id).populate('usuario', 'nombre apellido').populate('cliente', 'nombre apellido ci_ruc telefono');
     const ticket = generarTicketTexto(ventaPopulada);
 
     res.status(201).json({
