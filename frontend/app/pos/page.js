@@ -38,6 +38,11 @@ export default function POSPage() {
   const [clienteQuery, setClienteQuery] = useState('');
   const [sugerenciasClientes, setSugerenciasClientes] = useState([]);
   const [selectedCliente, setSelectedCliente] = useState(null);
+
+  // Modal / creación rápida de cliente
+  const [showAddModal, setShowAddModal] = useState(false);
+  const [newClient, setNewClient] = useState({ nombre: '', apellido: '', ci_ruc: '', telefono: '' });
+
   const rightPanelRef = useRef(null);
   const itemsRef = useRef(null);
   const contentInnerRef = useRef(null);
@@ -144,17 +149,21 @@ export default function POSPage() {
     }
   };
 
-  const agregarClienteRapido = async (tipo) => {
+  const openAddModal = (prefill = '') => {
+    setNewClient(prev => ({ ...prev, ci_ruc: prefill || clienteQuery }));
+    setShowAddModal(true);
+  };
+
+  const submitNewClient = async () => {
     try {
-      const id = window.prompt(`Ingrese ${tipo} del cliente (sin espacios)`);
-      if (!id) return;
-      const nombre = window.prompt('Ingrese nombre del cliente', clienteQuery || 'Cliente');
-      if (!nombre) return;
-      const body = { nombre, ci_ruc: id };
+      if (!newClient.ci_ruc || !newClient.nombre) return toast.error('Complete RUC/CI y nombre');
+      const body = { ...newClient };
       const { data } = await api.post('/clientes', body);
       setSelectedCliente(data.cliente);
       setClienteQuery(`${data.cliente.nombre} ${data.cliente.apellido || ''}`);
       setSugerenciasClientes([]);
+      setShowAddModal(false);
+      setNewClient({ nombre: '', apellido: '', ci_ruc: '', telefono: '' });
       toast.success('Cliente creado');
     } catch (err) {
       console.error('Error creando cliente', err);
@@ -248,11 +257,25 @@ export default function POSPage() {
                   <button className="text-xs text-cafe-500 hover:underline" onClick={()=>{ setSelectedCliente(null); setClienteQuery(''); setSugerenciasClientes([]); }}>Limpiar</button>
                 </div>
               )}
-              {sugerenciasClientes.length>0 && !selectedCliente && (
+              {sugerenciasClientes.length>0 && !selectedCliente ? (
                 <div className="mt-1 space-y-1">
                   {sugerenciasClientes.map(c=> (
-                    <button key={c._id} onClick={()=>{ setSelectedCliente(c); setClienteQuery(`${c.nombre} ${c.apellido || ''}`); setSugerenciasClientes([]); }} className="w-full text-left text-sm p-1 rounded hover:bg-crema-100">{c.nombre} {c.apellido || ''} {c.telefono ? `· ${c.telefono}` : ''}</button>
+                    <button key={c._id}
+                      onClick={()=>{ setSelectedCliente(c); setClienteQuery(`${c.nombre} ${c.apellido || ''}`); setSugerenciasClientes([]); }}
+                      className="w-full text-left text-sm p-2 rounded hover:bg-crema-100 flex items-center justify-between"
+                    >
+                      <div>
+                        <div className="font-semibold text-sm">{c.nombre} {c.apellido || ''}</div>
+                        <div className="text-xs text-cafe-500">{c.ci_ruc ? `CI/RUC: ${c.ci_ruc}` : ''} {c.telefono ? `· ${c.telefono}` : ''}</div>
+                      </div>
+                      <div className="text-xs text-cafe-600">{c.puntos ? `${c.puntos} pts` : ''}</div>
+                    </button>
                   ))}
+                </div>
+              ) : (!selectedCliente && clienteQuery && clienteQuery.length>=2) && (
+                <div className="mt-2 flex gap-2">
+                  <button onClick={()=>openAddModal(clienteQuery)} className="flex-1 py-1 rounded-lg text-sm bg-crema-100 hover:bg-crema-200">Agregar por CI/RUC</button>
+                  <button onClick={()=>openAddModal('')} className="flex-1 py-1 rounded-lg text-sm bg-crema-50 border border-crema-200 hover:bg-crema-100">Nuevo cliente</button>
                 </div>
               )}
             </div>
@@ -393,6 +416,27 @@ export default function POSPage() {
           </div>
         </div>
       </div>
+
+      {/* ── Modal añadir cliente ── */}
+      <AnimatePresence>
+        {showAddModal && (
+          <motion.div initial={{opacity:0}} animate={{opacity:1}} exit={{opacity:0}} className="fixed inset-0 bg-cafe-900/70 flex items-center justify-center z-50 p-4" onClick={()=>setShowAddModal(false)}>
+            <motion.div initial={{scale:0.95,opacity:0}} animate={{scale:1,opacity:1}} exit={{scale:0.95,opacity:0}} className="bg-white rounded-2xl p-6 max-w-md w-full shadow-cafe-lg" onClick={e=>e.stopPropagation()}>
+              <h3 className="font-display font-bold text-cafe-800 text-lg mb-2">Agregar cliente</h3>
+              <div className="space-y-2">
+                <input className="input text-sm" placeholder="RUC / CI" value={newClient.ci_ruc} onChange={e=>setNewClient(n=>({...n, ci_ruc: e.target.value}))} />
+                <input className="input text-sm" placeholder="Nombre" value={newClient.nombre} onChange={e=>setNewClient(n=>({...n, nombre: e.target.value}))} />
+                <input className="input text-sm" placeholder="Apellido (opcional)" value={newClient.apellido} onChange={e=>setNewClient(n=>({...n, apellido: e.target.value}))} />
+                <input className="input text-sm" placeholder="Teléfono (opcional)" value={newClient.telefono} onChange={e=>setNewClient(n=>({...n, telefono: e.target.value}))} />
+              </div>
+              <div className="flex gap-2 mt-4">
+                <button onClick={()=>setShowAddModal(false)} className="btn-secondary flex-1 text-sm">Cancelar</button>
+                <button onClick={submitNewClient} className="btn-primary flex-1 text-sm">Guardar cliente</button>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       {/* ── Modal ticket ── */}
       <AnimatePresence>
