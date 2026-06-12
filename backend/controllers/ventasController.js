@@ -7,6 +7,12 @@ const mongoose = require('mongoose');
 const Venta = require('../models/Venta');
 const Producto = require('../models/Producto');
 const Cliente = require('../models/Cliente');
+let Promocion;
+try {
+  Promocion = mongoose.model('Promocion');
+} catch (e) {
+  Promocion = mongoose.models.Promocion || null;
+}
 const { registrarAuditoria } = require('../utils/auditoria');
 const { generarTicketTexto } = require('../utils/ticket');
 
@@ -15,9 +21,9 @@ const { generarTicketTexto } = require('../utils/ticket');
 // Registrar nueva venta (corazón del sistema)
 // ============================================
 exports.crearVenta = async (req, res) => {
-  // Usamos sesión de Mongoose para transacción atómica
-  const session = await mongoose.startSession();
-  session.startTransaction();
+  // Deshabilitamos transacciones en este entorno (evita errores en Mongo standalone).
+  // Si se desea soporte de transacciones, activar solo en replica sets en producción.
+  let session = null;
 
   try {
     const {
@@ -28,6 +34,7 @@ exports.crearVenta = async (req, res) => {
       montoPagado,
       canal,
       codigoCupon,
+      promocionId,
       arqueoCajaId,
     } = req.body;
 
@@ -43,7 +50,7 @@ exports.crearVenta = async (req, res) => {
     let costoTotal = 0;
 
     for (const item of items) {
-      const producto = await Producto.findById(item.productoId).session(session);
+      const producto = session ? await Producto.findById(item.productoId).session(session) : await Producto.findById(item.productoId);
 
       if (!producto) {
         await session.abortTransaction();
@@ -82,8 +89,48 @@ exports.crearVenta = async (req, res) => {
       });
     }
 
-    const total = subtotalSinIVA + totalIVA; // = suma de subtotales
+    // Aplicar descuento por cupón/promoción si se envió
+    let descuentoCupon = 0;
+    if (promocionId || codigoCupon) {
+      try {
+        const ahora = new Date();
+        let promo = null;
+        if (promocionId) {
+          // Buscar por ID dentro de la sesión si existe
+          promo = session ? await Promocion.findById(promocionId).session(session) : await Promocion.findById(promocionId);
+        } else if (codigoCupon) {
+          // Buscar por código (normalizado a mayúsculas)
+          promo = session ? await Promocion.findOne({ codigo: String(codigoCupon).toUpperCase() }).session(session) : await Promocion.findOne({ codigo: String(codigoCupon).toUpperCase() });
+        }
+        console.log('crearVenta: promocion encontrada?', !!promo, promo && { id: promo._id, tipo: promo.tipo, valor: promo.valor });
+
+        if (promo && promo.activo && (!promo.fechaInicio || promo.fechaInicio <= ahora) && (!promo.fechaFin || promo.fechaFin >= ahora)) {
+          if (!promo.usoMaximo || promo.usosActuales < promo.usoMaximo) {
+            const totalAntes = subtotalSinIVA + totalIVA;
+            if (promo.tipo === 'porcentaje') {
+              descuentoCupon = Math.round(totalAntes * (promo.valor / 100));
+            } else if (promo.tipo === 'monto_fijo' || promo.tipo === 'cupon') {
+              descuentoCupon = Math.min(promo.valor, totalAntes);
+            }
+            if (promo.minimoCompra && totalAntes < promo.minimoCompra) descuentoCupon = 0;
+          }
+        }
+      } catch (e) {
+        console.warn('Error al validar promoción en crearVenta:', e.message);
+      }
+    }
+
+    // Si frontend envía un descuento validado, usarlo como fallback
+    const descuentoCuponFromClient = Number(req.body.descuentoCupon || 0);
+    if (!descuentoCupon && descuentoCuponFromClient > 0) {
+      console.log('crearVenta: usando descuento enviado por cliente:', descuentoCuponFromClient);
+      descuentoCupon = descuentoCuponFromClient;
+    }
+
+    const total = Math.max(0, Math.round(subtotalSinIVA + totalIVA - descuentoCupon));
     const gananciaTotal = total - costoTotal;
+    // sumar descuento de cupón a totalDescuentos para que aparezca en el ticket
+    totalDescuentos += descuentoCupon;
 
     // ── PASO 2: Calcular cambio si es efectivo ──
     let cambio = 0;
@@ -96,32 +143,58 @@ exports.crearVenta = async (req, res) => {
     }
 
     // ── PASO 3: Crear la venta ──
-    const [venta] = await Venta.create(
-      [
-        {
-          usuario: req.usuario._id,
-          cliente: clienteId || null,
-          nombreClienteRapido: nombreClienteRapido || 'Consumidor Final',
-          items: itemsCompletos,
-          subtotalSinIVA: Math.round(subtotalSinIVA),
-          totalIVA: Math.round(totalIVA),
-          totalDescuentos,
-          total: Math.round(total),
-          costoTotal: Math.round(costoTotal),
-          gananciaTotal: Math.round(gananciaTotal),
-          metodoPago,
-          montoPagado: montoPagado || total,
-          cambio: Math.round(cambio),
-          canal: canal || 'mostrador',
-          codigoCupon,
-          arqueoCaja: arqueoCajaId || null,
-        },
-      ],
-      { session }
-    );
+    // Intentar crear la venta con reintentos para evitar duplicados en `numeroTicket`
+    let venta;
+    const maxRetries = 5;
+    for (let attempt = 0; attempt < maxRetries; attempt++) {
+      try {
+        const createOptions = session ? { session } : {};
+        const res = await Venta.create(
+          [
+            {
+              usuario: req.usuario._id,
+              cliente: clienteId || null,
+              nombreClienteRapido: nombreClienteRapido || 'Consumidor Final',
+              items: itemsCompletos,
+              subtotalSinIVA: Math.round(subtotalSinIVA),
+              totalIVA: Math.round(totalIVA),
+              totalDescuentos,
+              total: Math.round(total),
+              costoTotal: Math.round(costoTotal),
+              gananciaTotal: Math.round(gananciaTotal),
+              metodoPago,
+              montoPagado: montoPagado || total,
+              cambio: Math.round(cambio),
+              canal: canal || 'mostrador',
+              promocion: promocionId || null,
+              codigoCupon,
+              arqueoCaja: arqueoCajaId || null,
+            },
+          ],
+          createOptions
+        );
+        venta = res[0];
+        break;
+      } catch (err) {
+        // Manejar duplicado por numeroTicket (condición de carrera al contar documentos)
+        if (err && (err.code === 11000 || err.name === 'MongoServerError') && /numeroTicket/.test(err.message)) {
+          console.warn(`crearVenta: intento ${attempt + 1} falló por numeroTicket duplicado. Reintentando...`);
+          if (attempt === maxRetries - 1) {
+            // si ya agotamos reintentos, relanzar para manejo global
+            throw err;
+          }
+          // pequeña espera antes de reintentar para reducir colisiones
+          await new Promise(r => setTimeout(r, 50 * (attempt + 1)));
+          continue;
+        }
+        // otros errores se propagan
+        throw err;
+      }
+    }
 
     // ── PASO 4: Actualizar estadísticas de productos ──
     for (const item of itemsCompletos) {
+      const updateOptions = session ? { session } : {};
       await Producto.findByIdAndUpdate(
         item.producto,
         {
@@ -130,24 +203,25 @@ exports.crearVenta = async (req, res) => {
             ingresoTotal: item.subtotal,
           },
         },
-        { session }
+        updateOptions
       );
     }
 
     // ── PASO 5: Actualizar cliente si existe ──
     if (clienteId) {
+      const updateOptions = session ? { session } : {};
       await Cliente.findByIdAndUpdate(
         clienteId,
         {
           $inc: { totalCompras: 1, totalGastado: total, puntos: Math.floor(total / 1000) },
           $set: { ultimaCompra: new Date() },
         },
-        { session }
+        updateOptions
       );
     }
 
-    // ── PASO 6: Confirmar transacción ──
-    await session.commitTransaction();
+    // ── PASO 6: Confirmar transacción si usamos sesión ──
+    if (session) await session.commitTransaction();
 
     // Auditoría (fuera de transacción)
     await registrarAuditoria({
@@ -159,8 +233,45 @@ exports.crearVenta = async (req, res) => {
       ip: req.ip,
     });
 
+    // Si se aplicó una promoción o cupón, contabilizar su uso
+    try {
+      if (Promocion) {
+        if (promocionId) {
+          await Promocion.findByIdAndUpdate(promocionId, { $inc: { usosActuales: 1 } });
+        } else if (codigoCupon) {
+          const p = await Promocion.findOne({ codigo: String(codigoCupon).toUpperCase() });
+          if (p) await Promocion.findByIdAndUpdate(p._id, { $inc: { usosActuales: 1 } });
+        }
+      } else {
+        console.warn('Promocion model not available; skipping usosActuales update');
+      }
+    } catch (e) {
+      console.warn('No se pudo actualizar contador de usos de la promoción:', e.message);
+    }
+
+    // Actualizar meta mensual (ventasActuales y porcentajeCumplido) si existe meta para el mes
+    try {
+      const MetaMensual = mongoose.model('MetaMensual');
+      const ahora = new Date();
+      const mes = ahora.getMonth() + 1;
+      const año = ahora.getFullYear();
+      // Incrementar ventasActuales por el total de la venta
+      const updated = await MetaMensual.findOneAndUpdate(
+        { mes, año },
+        { $inc: { ventasActuales: venta.total } },
+        { new: true }
+      );
+      if (updated && updated.metaVentas > 0) {
+        const porcentaje = (updated.ventasActuales / updated.metaVentas) * 100;
+        // Guardar porcentajeCumplido actualizado (no crítico si falla)
+        await MetaMensual.findByIdAndUpdate(updated._id, { porcentajeCumplido: porcentaje });
+      }
+    } catch (e) {
+      console.warn('No se pudo actualizar MetaMensual tras crear venta:', e.message);
+    }
+
     // Generar texto del ticket
-    const ventaPopulada = await Venta.findById(venta._id).populate('usuario', 'nombre apellido').populate('cliente', 'nombre apellido');
+    const ventaPopulada = await Venta.findById(venta._id).populate('usuario', 'nombre apellido').populate('cliente', 'nombre apellido ci_ruc telefono');
     const ticket = generarTicketTexto(ventaPopulada);
 
     res.status(201).json({
@@ -179,11 +290,11 @@ exports.crearVenta = async (req, res) => {
     });
 
   } catch (error) {
-    await session.abortTransaction();
+    if (session) await session.abortTransaction();
     console.error('Error al crear venta:', error);
     res.status(500).json({ success: false, mensaje: 'Error al registrar venta', error: error.message });
   } finally {
-    session.endSession();
+    if (session) session.endSession();
   }
 };
 
@@ -255,7 +366,7 @@ exports.getVenta = async (req, res) => {
   try {
     const venta = await Venta.findById(req.params.id)
       .populate('usuario', 'nombre apellido')
-      .populate('cliente', 'nombre apellido email telefono')
+      .populate('cliente', 'nombre apellido email telefono ci_ruc')
       .populate('items.producto', 'nombre categoria imagen');
 
     if (!venta) return res.status(404).json({ success: false, mensaje: 'Venta no encontrada' });

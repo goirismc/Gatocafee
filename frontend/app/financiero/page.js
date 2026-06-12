@@ -16,6 +16,7 @@ export default function FinancieroPage() {
   const [metas, setMetas]         = useState([]);
   const [loading, setLoading]     = useState(true);
   const [tab, setTab]             = useState('pe');
+  const [errorBanner, setErrorBanner] = useState(null);
   const [modalCosto, setModalCosto] = useState(false);
   const [modalMeta, setModalMeta]   = useState(false);
   const [formCosto, setFormCosto] = useState({ nombre:'', monto:'', frecuencia:'mensual' });
@@ -24,23 +25,46 @@ export default function FinancieroPage() {
     año: new Date().getFullYear(),
     metaVentas: ''
   });
+  const [editingMetaId, setEditingMetaId] = useState(null);
+  // removed confirm modal state; editing opens directly
 
   // ── FIX: useEffect NO puede ser async directamente ──
   useEffect(() => {
-    function cargar() {
+    async function cargar() {
       setLoading(true);
-      Promise.all([
-        api.get('/financiero/punto-equilibrio'),
-        api.get('/financiero/costos-fijos'),
-        api.get('/financiero/metas'),
-      ])
-        .then(([resPe, resCostos, resMetas]) => {
-          setPe(resPe.data);
-          setCostos(resCostos.data.costos || []);
+      setErrorBanner(null);
+      try {
+        const [resPe, resCostos] = await Promise.all([
+          api.get('/financiero/punto-equilibrio'),
+          api.get('/financiero/costos-fijos'),
+        ]);
+        setPe(resPe.data);
+        setCostos(resCostos.data.costos || []);
+
+        try {
+          const resMetas = await api.get('/financiero/metas');
           setMetas(resMetas.data.metas || []);
-        })
-        .catch((err) => console.error('Error cargando financiero:', err))
-        .finally(() => setLoading(false));
+        } catch (e) {
+          // Manejar 401 (no autorizado) y 404 (ruta faltante)
+          if (e?.response?.status === 401) {
+            setErrorBanner('Acceso denegado. Iniciá sesión con una cuenta con permisos.');
+            setMetas([]);
+          } else if (e?.response?.status === 404) {
+            // Mostrar toast no persistente para ruta faltante (evita banner fijo)
+            toast.error('Ruta del servidor no encontrada. Reiniciá el backend y volvé a intentar.');
+            setMetas([]);
+          } else {
+            console.error('Error cargando metas:', e);
+            setErrorBanner('Error al cargar metas');
+            setMetas([]);
+          }
+        }
+      } catch (err) {
+        console.error('Error cargando financiero:', err);
+        setErrorBanner('Error al cargar datos financieros');
+      } finally {
+        setLoading(false);
+      }
     }
     cargar();
   }, []); // solo al montar
@@ -60,22 +84,79 @@ export default function FinancieroPage() {
 
   const guardarMeta = (e) => {
     e.preventDefault();
-    api.post('/financiero/metas', formMeta)
-      .then(({ data }) => {
-        toast.success(data.progreso?.estado || 'Meta guardada');
-        setModalMeta(false);
-        setFormMeta({ mes: new Date().getMonth()+1, año: new Date().getFullYear(), metaVentas:'' });
-        api.get('/financiero/metas').then(r => setMetas(r.data.metas || []));
-      })
-      .catch(err => toast.error(err.response?.data?.mensaje || 'Error al guardar'));
+    const req = editingMetaId
+      ? api.put(`/financiero/metas/${editingMetaId}`, formMeta)
+      : api.post('/financiero/metas', formMeta);
+
+    req.then(({ data }) => {
+      toast.success(data.progreso?.estado || (editingMetaId ? 'Meta actualizada' : 'Meta guardada'));
+      setModalMeta(false);
+      setEditingMetaId(null);
+      setFormMeta({ mes: new Date().getMonth()+1, año: new Date().getFullYear(), metaVentas:'' });
+      api.get('/financiero/metas').then(r => setMetas(r.data.metas || []));
+    }).catch(err => {
+      const msg = err?.response?.data?.mensaje;
+      if (err?.response?.status === 401) {
+        setErrorBanner('Acceso denegado. Iniciá sesión con una cuenta con permisos.');
+      } else if (err?.response?.status === 404 && msg && msg.includes('no encontrada')) {
+        setErrorBanner('Ruta del servidor no encontrada. Reiniciá el backend y volvé a intentar.');
+      } else {
+        toast.error(msg || 'Error al guardar');
+      }
+    });
+  };
+
+  const abrirEditarMeta = (m) => {
+    const id = m._id || m.id;
+    setEditingMetaId(id);
+    setFormMeta({ mes: m.mes, año: m.año, metaVentas: m.metaVentas });
+    setModalMeta(true);
+  };
+
+  const eliminarMeta = (m) => {
+    const id = m && (m._id || m.id);
+    if (!m) {
+      toast.error('ID de meta inválido. Operación cancelada.');
+      return;
+    }
+
+    const handleDeleteSuccess = () => {
+      toast.success('Meta eliminada');
+      api.get('/financiero/metas').then(r => setMetas(r.data.metas || []));
+    };
+
+    const handleDeleteError = (err) => {
+      const msg = err?.response?.data?.mensaje || err.message;
+      if (err?.response?.status === 401) {
+        toast.error('Acceso denegado. Iniciá sesión con una cuenta con permisos.');
+      } else if (err?.response?.status === 403) {
+        toast.error(msg);
+      } else if (err?.response?.status === 404) {
+        toast.error('Ruta no encontrada en el servidor. Reiniciá el backend.');
+      } else {
+        toast.error(msg || 'Error al eliminar');
+      }
+    };
+
+    if (!id) {
+      // Fallback: eliminar por mes+año cuando no haya _id (caso de backups)
+      api.delete('/financiero/metas/por-mes', { data: { mes: m.mes, año: m.año } })
+        .then(handleDeleteSuccess)
+        .catch(handleDeleteError);
+      return;
+    }
+
+    api.delete(`/financiero/metas/${id}`)
+      .then(handleDeleteSuccess)
+      .catch(handleDeleteError);
   };
 
   if (loading) return <AppLayout><div className="p-8"><Spinner size="lg"/></div></AppLayout>;
 
   const zonaTexto = {
-    perdida:    '🔴 Zona de pérdida',
-    equilibrio: '🟡 Zona de equilibrio',
-    ganancia:   '🟢 Zona de ganancia',
+    perdida:    'Zona de pérdida',
+    equilibrio: 'Zona de equilibrio',
+    ganancia:   'Zona de ganancia',
   };
   const zonaClase = {
     perdida:    'bg-red-50 border-red-300 text-red-800',
@@ -108,6 +189,15 @@ export default function FinancieroPage() {
   return (
     <AppLayout>
       <div className="p-6">
+        {errorBanner && (
+          <div className="mb-4 p-3 rounded-md bg-yellow-50 border border-yellow-200 text-yellow-800 flex items-center justify-between">
+            <div className="text-sm">{errorBanner}</div>
+            <div className="flex gap-2">
+              <button onClick={() => { setErrorBanner(null); setLoading(true); api.get('/financiero/metas').then(r => { setMetas(r.data.metas||[]); setLoading(false); }).catch(e => { setErrorBanner('Ruta del servidor no encontrada. Reiniciá el backend y volvé a intentar.'); setLoading(false); }); }} className="btn-ghost text-sm">Reintentar</button>
+              <button onClick={() => setErrorBanner(null)} className="btn-secondary text-sm">Cerrar</button>
+            </div>
+          </div>
+        )}
         <div className="mb-6">
           <h1 className="font-display text-2xl font-bold text-cafe-900">Módulo Financiero</h1>
           <p className="text-cafe-500 text-sm">Punto de equilibrio, costos y metas</p>
@@ -220,12 +310,12 @@ export default function FinancieroPage() {
                   <tr className="bg-crema-100 border-b border-crema-200">
                     {['Concepto','Monto','Frecuencia','Estado'].map(h => (
                       <th key={h} className="px-4 py-3 text-left text-xs font-semibold text-cafe-600 uppercase">{h}</th>
-                    ))}
+                      ))}
                   </tr>
                 </thead>
                 <tbody>
-                  {costos.map(c => (
-                    <tr key={c._id} className="border-b border-crema-100 hover:bg-crema-50">
+                  {costos.map((c,i) => (
+                    <tr key={c._id || `c-${i}`} className="border-b border-crema-100 hover:bg-crema-50">
                       <td className="px-4 py-3 font-medium text-cafe-900">{c.nombre}</td>
                       <td className="px-4 py-3 font-semibold text-cafe-800">{GS(c.monto)}</td>
                       <td className="px-4 py-3 text-sm text-cafe-500 capitalize">{c.frecuencia}</td>
@@ -255,7 +345,7 @@ export default function FinancieroPage() {
             </div>
             <div className="space-y-4">
               {metas.map((m, i) => (
-                <motion.div key={m._id} initial={{ opacity:0, y:10 }} animate={{ opacity:1, y:0 }}
+                <motion.div key={m._id || `meta-${i}`} initial={{ opacity:0, y:10 }} animate={{ opacity:1, y:0 }}
                   transition={{ delay: i * 0.05 }} className="card">
                   <div className="flex items-center justify-between mb-3">
                     <div>
@@ -266,9 +356,15 @@ export default function FinancieroPage() {
                         {GS(m.ventasActuales)} de {GS(m.metaVentas)}
                       </p>
                     </div>
-                    <span className={`text-xl font-display font-bold ${parseFloat(m.porcentajeCumplido||0) >= 100 ? 'text-green-600' : 'text-cafe-700'}`}>
-                      {parseFloat(m.porcentajeCumplido || 0).toFixed(1)}%
-                    </span>
+                    <div className="flex items-center gap-3">
+                      <span className={`text-xl font-display font-bold ${parseFloat(m.porcentajeCumplido||0) >= 100 ? 'text-green-600' : 'text-cafe-700'}`}>
+                        {parseFloat(m.porcentajeCumplido || 0).toFixed(1)}%
+                      </span>
+                      <div className="flex gap-2">
+                        <button onClick={() => abrirEditarMeta(m)} className="btn-ghost text-xs">Editar</button>
+                        <button onClick={() => eliminarMeta(m)} className="btn-danger text-xs">Eliminar</button>
+                      </div>
+                    </div>
                   </div>
                   <div className="w-full h-2.5 bg-crema-200 rounded-full overflow-hidden">
                     <motion.div
@@ -365,6 +461,7 @@ export default function FinancieroPage() {
             </motion.div>
           </div>
         )}
+          
       </div>
     </AppLayout>
   );

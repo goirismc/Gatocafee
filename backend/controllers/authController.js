@@ -56,6 +56,7 @@ exports.login = async (req, res) => {
 
     // Buscar usuario (incluir password que está oculto por defecto)
     const usuario = await Usuario.findOne({ email }).select('+password');
+    // (debug logs removed)
 
     if (!usuario) {
       return res.status(401).json({
@@ -90,6 +91,9 @@ exports.login = async (req, res) => {
       // Incrementar intentos fallidos
       usuario.intentosFallidos += 1;
 
+      // DEBUG: inspeccionar usuario antes de guardar (diagnóstico)
+      // (debug logs removed)
+
       // Bloquear después de 5 intentos fallidos (30 minutos)
       if (usuario.intentosFallidos >= 5) {
         usuario.bloqueadoHasta = new Date(Date.now() + 30 * 60 * 1000);
@@ -113,7 +117,8 @@ exports.login = async (req, res) => {
     responderConToken(usuario, 200, res);
 
   } catch (error) {
-    console.error('Error en login:', error);
+    console.error('Error en login:', error.message || error);
+    console.error('Stack:', error.stack);
     res.status(500).json({
       success: false,
       mensaje: 'Error interno del servidor',

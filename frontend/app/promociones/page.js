@@ -14,6 +14,7 @@ export default function PromocionesPage() {
   const [loading, setLoading] = useState(true);
   const [modal, setModal]     = useState(false);
   const [form, setForm]       = useState(FORM);
+  const [editingId, setEditingId] = useState(null);
   const [cupon, setCupon]     = useState('');
   const [monto, setMonto]     = useState('');
   const [validacion, setValidacion] = useState(null);
@@ -27,8 +28,14 @@ export default function PromocionesPage() {
   const guardar = async (e) => {
     e.preventDefault();
     try {
-      await api.post('/promociones', form);
-      toast.success('Promoción creada'); setModal(false); setForm(FORM); cargar();
+      if (editingId) {
+        const { data } = await api.put(`/promociones/${editingId}`, form);
+        toast.success(data.mensaje || 'Promoción actualizada');
+      } else {
+        const { data } = await api.post('/promociones', form);
+        toast.success(data.mensaje || 'Promoción creada');
+      }
+      setModal(false); setForm(FORM); setEditingId(null); cargar();
     } catch(err) { toast.error(err.response?.data?.mensaje||'Error'); }
   };
 
@@ -79,14 +86,30 @@ export default function PromocionesPage() {
         <h2 className="font-semibold text-cafe-800 mb-3">Vigentes ({activas.length})</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
           {activas.map((p,i)=>(
-            <motion.div key={p._id} initial={{opacity:0,y:10}} animate={{opacity:1,y:0}} transition={{delay:i*0.05}}
+            <motion.div key={p._id || `promo-${i}`} initial={{opacity:0,y:10}} animate={{opacity:1,y:0}} transition={{delay:i*0.05}}
               className="card border-l-4 border-green-400">
               <div className="flex items-start justify-between">
                 <div>
                   <h3 className="font-semibold text-cafe-900">{p.nombre}</h3>
                   {p.codigo && <span className="badge bg-crema-200 text-cafe-700 font-mono">{p.codigo}</span>}
                 </div>
-                <span className="badge bg-green-100 text-green-700">Activa</span>
+                <div className="flex items-center gap-2">
+                  <button className="text-xs text-cafe-600 hover:underline" onClick={() => {
+                    setEditingId(p._id);
+                    setForm({
+                      nombre: p.nombre || '',
+                      tipo: p.tipo || 'porcentaje',
+                      valor: p.valor || 0,
+                      codigo: p.codigo || '',
+                      fechaInicio: p.fechaInicio ? new Date(p.fechaInicio).toISOString().slice(0,10) : '',
+                      fechaFin: p.fechaFin ? new Date(p.fechaFin).toISOString().slice(0,10) : '',
+                      minimoCompra: p.minimoCompra || 0,
+                      usoMaximo: p.usoMaximo || '',
+                    });
+                    setModal(true);
+                  }}>Editar</button>
+                  <span className="badge bg-green-100 text-green-700">Activa</span>
+                </div>
               </div>
               <div className="mt-3 grid grid-cols-2 gap-2 text-xs text-cafe-500">
                 <span>Tipo: {p.tipo}</span>
@@ -105,33 +128,33 @@ export default function PromocionesPage() {
             <motion.div initial={{scale:0.95,opacity:0}} animate={{scale:1,opacity:1}}
               className="bg-white rounded-2xl p-6 w-full max-w-md shadow-cafe-lg max-h-[90vh] overflow-y-auto"
               onClick={e=>e.stopPropagation()}>
-              <h2 className="font-display font-bold text-cafe-800 text-lg mb-4 flex items-center gap-2"><Tag size={18}/> Nueva promoción</h2>
+              <h2 className="font-display font-bold text-cafe-800 text-lg mb-4 flex items-center gap-2"><Tag size={18}/> {editingId ? 'Editar promoción' : 'Nueva promoción'}</h2>
               <form onSubmit={guardar} className="space-y-4">
                 <div><label className="label">Nombre *</label>
-                  <input className="input" required value={form.nombre} onChange={e=>setForm({...form,nombre:e.target.value})} placeholder="Ej: Descuento de bienvenida"/></div>
+                  <input className="input" required value={form?.nombre ?? ''} onChange={e=>setForm({...form,nombre:e.target.value})} placeholder="Ej: Descuento de bienvenida"/></div>
                 <div><label className="label">Tipo *</label>
-                  <select className="input" value={form.tipo} onChange={e=>setForm({...form,tipo:e.target.value})}>
+                  <select className="input" value={form?.tipo ?? 'porcentaje'} onChange={e=>setForm({...form,tipo:e.target.value})}>
                     <option value="porcentaje">Porcentaje (%)</option>
                     <option value="monto_fijo">Monto fijo (Gs.)</option>
                     <option value="cupon">Cupón</option>
                   </select></div>
                 <div><label className="label">Valor ({form.tipo==='porcentaje'?'%':'Gs.'}) *</label>
-                  <input type="number" className="input" required min="0" value={form.valor} onChange={e=>setForm({...form,valor:e.target.value})}/></div>
+                  <input type="number" className="input" required min="0" value={form?.valor ?? ''} onChange={e=>setForm({...form,valor:e.target.value})}/></div>
                 <div><label className="label">Código (para cupones)</label>
-                  <input className="input font-mono uppercase" placeholder="VERANO25" value={form.codigo} onChange={e=>setForm({...form,codigo:e.target.value.toUpperCase()})}/></div>
+                  <input className="input font-mono uppercase" placeholder="VERANO25" value={form?.codigo ?? ''} onChange={e=>setForm({...form,codigo:e.target.value.toUpperCase()})}/></div>
                 <div className="grid grid-cols-2 gap-3">
                   <div><label className="label">Desde *</label>
-                    <input type="date" className="input" required value={form.fechaInicio} onChange={e=>setForm({...form,fechaInicio:e.target.value})}/></div>
+                    <input type="date" className="input" required value={form?.fechaInicio ?? ''} onChange={e=>setForm({...form,fechaInicio:e.target.value})}/></div>
                   <div><label className="label">Hasta *</label>
-                    <input type="date" className="input" required value={form.fechaFin} onChange={e=>setForm({...form,fechaFin:e.target.value})}/></div>
+                    <input type="date" className="input" required value={form?.fechaFin ?? ''} onChange={e=>setForm({...form,fechaFin:e.target.value})}/></div>
                 </div>
                 <div><label className="label">Mínimo de compra (Gs.)</label>
-                  <input type="number" className="input" min="0" value={form.minimoCompra} onChange={e=>setForm({...form,minimoCompra:e.target.value})}/></div>
+                  <input type="number" className="input" min="0" value={form?.minimoCompra ?? 0} onChange={e=>setForm({...form,minimoCompra:e.target.value})}/></div>
                 <div><label className="label">Límite de usos (vacío = ilimitado)</label>
-                  <input type="number" className="input" min="1" value={form.usoMaximo} onChange={e=>setForm({...form,usoMaximo:e.target.value})}/></div>
+                  <input type="number" className="input" min="1" value={form?.usoMaximo ?? ''} onChange={e=>setForm({...form,usoMaximo:e.target.value})}/></div>
                 <div className="flex gap-3">
-                  <button type="button" onClick={()=>setModal(false)} className="btn-secondary flex-1">Cancelar</button>
-                  <button type="submit" className="btn-primary flex-1">Crear promoción</button>
+                  <button type="button" onClick={()=>{ setModal(false); setEditingId(null); setForm(FORM); }} className="btn-secondary flex-1">Cancelar</button>
+                  <button type="submit" className="btn-primary flex-1">{editingId ? 'Guardar cambios' : 'Crear promoción'}</button>
                 </div>
               </form>
             </motion.div>

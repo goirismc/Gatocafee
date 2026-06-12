@@ -42,7 +42,7 @@ const generarTicketTexto = (venta) => {
   ticket += centrar('Sistema de Gestión de Cafetería') + '\n';
   ticket += centrar(process.env.BUSINESS_ADDRESS || 'Villarrica, Paraguay') + '\n';
   ticket += centrar(process.env.BUSINESS_PHONE || '+595 981 000 000') + '\n';
-  ticket += centrar(`RUC: ${process.env.BUSINESS_RUC || '12345678-9'}`) + '\n';
+  ticket += centrar(`RUC: ${venta.cliente?.ci_ruc || process.env.BUSINESS_RUC || '12345678-9'}`) + '\n';
   ticket += dobleLinea + '\n';
 
   // ─── DATOS DEL TICKET ───

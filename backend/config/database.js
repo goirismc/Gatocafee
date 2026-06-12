@@ -14,6 +14,11 @@ const connectDB = async () => {
 
     console.log(` MongoDB Atlas conectado: ${conn.connection.host}`);
     console.log(` Base de datos: ${conn.connection.name}`);
+    try {
+      // Mostrar opciones de cliente para depuración (no sensible)
+      const clientOpts = conn.connection.client && conn.connection.client.s && conn.connection.client.s.options;
+      if (clientOpts) console.log(' Mongo client options:', { retryWrites: clientOpts.retryWrites, replicaSet: clientOpts.replicaSet });
+    } catch (e) { /* ignore */ }
 
     // Eventos de conexión
     mongoose.connection.on('disconnected', () => {

@@ -114,7 +114,7 @@ usuarioSchema.methods.estaBloqueado = function () {
 };
 
 // Índice para búsquedas rápidas por email
-usuarioSchema.index({ email: 1 });
+// El índice se crea a partir de la opción `unique: true` en el campo email; evitar duplicados en otros archivos.
 
 const Usuario = mongoose.model('Usuario', usuarioSchema);
 module.exports = Usuario;

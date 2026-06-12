@@ -3,13 +3,27 @@
 // Servidor principal de Gatocafee API
 // ============================================
 
-require('dotenv').config(); // SIEMPRE primero: carga variables de entorno
+const path = require('path');
+// Cargar variables de entorno desde backend/.env por seguridad cuando se ejecuta desde repo root
+require('dotenv').config({ path: path.join(__dirname, '.env') }); // SIEMPRE primero: carga variables de entorno
 const express = require('express');
+// --- Validación temprana de variables de entorno (fail-fast para variables críticas) ---
+function validateEnv() {
+  const required = ['MONGODB_URI', 'JWT_SECRET'];
+  const missing = required.filter((k) => !process.env[k]);
+  if (missing.length > 0) {
+    console.error('ERROR: faltan variables de entorno críticas:', missing.join(', '));
+    console.error('Asegurate de definirlas en backend/.env o en tu entorno de despliegue.');
+    // Fallar solo si falta MONGODB_URI (sin DB no podemos seguir).
+    if (missing.includes('MONGODB_URI')) process.exit(1);
+  }
+}
+
+validateEnv();
 const cors = require('cors');
 const helmet = require('helmet');
 const morgan = require('morgan');
 const rateLimit = require('express-rate-limit');
-const path = require('path');
 const connectDB = require('./config/database');
 
 // Cargar todos los modelos
@@ -31,19 +45,40 @@ connectDB();
 app.use(helmet());
 
 // CORS: permitir peticiones del frontend
-app.use(
-  cors({
-    origin: process.env.FRONTEND_URL || 'http://localhost:3000',
-    credentials: true,
-    methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH'],
-    allowedHeaders: ['Content-Type', 'Authorization'],
-  })
-);
+// En development permitimos orígenes localhost dinámicos (puertos diferentes, p.ej. 3000/3001)
+const corsOptions = {
+  credentials: true,
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH'],
+  // Headers permitidos
+  allowedHeaders: ['Content-Type', 'Authorization'],
+};
 
-// Rate limiting: máximo 100 peticiones por IP cada 15 minutos
+if (process.env.NODE_ENV === 'production') {
+  corsOptions.origin = process.env.FRONTEND_URL || 'http://localhost:3000';
+} else {
+  // En dev reflejamos el Origin si viene de localhost:* para evitar bloqueos por puertos
+  corsOptions.origin = function (origin, callback) {
+    // Si no hay origin (petición desde curl o servidor) permitir
+    if (!origin) return callback(null, true);
+    try {
+      const url = new URL(origin);
+      if (url.hostname === 'localhost' || url.hostname === '127.0.0.1') return callback(null, true);
+    } catch (e) {
+      // Si falla el parse, negar por seguridad
+    }
+    // Por defecto, permitir solo FRONTEND_URL cuando esté definido
+    if (process.env.FRONTEND_URL && origin === process.env.FRONTEND_URL) return callback(null, true);
+    callback(new Error('CORS no permitido por servidor'));
+  };
+}
+
+app.use(cors(corsOptions));
+
+// Rate limiting: máximo por IP cada 15 minutos
+// En desarrollo relajamos el límite para evitar bloqueos durante pruebas locales
 const limiter = rateLimit({
   windowMs: 15 * 60 * 1000, // 15 minutos
-  max: 100,
+  max: process.env.NODE_ENV === 'production' ? 100 : 1000,
   message: {
     success: false,
     mensaje: 'Demasiadas peticiones. Intenta en 15 minutos.',
@@ -78,6 +113,7 @@ app.use('/api/ventas',      ventasRouter);
 app.use('/api/inventario',  inventarioRouter);
 app.use('/api/clientes',    clientesRouter);
 app.use('/api/uploads',     require('./routes/uploads'));
+app.use('/api/backup',      require('./routes/backup'));
 
 // Servir facturas generadas localmente (si no se usa Cloudinary)
 app.use('/invoices', express.static(path.join(__dirname, 'public', 'invoices')));
@@ -85,6 +121,9 @@ app.use('/invoices', express.static(path.join(__dirname, 'public', 'invoices')))
 // PARTE 3 — Caja, Financiero, Reportes, Promociones
 try {
   const { cajaRouter, financieroRouter, reportesRouter, promocionesRouter } = require('./routes/parte3');
+  const finCtrl = require('./controllers/financieroController');
+  // Ruta pública alternativa para consultar una meta por id sin pasar por el router protegido
+  app.get('/api/public/financiero/metas/:id', finCtrl.getMetaPublic);
   app.use('/api/caja',        cajaRouter);
   app.use('/api/financiero',  financieroRouter);
   app.use('/api/reportes',    reportesRouter);
@@ -154,19 +193,47 @@ app.use((err, req, res, next) => {
 });
 
 // ============================================
-// INICIAR SERVIDOR
+// INICIAR SERVIDOR (con manejo EADDRINUSE)
 // ============================================
-const PORT = process.env.PORT || 5000;
+const DEFAULT_PORT = parseInt(process.env.PORT, 10) || 5000;
 
-app.listen(PORT, () => {
-  console.log('\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━');
-  console.log(' GATOCAFEE API - Sistema de Gestión');
-  console.log('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━');
-  console.log(`Servidor:     http://localhost:${PORT}`);
-  console.log(`API Base:     http://localhost:${PORT}/api`);
-  console.log(`Health:       http://localhost:${PORT}/api/health`);
-  console.log(`Ambiente:     ${process.env.NODE_ENV || 'development'}`);
-  console.log('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n');
-});
+function startServer(port = DEFAULT_PORT, attempts = 0) {
+  const server = app.listen(port, () => {
+    console.log('\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━');
+    console.log(' GATOCAFEE API - Sistema de Gestión');
+    console.log('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━');
+    console.log(`Servidor:     http://localhost:${port}`);
+    console.log(`API Base:     http://localhost:${port}/api`);
+    console.log(`Health:       http://localhost:${port}/api/health`);
+    console.log(`Ambiente:     ${process.env.NODE_ENV || 'development'}`);
+    console.log('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n');
+  });
+
+  server.on('error', (err) => {
+    if (err && err.code === 'EADDRINUSE') {
+      console.warn(`Puerto ${port} en uso.`);
+      if (attempts < 10) {
+        const nextPort = port + 1;
+        console.log(`Intentando puerto alternativo: ${nextPort} (intento ${attempts + 1}/10)`);
+        // esperar un momento antes de reintentar
+        setTimeout(() => startServer(nextPort, attempts + 1), 500);
+      } else {
+        console.error('No se pudo iniciar el servidor: puertos ocupados. Especifica PORT en .env o libera el puerto.');
+        process.exit(1);
+      }
+    } else {
+      console.error('Error al iniciar el servidor:', err);
+      process.exit(1);
+    }
+  });
+
+  // Manejo de señales para cerrar limpiamente
+  process.on('SIGINT', () => {
+    console.log('\nCerrando servidor...');
+    server.close(() => process.exit(0));
+  });
+}
+
+startServer();
 
 module.exports = app;

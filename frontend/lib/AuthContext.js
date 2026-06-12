@@ -30,7 +30,7 @@ export function AuthProvider({ children }) {
       localStorage.setItem('gatocafee_token', data.token);
       localStorage.setItem('gatocafee_usuario', JSON.stringify(data.usuario));
       setUsuario(data.usuario);
-      toast.success(`¡Bienvenido, ${data.usuario.nombre}! ☕`);
+      toast.success(`¡Bienvenido, ${data.usuario.nombre}!`);
       router.push('/dashboard');
       return { success: true };
     } catch (error) {

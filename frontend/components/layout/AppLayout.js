@@ -3,6 +3,7 @@ import { useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { useAuth } from '../../lib/AuthContext';
 import Sidebar from './Sidebar';
+import toast from 'react-hot-toast';
 
 export default function AppLayout({ children }) {
   const { usuario, cargando } = useAuth();
@@ -11,6 +12,21 @@ export default function AppLayout({ children }) {
   useEffect(() => {
     if (!cargando && !usuario) router.replace('/login');
   }, [usuario, cargando]);
+
+  // Capturar promesas rechazadas no manejadas para evitar overlay dev y notificar al usuario
+  useEffect(() => {
+    function onUnhandled(e) {
+      try {
+        e.preventDefault();
+      } catch (err) {}
+      const msg = e.reason?.message || (typeof e.reason === 'string' ? e.reason : 'Error inesperado');
+      toast.error(msg);
+    }
+    if (typeof window !== 'undefined') {
+      window.addEventListener('unhandledrejection', onUnhandled);
+      return () => window.removeEventListener('unhandledrejection', onUnhandled);
+    }
+  }, []);
 
   if (cargando) {
     return (

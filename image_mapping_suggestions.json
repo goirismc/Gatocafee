@@ -1,0 +1,3521 @@
+﻿[
+    {
+        "imagenActual":  "/images/cafeamericano-1781027945773.webp",
+        "suggestions":  [
+                            {
+                                "path":  "C:\\GATOIMG\\chocolate-brownie.webp",
+                                "score":  100,
+                                "file":  "chocolate-brownie.webp"
+                            },
+                            {
+                                "path":  "C:\\GATOIMG\\cheesecake.webp",
+                                "score":  100,
+                                "file":  "cheesecake.webp"
+                            },
+                            {
+                                "path":  "C:\\GATOIMG\\EXPRESSO.webp",
+                                "score":  100,
+                                "file":  "EXPRESSO.webp"
+                            },
+                            {
+                                "path":  "C:\\GATOIMG\\jmango.webp",
+                                "score":  100,
+                                "file":  "jmango.webp"
+                            },
+                            {
+                                "path":  "C:\\GATOIMG\\jamonq.jpg",
+                                "score":  100,
+                                "file":  "jamonq.jpg"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\vegetariano.jpg",
+                                "score":  100,
+                                "file":  "vegetariano.jpg"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\ténegro.jpg",
+                                "score":  100,
+                                "file":  "ténegro.jpg"
+                            },
+                            {
+                                "path":  "C:\\GATOIMG\\cafe-frappe.webp",
+                                "score":  100,
+                                "file":  "cafe-frappe.webp"
+                            },
+                            {
+                                "path":  "C:\\GATOIMG\\CAPUCHINO.webp",
+                                "score":  100,
+                                "file":  "CAPUCHINO.webp"
+                            },
+                            {
+                                "path":  "C:\\GATOIMG\\CAFEAMERICANO.webp",
+                                "score":  100,
+                                "file":  "CAFEAMERICANO.webp"
+                            },
+                            {
+                                "path":  "C:\\GATOIMG\\teverde.webp",
+                                "score":  100,
+                                "file":  "teverde.webp"
+                            },
+                            {
+                                "path":  "C:\\GATOIMG\\muffins-de-arándanos-XL-9.jpg",
+                                "score":  100,
+                                "file":  "muffins-de-arándanos-XL-9.jpg"
+                            },
+                            {
+                                "path":  "C:\\GATOIMG\\tortadchoco.jpg",
+                                "score":  100,
+                                "file":  "tortadchoco.jpg"
+                            },
+                            {
+                                "path":  "C:\\GATOIMG\\vegetariano.jpg",
+                                "score":  100,
+                                "file":  "vegetariano.jpg"
+                            },
+                            {
+                                "path":  "C:\\GATOIMG\\ténegro.jpg",
+                                "score":  100,
+                                "file":  "ténegro.jpg"
+                            },
+                            {
+                                "path":  "C:\\GATOIMG\\LATTE.webp",
+                                "score":  100,
+                                "file":  "LATTE.webp"
+                            },
+                            {
+                                "path":  "C:\\GATOIMG\\jugo-de-naranja-destacado.jpg",
+                                "score":  100,
+                                "file":  "jugo-de-naranja-destacado.jpg"
+                            },
+                            {
+                                "path":  "C:\\GATOIMG\\mixto.webp",
+                                "score":  100,
+                                "file":  "mixto.webp"
+                            },
+                            {
+                                "path":  "C:\\GATOIMG\\Mocaccino.webp",
+                                "score":  100,
+                                "file":  "Mocaccino.webp"
+                            },
+                            {
+                                "path":  "C:\\GATOIMG\\Mocaccino.jpg",
+                                "score":  100,
+                                "file":  "Mocaccino.jpg"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\default-product-1781022162085.svg",
+                                "score":  100,
+                                "file":  "default-product-1781022162085.svg"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\chocolate-brownie.webp",
+                                "score":  100,
+                                "file":  "chocolate-brownie.webp"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\default-product-1781023038989.svg",
+                                "score":  100,
+                                "file":  "default-product-1781023038989.svg"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\EXPRESSO.webp",
+                                "score":  100,
+                                "file":  "EXPRESSO.webp"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\default-product.svg",
+                                "score":  100,
+                                "file":  "default-product.svg"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\cafeamericano-1781027945773.webp",
+                                "score":  100,
+                                "file":  "cafeamericano-1781027945773.webp"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\cafe-frappe.webp",
+                                "score":  100,
+                                "file":  "cafe-frappe.webp"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\CAFEAMERICANO.webp",
+                                "score":  100,
+                                "file":  "CAFEAMERICANO.webp"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\cheesecake.webp",
+                                "score":  100,
+                                "file":  "cheesecake.webp"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\CAPUCHINO.webp",
+                                "score":  100,
+                                "file":  "CAPUCHINO.webp"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\Mocaccino.webp",
+                                "score":  100,
+                                "file":  "Mocaccino.webp"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\Mocaccino.jpg",
+                                "score":  100,
+                                "file":  "Mocaccino.jpg"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\muffins-de-arándanos-XL-9.jpg",
+                                "score":  100,
+                                "file":  "muffins-de-arándanos-XL-9.jpg"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\tortadchoco.jpg",
+                                "score":  100,
+                                "file":  "tortadchoco.jpg"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\teverde.webp",
+                                "score":  100,
+                                "file":  "teverde.webp"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\jmango.webp",
+                                "score":  100,
+                                "file":  "jmango.webp"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\jamonq.jpg",
+                                "score":  100,
+                                "file":  "jamonq.jpg"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\jugo-de-naranja-destacado.jpg",
+                                "score":  100,
+                                "file":  "jugo-de-naranja-destacado.jpg"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\mixto.webp",
+                                "score":  100,
+                                "file":  "mixto.webp"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\LATTE.webp",
+                                "score":  100,
+                                "file":  "LATTE.webp"
+                            }
+                        ],
+        "nombre":  "Café Americano",
+        "id":  "6a289269d5252ce5c663cb39"
+    },
+    {
+        "imagenActual":  "/images/default-product.svg",
+        "suggestions":  [
+                            {
+                                "path":  "C:\\GATOIMG\\chocolate-brownie.webp",
+                                "score":  100,
+                                "file":  "chocolate-brownie.webp"
+                            },
+                            {
+                                "path":  "C:\\GATOIMG\\cheesecake.webp",
+                                "score":  100,
+                                "file":  "cheesecake.webp"
+                            },
+                            {
+                                "path":  "C:\\GATOIMG\\EXPRESSO.webp",
+                                "score":  100,
+                                "file":  "EXPRESSO.webp"
+                            },
+                            {
+                                "path":  "C:\\GATOIMG\\jmango.webp",
+                                "score":  100,
+                                "file":  "jmango.webp"
+                            },
+                            {
+                                "path":  "C:\\GATOIMG\\jamonq.jpg",
+                                "score":  100,
+                                "file":  "jamonq.jpg"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\vegetariano.jpg",
+                                "score":  100,
+                                "file":  "vegetariano.jpg"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\ténegro.jpg",
+                                "score":  100,
+                                "file":  "ténegro.jpg"
+                            },
+                            {
+                                "path":  "C:\\GATOIMG\\cafe-frappe.webp",
+                                "score":  100,
+                                "file":  "cafe-frappe.webp"
+                            },
+                            {
+                                "path":  "C:\\GATOIMG\\CAPUCHINO.webp",
+                                "score":  100,
+                                "file":  "CAPUCHINO.webp"
+                            },
+                            {
+                                "path":  "C:\\GATOIMG\\CAFEAMERICANO.webp",
+                                "score":  100,
+                                "file":  "CAFEAMERICANO.webp"
+                            },
+                            {
+                                "path":  "C:\\GATOIMG\\teverde.webp",
+                                "score":  100,
+                                "file":  "teverde.webp"
+                            },
+                            {
+                                "path":  "C:\\GATOIMG\\muffins-de-arándanos-XL-9.jpg",
+                                "score":  100,
+                                "file":  "muffins-de-arándanos-XL-9.jpg"
+                            },
+                            {
+                                "path":  "C:\\GATOIMG\\tortadchoco.jpg",
+                                "score":  100,
+                                "file":  "tortadchoco.jpg"
+                            },
+                            {
+                                "path":  "C:\\GATOIMG\\vegetariano.jpg",
+                                "score":  100,
+                                "file":  "vegetariano.jpg"
+                            },
+                            {
+                                "path":  "C:\\GATOIMG\\ténegro.jpg",
+                                "score":  100,
+                                "file":  "ténegro.jpg"
+                            },
+                            {
+                                "path":  "C:\\GATOIMG\\LATTE.webp",
+                                "score":  100,
+                                "file":  "LATTE.webp"
+                            },
+                            {
+                                "path":  "C:\\GATOIMG\\jugo-de-naranja-destacado.jpg",
+                                "score":  100,
+                                "file":  "jugo-de-naranja-destacado.jpg"
+                            },
+                            {
+                                "path":  "C:\\GATOIMG\\mixto.webp",
+                                "score":  100,
+                                "file":  "mixto.webp"
+                            },
+                            {
+                                "path":  "C:\\GATOIMG\\Mocaccino.webp",
+                                "score":  100,
+                                "file":  "Mocaccino.webp"
+                            },
+                            {
+                                "path":  "C:\\GATOIMG\\Mocaccino.jpg",
+                                "score":  100,
+                                "file":  "Mocaccino.jpg"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\default-product-1781022162085.svg",
+                                "score":  100,
+                                "file":  "default-product-1781022162085.svg"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\chocolate-brownie.webp",
+                                "score":  100,
+                                "file":  "chocolate-brownie.webp"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\default-product-1781023038989.svg",
+                                "score":  100,
+                                "file":  "default-product-1781023038989.svg"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\EXPRESSO.webp",
+                                "score":  100,
+                                "file":  "EXPRESSO.webp"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\default-product.svg",
+                                "score":  100,
+                                "file":  "default-product.svg"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\cafeamericano-1781027945773.webp",
+                                "score":  100,
+                                "file":  "cafeamericano-1781027945773.webp"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\cafe-frappe.webp",
+                                "score":  100,
+                                "file":  "cafe-frappe.webp"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\CAFEAMERICANO.webp",
+                                "score":  100,
+                                "file":  "CAFEAMERICANO.webp"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\cheesecake.webp",
+                                "score":  100,
+                                "file":  "cheesecake.webp"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\CAPUCHINO.webp",
+                                "score":  100,
+                                "file":  "CAPUCHINO.webp"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\Mocaccino.webp",
+                                "score":  100,
+                                "file":  "Mocaccino.webp"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\Mocaccino.jpg",
+                                "score":  100,
+                                "file":  "Mocaccino.jpg"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\muffins-de-arándanos-XL-9.jpg",
+                                "score":  100,
+                                "file":  "muffins-de-arándanos-XL-9.jpg"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\tortadchoco.jpg",
+                                "score":  100,
+                                "file":  "tortadchoco.jpg"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\teverde.webp",
+                                "score":  100,
+                                "file":  "teverde.webp"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\jmango.webp",
+                                "score":  100,
+                                "file":  "jmango.webp"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\jamonq.jpg",
+                                "score":  100,
+                                "file":  "jamonq.jpg"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\jugo-de-naranja-destacado.jpg",
+                                "score":  100,
+                                "file":  "jugo-de-naranja-destacado.jpg"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\mixto.webp",
+                                "score":  100,
+                                "file":  "mixto.webp"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\LATTE.webp",
+                                "score":  100,
+                                "file":  "LATTE.webp"
+                            }
+                        ],
+        "nombre":  "Cappuccino",
+        "id":  "6a289269d5252ce5c663cb3c"
+    },
+    {
+        "imagenActual":  "/images/default-product.svg",
+        "suggestions":  [
+                            {
+                                "path":  "C:\\GATOIMG\\chocolate-brownie.webp",
+                                "score":  100,
+                                "file":  "chocolate-brownie.webp"
+                            },
+                            {
+                                "path":  "C:\\GATOIMG\\cheesecake.webp",
+                                "score":  100,
+                                "file":  "cheesecake.webp"
+                            },
+                            {
+                                "path":  "C:\\GATOIMG\\EXPRESSO.webp",
+                                "score":  100,
+                                "file":  "EXPRESSO.webp"
+                            },
+                            {
+                                "path":  "C:\\GATOIMG\\jmango.webp",
+                                "score":  100,
+                                "file":  "jmango.webp"
+                            },
+                            {
+                                "path":  "C:\\GATOIMG\\jamonq.jpg",
+                                "score":  100,
+                                "file":  "jamonq.jpg"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\vegetariano.jpg",
+                                "score":  100,
+                                "file":  "vegetariano.jpg"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\ténegro.jpg",
+                                "score":  100,
+                                "file":  "ténegro.jpg"
+                            },
+                            {
+                                "path":  "C:\\GATOIMG\\cafe-frappe.webp",
+                                "score":  100,
+                                "file":  "cafe-frappe.webp"
+                            },
+                            {
+                                "path":  "C:\\GATOIMG\\CAPUCHINO.webp",
+                                "score":  100,
+                                "file":  "CAPUCHINO.webp"
+                            },
+                            {
+                                "path":  "C:\\GATOIMG\\CAFEAMERICANO.webp",
+                                "score":  100,
+                                "file":  "CAFEAMERICANO.webp"
+                            },
+                            {
+                                "path":  "C:\\GATOIMG\\teverde.webp",
+                                "score":  100,
+                                "file":  "teverde.webp"
+                            },
+                            {
+                                "path":  "C:\\GATOIMG\\muffins-de-arándanos-XL-9.jpg",
+                                "score":  100,
+                                "file":  "muffins-de-arándanos-XL-9.jpg"
+                            },
+                            {
+                                "path":  "C:\\GATOIMG\\tortadchoco.jpg",
+                                "score":  100,
+                                "file":  "tortadchoco.jpg"
+                            },
+                            {
+                                "path":  "C:\\GATOIMG\\vegetariano.jpg",
+                                "score":  100,
+                                "file":  "vegetariano.jpg"
+                            },
+                            {
+                                "path":  "C:\\GATOIMG\\ténegro.jpg",
+                                "score":  100,
+                                "file":  "ténegro.jpg"
+                            },
+                            {
+                                "path":  "C:\\GATOIMG\\LATTE.webp",
+                                "score":  100,
+                                "file":  "LATTE.webp"
+                            },
+                            {
+                                "path":  "C:\\GATOIMG\\jugo-de-naranja-destacado.jpg",
+                                "score":  100,
+                                "file":  "jugo-de-naranja-destacado.jpg"
+                            },
+                            {
+                                "path":  "C:\\GATOIMG\\mixto.webp",
+                                "score":  100,
+                                "file":  "mixto.webp"
+                            },
+                            {
+                                "path":  "C:\\GATOIMG\\Mocaccino.webp",
+                                "score":  100,
+                                "file":  "Mocaccino.webp"
+                            },
+                            {
+                                "path":  "C:\\GATOIMG\\Mocaccino.jpg",
+                                "score":  100,
+                                "file":  "Mocaccino.jpg"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\default-product-1781022162085.svg",
+                                "score":  100,
+                                "file":  "default-product-1781022162085.svg"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\chocolate-brownie.webp",
+                                "score":  100,
+                                "file":  "chocolate-brownie.webp"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\default-product-1781023038989.svg",
+                                "score":  100,
+                                "file":  "default-product-1781023038989.svg"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\EXPRESSO.webp",
+                                "score":  100,
+                                "file":  "EXPRESSO.webp"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\default-product.svg",
+                                "score":  100,
+                                "file":  "default-product.svg"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\cafeamericano-1781027945773.webp",
+                                "score":  100,
+                                "file":  "cafeamericano-1781027945773.webp"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\cafe-frappe.webp",
+                                "score":  100,
+                                "file":  "cafe-frappe.webp"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\CAFEAMERICANO.webp",
+                                "score":  100,
+                                "file":  "CAFEAMERICANO.webp"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\cheesecake.webp",
+                                "score":  100,
+                                "file":  "cheesecake.webp"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\CAPUCHINO.webp",
+                                "score":  100,
+                                "file":  "CAPUCHINO.webp"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\Mocaccino.webp",
+                                "score":  100,
+                                "file":  "Mocaccino.webp"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\Mocaccino.jpg",
+                                "score":  100,
+                                "file":  "Mocaccino.jpg"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\muffins-de-arándanos-XL-9.jpg",
+                                "score":  100,
+                                "file":  "muffins-de-arándanos-XL-9.jpg"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\tortadchoco.jpg",
+                                "score":  100,
+                                "file":  "tortadchoco.jpg"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\teverde.webp",
+                                "score":  100,
+                                "file":  "teverde.webp"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\jmango.webp",
+                                "score":  100,
+                                "file":  "jmango.webp"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\jamonq.jpg",
+                                "score":  100,
+                                "file":  "jamonq.jpg"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\jugo-de-naranja-destacado.jpg",
+                                "score":  100,
+                                "file":  "jugo-de-naranja-destacado.jpg"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\mixto.webp",
+                                "score":  100,
+                                "file":  "mixto.webp"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\LATTE.webp",
+                                "score":  100,
+                                "file":  "LATTE.webp"
+                            }
+                        ],
+        "nombre":  "Espresso",
+        "id":  "6a289269d5252ce5c663cb3a"
+    },
+    {
+        "imagenActual":  "/images/default-product.svg",
+        "suggestions":  [
+                            {
+                                "path":  "C:\\GATOIMG\\chocolate-brownie.webp",
+                                "score":  100,
+                                "file":  "chocolate-brownie.webp"
+                            },
+                            {
+                                "path":  "C:\\GATOIMG\\cheesecake.webp",
+                                "score":  100,
+                                "file":  "cheesecake.webp"
+                            },
+                            {
+                                "path":  "C:\\GATOIMG\\EXPRESSO.webp",
+                                "score":  100,
+                                "file":  "EXPRESSO.webp"
+                            },
+                            {
+                                "path":  "C:\\GATOIMG\\jmango.webp",
+                                "score":  100,
+                                "file":  "jmango.webp"
+                            },
+                            {
+                                "path":  "C:\\GATOIMG\\jamonq.jpg",
+                                "score":  100,
+                                "file":  "jamonq.jpg"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\vegetariano.jpg",
+                                "score":  100,
+                                "file":  "vegetariano.jpg"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\ténegro.jpg",
+                                "score":  100,
+                                "file":  "ténegro.jpg"
+                            },
+                            {
+                                "path":  "C:\\GATOIMG\\cafe-frappe.webp",
+                                "score":  100,
+                                "file":  "cafe-frappe.webp"
+                            },
+                            {
+                                "path":  "C:\\GATOIMG\\CAPUCHINO.webp",
+                                "score":  100,
+                                "file":  "CAPUCHINO.webp"
+                            },
+                            {
+                                "path":  "C:\\GATOIMG\\CAFEAMERICANO.webp",
+                                "score":  100,
+                                "file":  "CAFEAMERICANO.webp"
+                            },
+                            {
+                                "path":  "C:\\GATOIMG\\teverde.webp",
+                                "score":  100,
+                                "file":  "teverde.webp"
+                            },
+                            {
+                                "path":  "C:\\GATOIMG\\muffins-de-arándanos-XL-9.jpg",
+                                "score":  100,
+                                "file":  "muffins-de-arándanos-XL-9.jpg"
+                            },
+                            {
+                                "path":  "C:\\GATOIMG\\tortadchoco.jpg",
+                                "score":  100,
+                                "file":  "tortadchoco.jpg"
+                            },
+                            {
+                                "path":  "C:\\GATOIMG\\vegetariano.jpg",
+                                "score":  100,
+                                "file":  "vegetariano.jpg"
+                            },
+                            {
+                                "path":  "C:\\GATOIMG\\ténegro.jpg",
+                                "score":  100,
+                                "file":  "ténegro.jpg"
+                            },
+                            {
+                                "path":  "C:\\GATOIMG\\LATTE.webp",
+                                "score":  100,
+                                "file":  "LATTE.webp"
+                            },
+                            {
+                                "path":  "C:\\GATOIMG\\jugo-de-naranja-destacado.jpg",
+                                "score":  100,
+                                "file":  "jugo-de-naranja-destacado.jpg"
+                            },
+                            {
+                                "path":  "C:\\GATOIMG\\mixto.webp",
+                                "score":  100,
+                                "file":  "mixto.webp"
+                            },
+                            {
+                                "path":  "C:\\GATOIMG\\Mocaccino.webp",
+                                "score":  100,
+                                "file":  "Mocaccino.webp"
+                            },
+                            {
+                                "path":  "C:\\GATOIMG\\Mocaccino.jpg",
+                                "score":  100,
+                                "file":  "Mocaccino.jpg"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\default-product-1781022162085.svg",
+                                "score":  100,
+                                "file":  "default-product-1781022162085.svg"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\chocolate-brownie.webp",
+                                "score":  100,
+                                "file":  "chocolate-brownie.webp"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\default-product-1781023038989.svg",
+                                "score":  100,
+                                "file":  "default-product-1781023038989.svg"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\EXPRESSO.webp",
+                                "score":  100,
+                                "file":  "EXPRESSO.webp"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\default-product.svg",
+                                "score":  100,
+                                "file":  "default-product.svg"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\cafeamericano-1781027945773.webp",
+                                "score":  100,
+                                "file":  "cafeamericano-1781027945773.webp"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\cafe-frappe.webp",
+                                "score":  100,
+                                "file":  "cafe-frappe.webp"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\CAFEAMERICANO.webp",
+                                "score":  100,
+                                "file":  "CAFEAMERICANO.webp"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\cheesecake.webp",
+                                "score":  100,
+                                "file":  "cheesecake.webp"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\CAPUCHINO.webp",
+                                "score":  100,
+                                "file":  "CAPUCHINO.webp"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\Mocaccino.webp",
+                                "score":  100,
+                                "file":  "Mocaccino.webp"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\Mocaccino.jpg",
+                                "score":  100,
+                                "file":  "Mocaccino.jpg"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\muffins-de-arándanos-XL-9.jpg",
+                                "score":  100,
+                                "file":  "muffins-de-arándanos-XL-9.jpg"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\tortadchoco.jpg",
+                                "score":  100,
+                                "file":  "tortadchoco.jpg"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\teverde.webp",
+                                "score":  100,
+                                "file":  "teverde.webp"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\jmango.webp",
+                                "score":  100,
+                                "file":  "jmango.webp"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\jamonq.jpg",
+                                "score":  100,
+                                "file":  "jamonq.jpg"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\jugo-de-naranja-destacado.jpg",
+                                "score":  100,
+                                "file":  "jugo-de-naranja-destacado.jpg"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\mixto.webp",
+                                "score":  100,
+                                "file":  "mixto.webp"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\LATTE.webp",
+                                "score":  100,
+                                "file":  "LATTE.webp"
+                            }
+                        ],
+        "nombre":  "Latte",
+        "id":  "6a289269d5252ce5c663cb3b"
+    },
+    {
+        "imagenActual":  "/images/default-product.svg",
+        "suggestions":  [
+                            {
+                                "path":  "C:\\GATOIMG\\chocolate-brownie.webp",
+                                "score":  100,
+                                "file":  "chocolate-brownie.webp"
+                            },
+                            {
+                                "path":  "C:\\GATOIMG\\cheesecake.webp",
+                                "score":  100,
+                                "file":  "cheesecake.webp"
+                            },
+                            {
+                                "path":  "C:\\GATOIMG\\EXPRESSO.webp",
+                                "score":  100,
+                                "file":  "EXPRESSO.webp"
+                            },
+                            {
+                                "path":  "C:\\GATOIMG\\jmango.webp",
+                                "score":  100,
+                                "file":  "jmango.webp"
+                            },
+                            {
+                                "path":  "C:\\GATOIMG\\jamonq.jpg",
+                                "score":  100,
+                                "file":  "jamonq.jpg"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\vegetariano.jpg",
+                                "score":  100,
+                                "file":  "vegetariano.jpg"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\ténegro.jpg",
+                                "score":  100,
+                                "file":  "ténegro.jpg"
+                            },
+                            {
+                                "path":  "C:\\GATOIMG\\cafe-frappe.webp",
+                                "score":  100,
+                                "file":  "cafe-frappe.webp"
+                            },
+                            {
+                                "path":  "C:\\GATOIMG\\CAPUCHINO.webp",
+                                "score":  100,
+                                "file":  "CAPUCHINO.webp"
+                            },
+                            {
+                                "path":  "C:\\GATOIMG\\CAFEAMERICANO.webp",
+                                "score":  100,
+                                "file":  "CAFEAMERICANO.webp"
+                            },
+                            {
+                                "path":  "C:\\GATOIMG\\teverde.webp",
+                                "score":  100,
+                                "file":  "teverde.webp"
+                            },
+                            {
+                                "path":  "C:\\GATOIMG\\muffins-de-arándanos-XL-9.jpg",
+                                "score":  100,
+                                "file":  "muffins-de-arándanos-XL-9.jpg"
+                            },
+                            {
+                                "path":  "C:\\GATOIMG\\tortadchoco.jpg",
+                                "score":  100,
+                                "file":  "tortadchoco.jpg"
+                            },
+                            {
+                                "path":  "C:\\GATOIMG\\vegetariano.jpg",
+                                "score":  100,
+                                "file":  "vegetariano.jpg"
+                            },
+                            {
+                                "path":  "C:\\GATOIMG\\ténegro.jpg",
+                                "score":  100,
+                                "file":  "ténegro.jpg"
+                            },
+                            {
+                                "path":  "C:\\GATOIMG\\LATTE.webp",
+                                "score":  100,
+                                "file":  "LATTE.webp"
+                            },
+                            {
+                                "path":  "C:\\GATOIMG\\jugo-de-naranja-destacado.jpg",
+                                "score":  100,
+                                "file":  "jugo-de-naranja-destacado.jpg"
+                            },
+                            {
+                                "path":  "C:\\GATOIMG\\mixto.webp",
+                                "score":  100,
+                                "file":  "mixto.webp"
+                            },
+                            {
+                                "path":  "C:\\GATOIMG\\Mocaccino.webp",
+                                "score":  100,
+                                "file":  "Mocaccino.webp"
+                            },
+                            {
+                                "path":  "C:\\GATOIMG\\Mocaccino.jpg",
+                                "score":  100,
+                                "file":  "Mocaccino.jpg"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\default-product-1781022162085.svg",
+                                "score":  100,
+                                "file":  "default-product-1781022162085.svg"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\chocolate-brownie.webp",
+                                "score":  100,
+                                "file":  "chocolate-brownie.webp"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\default-product-1781023038989.svg",
+                                "score":  100,
+                                "file":  "default-product-1781023038989.svg"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\EXPRESSO.webp",
+                                "score":  100,
+                                "file":  "EXPRESSO.webp"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\default-product.svg",
+                                "score":  100,
+                                "file":  "default-product.svg"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\cafeamericano-1781027945773.webp",
+                                "score":  100,
+                                "file":  "cafeamericano-1781027945773.webp"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\cafe-frappe.webp",
+                                "score":  100,
+                                "file":  "cafe-frappe.webp"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\CAFEAMERICANO.webp",
+                                "score":  100,
+                                "file":  "CAFEAMERICANO.webp"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\cheesecake.webp",
+                                "score":  100,
+                                "file":  "cheesecake.webp"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\CAPUCHINO.webp",
+                                "score":  100,
+                                "file":  "CAPUCHINO.webp"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\Mocaccino.webp",
+                                "score":  100,
+                                "file":  "Mocaccino.webp"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\Mocaccino.jpg",
+                                "score":  100,
+                                "file":  "Mocaccino.jpg"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\muffins-de-arándanos-XL-9.jpg",
+                                "score":  100,
+                                "file":  "muffins-de-arándanos-XL-9.jpg"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\tortadchoco.jpg",
+                                "score":  100,
+                                "file":  "tortadchoco.jpg"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\teverde.webp",
+                                "score":  100,
+                                "file":  "teverde.webp"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\jmango.webp",
+                                "score":  100,
+                                "file":  "jmango.webp"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\jamonq.jpg",
+                                "score":  100,
+                                "file":  "jamonq.jpg"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\jugo-de-naranja-destacado.jpg",
+                                "score":  100,
+                                "file":  "jugo-de-naranja-destacado.jpg"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\mixto.webp",
+                                "score":  100,
+                                "file":  "mixto.webp"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\LATTE.webp",
+                                "score":  100,
+                                "file":  "LATTE.webp"
+                            }
+                        ],
+        "nombre":  "Mocaccino",
+        "id":  "6a289269d5252ce5c663cb3d"
+    },
+    {
+        "imagenActual":  "/images/default-product.svg",
+        "suggestions":  [
+                            {
+                                "path":  "C:\\GATOIMG\\chocolate-brownie.webp",
+                                "score":  100,
+                                "file":  "chocolate-brownie.webp"
+                            },
+                            {
+                                "path":  "C:\\GATOIMG\\cheesecake.webp",
+                                "score":  100,
+                                "file":  "cheesecake.webp"
+                            },
+                            {
+                                "path":  "C:\\GATOIMG\\EXPRESSO.webp",
+                                "score":  100,
+                                "file":  "EXPRESSO.webp"
+                            },
+                            {
+                                "path":  "C:\\GATOIMG\\jmango.webp",
+                                "score":  100,
+                                "file":  "jmango.webp"
+                            },
+                            {
+                                "path":  "C:\\GATOIMG\\jamonq.jpg",
+                                "score":  100,
+                                "file":  "jamonq.jpg"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\vegetariano.jpg",
+                                "score":  100,
+                                "file":  "vegetariano.jpg"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\ténegro.jpg",
+                                "score":  100,
+                                "file":  "ténegro.jpg"
+                            },
+                            {
+                                "path":  "C:\\GATOIMG\\cafe-frappe.webp",
+                                "score":  100,
+                                "file":  "cafe-frappe.webp"
+                            },
+                            {
+                                "path":  "C:\\GATOIMG\\CAPUCHINO.webp",
+                                "score":  100,
+                                "file":  "CAPUCHINO.webp"
+                            },
+                            {
+                                "path":  "C:\\GATOIMG\\CAFEAMERICANO.webp",
+                                "score":  100,
+                                "file":  "CAFEAMERICANO.webp"
+                            },
+                            {
+                                "path":  "C:\\GATOIMG\\teverde.webp",
+                                "score":  100,
+                                "file":  "teverde.webp"
+                            },
+                            {
+                                "path":  "C:\\GATOIMG\\muffins-de-arándanos-XL-9.jpg",
+                                "score":  100,
+                                "file":  "muffins-de-arándanos-XL-9.jpg"
+                            },
+                            {
+                                "path":  "C:\\GATOIMG\\tortadchoco.jpg",
+                                "score":  100,
+                                "file":  "tortadchoco.jpg"
+                            },
+                            {
+                                "path":  "C:\\GATOIMG\\vegetariano.jpg",
+                                "score":  100,
+                                "file":  "vegetariano.jpg"
+                            },
+                            {
+                                "path":  "C:\\GATOIMG\\ténegro.jpg",
+                                "score":  100,
+                                "file":  "ténegro.jpg"
+                            },
+                            {
+                                "path":  "C:\\GATOIMG\\LATTE.webp",
+                                "score":  100,
+                                "file":  "LATTE.webp"
+                            },
+                            {
+                                "path":  "C:\\GATOIMG\\jugo-de-naranja-destacado.jpg",
+                                "score":  100,
+                                "file":  "jugo-de-naranja-destacado.jpg"
+                            },
+                            {
+                                "path":  "C:\\GATOIMG\\mixto.webp",
+                                "score":  100,
+                                "file":  "mixto.webp"
+                            },
+                            {
+                                "path":  "C:\\GATOIMG\\Mocaccino.webp",
+                                "score":  100,
+                                "file":  "Mocaccino.webp"
+                            },
+                            {
+                                "path":  "C:\\GATOIMG\\Mocaccino.jpg",
+                                "score":  100,
+                                "file":  "Mocaccino.jpg"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\default-product-1781022162085.svg",
+                                "score":  100,
+                                "file":  "default-product-1781022162085.svg"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\chocolate-brownie.webp",
+                                "score":  100,
+                                "file":  "chocolate-brownie.webp"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\default-product-1781023038989.svg",
+                                "score":  100,
+                                "file":  "default-product-1781023038989.svg"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\EXPRESSO.webp",
+                                "score":  100,
+                                "file":  "EXPRESSO.webp"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\default-product.svg",
+                                "score":  100,
+                                "file":  "default-product.svg"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\cafeamericano-1781027945773.webp",
+                                "score":  100,
+                                "file":  "cafeamericano-1781027945773.webp"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\cafe-frappe.webp",
+                                "score":  100,
+                                "file":  "cafe-frappe.webp"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\CAFEAMERICANO.webp",
+                                "score":  100,
+                                "file":  "CAFEAMERICANO.webp"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\cheesecake.webp",
+                                "score":  100,
+                                "file":  "cheesecake.webp"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\CAPUCHINO.webp",
+                                "score":  100,
+                                "file":  "CAPUCHINO.webp"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\Mocaccino.webp",
+                                "score":  100,
+                                "file":  "Mocaccino.webp"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\Mocaccino.jpg",
+                                "score":  100,
+                                "file":  "Mocaccino.jpg"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\muffins-de-arándanos-XL-9.jpg",
+                                "score":  100,
+                                "file":  "muffins-de-arándanos-XL-9.jpg"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\tortadchoco.jpg",
+                                "score":  100,
+                                "file":  "tortadchoco.jpg"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\teverde.webp",
+                                "score":  100,
+                                "file":  "teverde.webp"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\jmango.webp",
+                                "score":  100,
+                                "file":  "jmango.webp"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\jamonq.jpg",
+                                "score":  100,
+                                "file":  "jamonq.jpg"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\jugo-de-naranja-destacado.jpg",
+                                "score":  100,
+                                "file":  "jugo-de-naranja-destacado.jpg"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\mixto.webp",
+                                "score":  100,
+                                "file":  "mixto.webp"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\LATTE.webp",
+                                "score":  100,
+                                "file":  "LATTE.webp"
+                            }
+                        ],
+        "nombre":  "Té Negro",
+        "id":  "6a289269d5252ce5c663cb3f"
+    },
+    {
+        "imagenActual":  "/images/default-product.svg",
+        "suggestions":  [
+                            {
+                                "path":  "C:\\GATOIMG\\chocolate-brownie.webp",
+                                "score":  100,
+                                "file":  "chocolate-brownie.webp"
+                            },
+                            {
+                                "path":  "C:\\GATOIMG\\cheesecake.webp",
+                                "score":  100,
+                                "file":  "cheesecake.webp"
+                            },
+                            {
+                                "path":  "C:\\GATOIMG\\EXPRESSO.webp",
+                                "score":  100,
+                                "file":  "EXPRESSO.webp"
+                            },
+                            {
+                                "path":  "C:\\GATOIMG\\jmango.webp",
+                                "score":  100,
+                                "file":  "jmango.webp"
+                            },
+                            {
+                                "path":  "C:\\GATOIMG\\jamonq.jpg",
+                                "score":  100,
+                                "file":  "jamonq.jpg"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\vegetariano.jpg",
+                                "score":  100,
+                                "file":  "vegetariano.jpg"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\ténegro.jpg",
+                                "score":  100,
+                                "file":  "ténegro.jpg"
+                            },
+                            {
+                                "path":  "C:\\GATOIMG\\cafe-frappe.webp",
+                                "score":  100,
+                                "file":  "cafe-frappe.webp"
+                            },
+                            {
+                                "path":  "C:\\GATOIMG\\CAPUCHINO.webp",
+                                "score":  100,
+                                "file":  "CAPUCHINO.webp"
+                            },
+                            {
+                                "path":  "C:\\GATOIMG\\CAFEAMERICANO.webp",
+                                "score":  100,
+                                "file":  "CAFEAMERICANO.webp"
+                            },
+                            {
+                                "path":  "C:\\GATOIMG\\teverde.webp",
+                                "score":  100,
+                                "file":  "teverde.webp"
+                            },
+                            {
+                                "path":  "C:\\GATOIMG\\muffins-de-arándanos-XL-9.jpg",
+                                "score":  100,
+                                "file":  "muffins-de-arándanos-XL-9.jpg"
+                            },
+                            {
+                                "path":  "C:\\GATOIMG\\tortadchoco.jpg",
+                                "score":  100,
+                                "file":  "tortadchoco.jpg"
+                            },
+                            {
+                                "path":  "C:\\GATOIMG\\vegetariano.jpg",
+                                "score":  100,
+                                "file":  "vegetariano.jpg"
+                            },
+                            {
+                                "path":  "C:\\GATOIMG\\ténegro.jpg",
+                                "score":  100,
+                                "file":  "ténegro.jpg"
+                            },
+                            {
+                                "path":  "C:\\GATOIMG\\LATTE.webp",
+                                "score":  100,
+                                "file":  "LATTE.webp"
+                            },
+                            {
+                                "path":  "C:\\GATOIMG\\jugo-de-naranja-destacado.jpg",
+                                "score":  100,
+                                "file":  "jugo-de-naranja-destacado.jpg"
+                            },
+                            {
+                                "path":  "C:\\GATOIMG\\mixto.webp",
+                                "score":  100,
+                                "file":  "mixto.webp"
+                            },
+                            {
+                                "path":  "C:\\GATOIMG\\Mocaccino.webp",
+                                "score":  100,
+                                "file":  "Mocaccino.webp"
+                            },
+                            {
+                                "path":  "C:\\GATOIMG\\Mocaccino.jpg",
+                                "score":  100,
+                                "file":  "Mocaccino.jpg"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\default-product-1781022162085.svg",
+                                "score":  100,
+                                "file":  "default-product-1781022162085.svg"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\chocolate-brownie.webp",
+                                "score":  100,
+                                "file":  "chocolate-brownie.webp"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\default-product-1781023038989.svg",
+                                "score":  100,
+                                "file":  "default-product-1781023038989.svg"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\EXPRESSO.webp",
+                                "score":  100,
+                                "file":  "EXPRESSO.webp"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\default-product.svg",
+                                "score":  100,
+                                "file":  "default-product.svg"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\cafeamericano-1781027945773.webp",
+                                "score":  100,
+                                "file":  "cafeamericano-1781027945773.webp"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\cafe-frappe.webp",
+                                "score":  100,
+                                "file":  "cafe-frappe.webp"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\CAFEAMERICANO.webp",
+                                "score":  100,
+                                "file":  "CAFEAMERICANO.webp"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\cheesecake.webp",
+                                "score":  100,
+                                "file":  "cheesecake.webp"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\CAPUCHINO.webp",
+                                "score":  100,
+                                "file":  "CAPUCHINO.webp"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\Mocaccino.webp",
+                                "score":  100,
+                                "file":  "Mocaccino.webp"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\Mocaccino.jpg",
+                                "score":  100,
+                                "file":  "Mocaccino.jpg"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\muffins-de-arándanos-XL-9.jpg",
+                                "score":  100,
+                                "file":  "muffins-de-arándanos-XL-9.jpg"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\tortadchoco.jpg",
+                                "score":  100,
+                                "file":  "tortadchoco.jpg"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\teverde.webp",
+                                "score":  100,
+                                "file":  "teverde.webp"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\jmango.webp",
+                                "score":  100,
+                                "file":  "jmango.webp"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\jamonq.jpg",
+                                "score":  100,
+                                "file":  "jamonq.jpg"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\jugo-de-naranja-destacado.jpg",
+                                "score":  100,
+                                "file":  "jugo-de-naranja-destacado.jpg"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\mixto.webp",
+                                "score":  100,
+                                "file":  "mixto.webp"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\LATTE.webp",
+                                "score":  100,
+                                "file":  "LATTE.webp"
+                            }
+                        ],
+        "nombre":  "Té Verde",
+        "id":  "6a289269d5252ce5c663cb3e"
+    },
+    {
+        "imagenActual":  "/images/default-product.svg",
+        "suggestions":  [
+                            {
+                                "path":  "C:\\GATOIMG\\chocolate-brownie.webp",
+                                "score":  100,
+                                "file":  "chocolate-brownie.webp"
+                            },
+                            {
+                                "path":  "C:\\GATOIMG\\cheesecake.webp",
+                                "score":  100,
+                                "file":  "cheesecake.webp"
+                            },
+                            {
+                                "path":  "C:\\GATOIMG\\EXPRESSO.webp",
+                                "score":  100,
+                                "file":  "EXPRESSO.webp"
+                            },
+                            {
+                                "path":  "C:\\GATOIMG\\jmango.webp",
+                                "score":  100,
+                                "file":  "jmango.webp"
+                            },
+                            {
+                                "path":  "C:\\GATOIMG\\jamonq.jpg",
+                                "score":  100,
+                                "file":  "jamonq.jpg"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\vegetariano.jpg",
+                                "score":  100,
+                                "file":  "vegetariano.jpg"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\ténegro.jpg",
+                                "score":  100,
+                                "file":  "ténegro.jpg"
+                            },
+                            {
+                                "path":  "C:\\GATOIMG\\cafe-frappe.webp",
+                                "score":  100,
+                                "file":  "cafe-frappe.webp"
+                            },
+                            {
+                                "path":  "C:\\GATOIMG\\CAPUCHINO.webp",
+                                "score":  100,
+                                "file":  "CAPUCHINO.webp"
+                            },
+                            {
+                                "path":  "C:\\GATOIMG\\CAFEAMERICANO.webp",
+                                "score":  100,
+                                "file":  "CAFEAMERICANO.webp"
+                            },
+                            {
+                                "path":  "C:\\GATOIMG\\teverde.webp",
+                                "score":  100,
+                                "file":  "teverde.webp"
+                            },
+                            {
+                                "path":  "C:\\GATOIMG\\muffins-de-arándanos-XL-9.jpg",
+                                "score":  100,
+                                "file":  "muffins-de-arándanos-XL-9.jpg"
+                            },
+                            {
+                                "path":  "C:\\GATOIMG\\tortadchoco.jpg",
+                                "score":  100,
+                                "file":  "tortadchoco.jpg"
+                            },
+                            {
+                                "path":  "C:\\GATOIMG\\vegetariano.jpg",
+                                "score":  100,
+                                "file":  "vegetariano.jpg"
+                            },
+                            {
+                                "path":  "C:\\GATOIMG\\ténegro.jpg",
+                                "score":  100,
+                                "file":  "ténegro.jpg"
+                            },
+                            {
+                                "path":  "C:\\GATOIMG\\LATTE.webp",
+                                "score":  100,
+                                "file":  "LATTE.webp"
+                            },
+                            {
+                                "path":  "C:\\GATOIMG\\jugo-de-naranja-destacado.jpg",
+                                "score":  100,
+                                "file":  "jugo-de-naranja-destacado.jpg"
+                            },
+                            {
+                                "path":  "C:\\GATOIMG\\mixto.webp",
+                                "score":  100,
+                                "file":  "mixto.webp"
+                            },
+                            {
+                                "path":  "C:\\GATOIMG\\Mocaccino.webp",
+                                "score":  100,
+                                "file":  "Mocaccino.webp"
+                            },
+                            {
+                                "path":  "C:\\GATOIMG\\Mocaccino.jpg",
+                                "score":  100,
+                                "file":  "Mocaccino.jpg"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\default-product-1781022162085.svg",
+                                "score":  100,
+                                "file":  "default-product-1781022162085.svg"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\chocolate-brownie.webp",
+                                "score":  100,
+                                "file":  "chocolate-brownie.webp"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\default-product-1781023038989.svg",
+                                "score":  100,
+                                "file":  "default-product-1781023038989.svg"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\EXPRESSO.webp",
+                                "score":  100,
+                                "file":  "EXPRESSO.webp"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\default-product.svg",
+                                "score":  100,
+                                "file":  "default-product.svg"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\cafeamericano-1781027945773.webp",
+                                "score":  100,
+                                "file":  "cafeamericano-1781027945773.webp"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\cafe-frappe.webp",
+                                "score":  100,
+                                "file":  "cafe-frappe.webp"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\CAFEAMERICANO.webp",
+                                "score":  100,
+                                "file":  "CAFEAMERICANO.webp"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\cheesecake.webp",
+                                "score":  100,
+                                "file":  "cheesecake.webp"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\CAPUCHINO.webp",
+                                "score":  100,
+                                "file":  "CAPUCHINO.webp"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\Mocaccino.webp",
+                                "score":  100,
+                                "file":  "Mocaccino.webp"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\Mocaccino.jpg",
+                                "score":  100,
+                                "file":  "Mocaccino.jpg"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\muffins-de-arándanos-XL-9.jpg",
+                                "score":  100,
+                                "file":  "muffins-de-arándanos-XL-9.jpg"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\tortadchoco.jpg",
+                                "score":  100,
+                                "file":  "tortadchoco.jpg"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\teverde.webp",
+                                "score":  100,
+                                "file":  "teverde.webp"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\jmango.webp",
+                                "score":  100,
+                                "file":  "jmango.webp"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\jamonq.jpg",
+                                "score":  100,
+                                "file":  "jamonq.jpg"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\jugo-de-naranja-destacado.jpg",
+                                "score":  100,
+                                "file":  "jugo-de-naranja-destacado.jpg"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\mixto.webp",
+                                "score":  100,
+                                "file":  "mixto.webp"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\LATTE.webp",
+                                "score":  100,
+                                "file":  "LATTE.webp"
+                            }
+                        ],
+        "nombre":  "Frappé de Café",
+        "id":  "6a289269d5252ce5c663cb42"
+    },
+    {
+        "imagenActual":  "/images/default-product.svg",
+        "suggestions":  [
+                            {
+                                "path":  "C:\\GATOIMG\\chocolate-brownie.webp",
+                                "score":  100,
+                                "file":  "chocolate-brownie.webp"
+                            },
+                            {
+                                "path":  "C:\\GATOIMG\\cheesecake.webp",
+                                "score":  100,
+                                "file":  "cheesecake.webp"
+                            },
+                            {
+                                "path":  "C:\\GATOIMG\\EXPRESSO.webp",
+                                "score":  100,
+                                "file":  "EXPRESSO.webp"
+                            },
+                            {
+                                "path":  "C:\\GATOIMG\\jmango.webp",
+                                "score":  100,
+                                "file":  "jmango.webp"
+                            },
+                            {
+                                "path":  "C:\\GATOIMG\\jamonq.jpg",
+                                "score":  100,
+                                "file":  "jamonq.jpg"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\vegetariano.jpg",
+                                "score":  100,
+                                "file":  "vegetariano.jpg"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\ténegro.jpg",
+                                "score":  100,
+                                "file":  "ténegro.jpg"
+                            },
+                            {
+                                "path":  "C:\\GATOIMG\\cafe-frappe.webp",
+                                "score":  100,
+                                "file":  "cafe-frappe.webp"
+                            },
+                            {
+                                "path":  "C:\\GATOIMG\\CAPUCHINO.webp",
+                                "score":  100,
+                                "file":  "CAPUCHINO.webp"
+                            },
+                            {
+                                "path":  "C:\\GATOIMG\\CAFEAMERICANO.webp",
+                                "score":  100,
+                                "file":  "CAFEAMERICANO.webp"
+                            },
+                            {
+                                "path":  "C:\\GATOIMG\\teverde.webp",
+                                "score":  100,
+                                "file":  "teverde.webp"
+                            },
+                            {
+                                "path":  "C:\\GATOIMG\\muffins-de-arándanos-XL-9.jpg",
+                                "score":  100,
+                                "file":  "muffins-de-arándanos-XL-9.jpg"
+                            },
+                            {
+                                "path":  "C:\\GATOIMG\\tortadchoco.jpg",
+                                "score":  100,
+                                "file":  "tortadchoco.jpg"
+                            },
+                            {
+                                "path":  "C:\\GATOIMG\\vegetariano.jpg",
+                                "score":  100,
+                                "file":  "vegetariano.jpg"
+                            },
+                            {
+                                "path":  "C:\\GATOIMG\\ténegro.jpg",
+                                "score":  100,
+                                "file":  "ténegro.jpg"
+                            },
+                            {
+                                "path":  "C:\\GATOIMG\\LATTE.webp",
+                                "score":  100,
+                                "file":  "LATTE.webp"
+                            },
+                            {
+                                "path":  "C:\\GATOIMG\\jugo-de-naranja-destacado.jpg",
+                                "score":  100,
+                                "file":  "jugo-de-naranja-destacado.jpg"
+                            },
+                            {
+                                "path":  "C:\\GATOIMG\\mixto.webp",
+                                "score":  100,
+                                "file":  "mixto.webp"
+                            },
+                            {
+                                "path":  "C:\\GATOIMG\\Mocaccino.webp",
+                                "score":  100,
+                                "file":  "Mocaccino.webp"
+                            },
+                            {
+                                "path":  "C:\\GATOIMG\\Mocaccino.jpg",
+                                "score":  100,
+                                "file":  "Mocaccino.jpg"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\default-product-1781022162085.svg",
+                                "score":  100,
+                                "file":  "default-product-1781022162085.svg"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\chocolate-brownie.webp",
+                                "score":  100,
+                                "file":  "chocolate-brownie.webp"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\default-product-1781023038989.svg",
+                                "score":  100,
+                                "file":  "default-product-1781023038989.svg"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\EXPRESSO.webp",
+                                "score":  100,
+                                "file":  "EXPRESSO.webp"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\default-product.svg",
+                                "score":  100,
+                                "file":  "default-product.svg"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\cafeamericano-1781027945773.webp",
+                                "score":  100,
+                                "file":  "cafeamericano-1781027945773.webp"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\cafe-frappe.webp",
+                                "score":  100,
+                                "file":  "cafe-frappe.webp"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\CAFEAMERICANO.webp",
+                                "score":  100,
+                                "file":  "CAFEAMERICANO.webp"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\cheesecake.webp",
+                                "score":  100,
+                                "file":  "cheesecake.webp"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\CAPUCHINO.webp",
+                                "score":  100,
+                                "file":  "CAPUCHINO.webp"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\Mocaccino.webp",
+                                "score":  100,
+                                "file":  "Mocaccino.webp"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\Mocaccino.jpg",
+                                "score":  100,
+                                "file":  "Mocaccino.jpg"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\muffins-de-arándanos-XL-9.jpg",
+                                "score":  100,
+                                "file":  "muffins-de-arándanos-XL-9.jpg"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\tortadchoco.jpg",
+                                "score":  100,
+                                "file":  "tortadchoco.jpg"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\teverde.webp",
+                                "score":  100,
+                                "file":  "teverde.webp"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\jmango.webp",
+                                "score":  100,
+                                "file":  "jmango.webp"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\jamonq.jpg",
+                                "score":  100,
+                                "file":  "jamonq.jpg"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\jugo-de-naranja-destacado.jpg",
+                                "score":  100,
+                                "file":  "jugo-de-naranja-destacado.jpg"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\mixto.webp",
+                                "score":  100,
+                                "file":  "mixto.webp"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\LATTE.webp",
+                                "score":  100,
+                                "file":  "LATTE.webp"
+                            }
+                        ],
+        "nombre":  "Jugo de Mango",
+        "id":  "6a289269d5252ce5c663cb41"
+    },
+    {
+        "imagenActual":  "/images/default-product.svg",
+        "suggestions":  [
+                            {
+                                "path":  "C:\\GATOIMG\\chocolate-brownie.webp",
+                                "score":  100,
+                                "file":  "chocolate-brownie.webp"
+                            },
+                            {
+                                "path":  "C:\\GATOIMG\\cheesecake.webp",
+                                "score":  100,
+                                "file":  "cheesecake.webp"
+                            },
+                            {
+                                "path":  "C:\\GATOIMG\\EXPRESSO.webp",
+                                "score":  100,
+                                "file":  "EXPRESSO.webp"
+                            },
+                            {
+                                "path":  "C:\\GATOIMG\\jmango.webp",
+                                "score":  100,
+                                "file":  "jmango.webp"
+                            },
+                            {
+                                "path":  "C:\\GATOIMG\\jamonq.jpg",
+                                "score":  100,
+                                "file":  "jamonq.jpg"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\vegetariano.jpg",
+                                "score":  100,
+                                "file":  "vegetariano.jpg"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\ténegro.jpg",
+                                "score":  100,
+                                "file":  "ténegro.jpg"
+                            },
+                            {
+                                "path":  "C:\\GATOIMG\\cafe-frappe.webp",
+                                "score":  100,
+                                "file":  "cafe-frappe.webp"
+                            },
+                            {
+                                "path":  "C:\\GATOIMG\\CAPUCHINO.webp",
+                                "score":  100,
+                                "file":  "CAPUCHINO.webp"
+                            },
+                            {
+                                "path":  "C:\\GATOIMG\\CAFEAMERICANO.webp",
+                                "score":  100,
+                                "file":  "CAFEAMERICANO.webp"
+                            },
+                            {
+                                "path":  "C:\\GATOIMG\\teverde.webp",
+                                "score":  100,
+                                "file":  "teverde.webp"
+                            },
+                            {
+                                "path":  "C:\\GATOIMG\\muffins-de-arándanos-XL-9.jpg",
+                                "score":  100,
+                                "file":  "muffins-de-arándanos-XL-9.jpg"
+                            },
+                            {
+                                "path":  "C:\\GATOIMG\\tortadchoco.jpg",
+                                "score":  100,
+                                "file":  "tortadchoco.jpg"
+                            },
+                            {
+                                "path":  "C:\\GATOIMG\\vegetariano.jpg",
+                                "score":  100,
+                                "file":  "vegetariano.jpg"
+                            },
+                            {
+                                "path":  "C:\\GATOIMG\\ténegro.jpg",
+                                "score":  100,
+                                "file":  "ténegro.jpg"
+                            },
+                            {
+                                "path":  "C:\\GATOIMG\\LATTE.webp",
+                                "score":  100,
+                                "file":  "LATTE.webp"
+                            },
+                            {
+                                "path":  "C:\\GATOIMG\\jugo-de-naranja-destacado.jpg",
+                                "score":  100,
+                                "file":  "jugo-de-naranja-destacado.jpg"
+                            },
+                            {
+                                "path":  "C:\\GATOIMG\\mixto.webp",
+                                "score":  100,
+                                "file":  "mixto.webp"
+                            },
+                            {
+                                "path":  "C:\\GATOIMG\\Mocaccino.webp",
+                                "score":  100,
+                                "file":  "Mocaccino.webp"
+                            },
+                            {
+                                "path":  "C:\\GATOIMG\\Mocaccino.jpg",
+                                "score":  100,
+                                "file":  "Mocaccino.jpg"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\default-product-1781022162085.svg",
+                                "score":  100,
+                                "file":  "default-product-1781022162085.svg"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\chocolate-brownie.webp",
+                                "score":  100,
+                                "file":  "chocolate-brownie.webp"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\default-product-1781023038989.svg",
+                                "score":  100,
+                                "file":  "default-product-1781023038989.svg"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\EXPRESSO.webp",
+                                "score":  100,
+                                "file":  "EXPRESSO.webp"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\default-product.svg",
+                                "score":  100,
+                                "file":  "default-product.svg"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\cafeamericano-1781027945773.webp",
+                                "score":  100,
+                                "file":  "cafeamericano-1781027945773.webp"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\cafe-frappe.webp",
+                                "score":  100,
+                                "file":  "cafe-frappe.webp"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\CAFEAMERICANO.webp",
+                                "score":  100,
+                                "file":  "CAFEAMERICANO.webp"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\cheesecake.webp",
+                                "score":  100,
+                                "file":  "cheesecake.webp"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\CAPUCHINO.webp",
+                                "score":  100,
+                                "file":  "CAPUCHINO.webp"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\Mocaccino.webp",
+                                "score":  100,
+                                "file":  "Mocaccino.webp"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\Mocaccino.jpg",
+                                "score":  100,
+                                "file":  "Mocaccino.jpg"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\muffins-de-arándanos-XL-9.jpg",
+                                "score":  100,
+                                "file":  "muffins-de-arándanos-XL-9.jpg"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\tortadchoco.jpg",
+                                "score":  100,
+                                "file":  "tortadchoco.jpg"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\teverde.webp",
+                                "score":  100,
+                                "file":  "teverde.webp"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\jmango.webp",
+                                "score":  100,
+                                "file":  "jmango.webp"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\jamonq.jpg",
+                                "score":  100,
+                                "file":  "jamonq.jpg"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\jugo-de-naranja-destacado.jpg",
+                                "score":  100,
+                                "file":  "jugo-de-naranja-destacado.jpg"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\mixto.webp",
+                                "score":  100,
+                                "file":  "mixto.webp"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\LATTE.webp",
+                                "score":  100,
+                                "file":  "LATTE.webp"
+                            }
+                        ],
+        "nombre":  "Jugo de Naranja",
+        "id":  "6a289269d5252ce5c663cb40"
+    },
+    {
+        "imagenActual":  "/images/default-product.svg",
+        "suggestions":  [
+                            {
+                                "path":  "C:\\GATOIMG\\chocolate-brownie.webp",
+                                "score":  100,
+                                "file":  "chocolate-brownie.webp"
+                            },
+                            {
+                                "path":  "C:\\GATOIMG\\cheesecake.webp",
+                                "score":  100,
+                                "file":  "cheesecake.webp"
+                            },
+                            {
+                                "path":  "C:\\GATOIMG\\EXPRESSO.webp",
+                                "score":  100,
+                                "file":  "EXPRESSO.webp"
+                            },
+                            {
+                                "path":  "C:\\GATOIMG\\jmango.webp",
+                                "score":  100,
+                                "file":  "jmango.webp"
+                            },
+                            {
+                                "path":  "C:\\GATOIMG\\jamonq.jpg",
+                                "score":  100,
+                                "file":  "jamonq.jpg"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\vegetariano.jpg",
+                                "score":  100,
+                                "file":  "vegetariano.jpg"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\ténegro.jpg",
+                                "score":  100,
+                                "file":  "ténegro.jpg"
+                            },
+                            {
+                                "path":  "C:\\GATOIMG\\cafe-frappe.webp",
+                                "score":  100,
+                                "file":  "cafe-frappe.webp"
+                            },
+                            {
+                                "path":  "C:\\GATOIMG\\CAPUCHINO.webp",
+                                "score":  100,
+                                "file":  "CAPUCHINO.webp"
+                            },
+                            {
+                                "path":  "C:\\GATOIMG\\CAFEAMERICANO.webp",
+                                "score":  100,
+                                "file":  "CAFEAMERICANO.webp"
+                            },
+                            {
+                                "path":  "C:\\GATOIMG\\teverde.webp",
+                                "score":  100,
+                                "file":  "teverde.webp"
+                            },
+                            {
+                                "path":  "C:\\GATOIMG\\muffins-de-arándanos-XL-9.jpg",
+                                "score":  100,
+                                "file":  "muffins-de-arándanos-XL-9.jpg"
+                            },
+                            {
+                                "path":  "C:\\GATOIMG\\tortadchoco.jpg",
+                                "score":  100,
+                                "file":  "tortadchoco.jpg"
+                            },
+                            {
+                                "path":  "C:\\GATOIMG\\vegetariano.jpg",
+                                "score":  100,
+                                "file":  "vegetariano.jpg"
+                            },
+                            {
+                                "path":  "C:\\GATOIMG\\ténegro.jpg",
+                                "score":  100,
+                                "file":  "ténegro.jpg"
+                            },
+                            {
+                                "path":  "C:\\GATOIMG\\LATTE.webp",
+                                "score":  100,
+                                "file":  "LATTE.webp"
+                            },
+                            {
+                                "path":  "C:\\GATOIMG\\jugo-de-naranja-destacado.jpg",
+                                "score":  100,
+                                "file":  "jugo-de-naranja-destacado.jpg"
+                            },
+                            {
+                                "path":  "C:\\GATOIMG\\mixto.webp",
+                                "score":  100,
+                                "file":  "mixto.webp"
+                            },
+                            {
+                                "path":  "C:\\GATOIMG\\Mocaccino.webp",
+                                "score":  100,
+                                "file":  "Mocaccino.webp"
+                            },
+                            {
+                                "path":  "C:\\GATOIMG\\Mocaccino.jpg",
+                                "score":  100,
+                                "file":  "Mocaccino.jpg"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\default-product-1781022162085.svg",
+                                "score":  100,
+                                "file":  "default-product-1781022162085.svg"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\chocolate-brownie.webp",
+                                "score":  100,
+                                "file":  "chocolate-brownie.webp"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\default-product-1781023038989.svg",
+                                "score":  100,
+                                "file":  "default-product-1781023038989.svg"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\EXPRESSO.webp",
+                                "score":  100,
+                                "file":  "EXPRESSO.webp"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\default-product.svg",
+                                "score":  100,
+                                "file":  "default-product.svg"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\cafeamericano-1781027945773.webp",
+                                "score":  100,
+                                "file":  "cafeamericano-1781027945773.webp"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\cafe-frappe.webp",
+                                "score":  100,
+                                "file":  "cafe-frappe.webp"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\CAFEAMERICANO.webp",
+                                "score":  100,
+                                "file":  "CAFEAMERICANO.webp"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\cheesecake.webp",
+                                "score":  100,
+                                "file":  "cheesecake.webp"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\CAPUCHINO.webp",
+                                "score":  100,
+                                "file":  "CAPUCHINO.webp"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\Mocaccino.webp",
+                                "score":  100,
+                                "file":  "Mocaccino.webp"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\Mocaccino.jpg",
+                                "score":  100,
+                                "file":  "Mocaccino.jpg"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\muffins-de-arándanos-XL-9.jpg",
+                                "score":  100,
+                                "file":  "muffins-de-arándanos-XL-9.jpg"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\tortadchoco.jpg",
+                                "score":  100,
+                                "file":  "tortadchoco.jpg"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\teverde.webp",
+                                "score":  100,
+                                "file":  "teverde.webp"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\jmango.webp",
+                                "score":  100,
+                                "file":  "jmango.webp"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\jamonq.jpg",
+                                "score":  100,
+                                "file":  "jamonq.jpg"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\jugo-de-naranja-destacado.jpg",
+                                "score":  100,
+                                "file":  "jugo-de-naranja-destacado.jpg"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\mixto.webp",
+                                "score":  100,
+                                "file":  "mixto.webp"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\LATTE.webp",
+                                "score":  100,
+                                "file":  "LATTE.webp"
+                            }
+                        ],
+        "nombre":  "Sandwich Vegetariano",
+        "id":  "6a289269d5252ce5c663cb44"
+    },
+    {
+        "imagenActual":  "/images/default-product.svg",
+        "suggestions":  [
+                            {
+                                "path":  "C:\\GATOIMG\\chocolate-brownie.webp",
+                                "score":  100,
+                                "file":  "chocolate-brownie.webp"
+                            },
+                            {
+                                "path":  "C:\\GATOIMG\\cheesecake.webp",
+                                "score":  100,
+                                "file":  "cheesecake.webp"
+                            },
+                            {
+                                "path":  "C:\\GATOIMG\\EXPRESSO.webp",
+                                "score":  100,
+                                "file":  "EXPRESSO.webp"
+                            },
+                            {
+                                "path":  "C:\\GATOIMG\\jmango.webp",
+                                "score":  100,
+                                "file":  "jmango.webp"
+                            },
+                            {
+                                "path":  "C:\\GATOIMG\\jamonq.jpg",
+                                "score":  100,
+                                "file":  "jamonq.jpg"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\vegetariano.jpg",
+                                "score":  100,
+                                "file":  "vegetariano.jpg"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\ténegro.jpg",
+                                "score":  100,
+                                "file":  "ténegro.jpg"
+                            },
+                            {
+                                "path":  "C:\\GATOIMG\\cafe-frappe.webp",
+                                "score":  100,
+                                "file":  "cafe-frappe.webp"
+                            },
+                            {
+                                "path":  "C:\\GATOIMG\\CAPUCHINO.webp",
+                                "score":  100,
+                                "file":  "CAPUCHINO.webp"
+                            },
+                            {
+                                "path":  "C:\\GATOIMG\\CAFEAMERICANO.webp",
+                                "score":  100,
+                                "file":  "CAFEAMERICANO.webp"
+                            },
+                            {
+                                "path":  "C:\\GATOIMG\\teverde.webp",
+                                "score":  100,
+                                "file":  "teverde.webp"
+                            },
+                            {
+                                "path":  "C:\\GATOIMG\\muffins-de-arándanos-XL-9.jpg",
+                                "score":  100,
+                                "file":  "muffins-de-arándanos-XL-9.jpg"
+                            },
+                            {
+                                "path":  "C:\\GATOIMG\\tortadchoco.jpg",
+                                "score":  100,
+                                "file":  "tortadchoco.jpg"
+                            },
+                            {
+                                "path":  "C:\\GATOIMG\\vegetariano.jpg",
+                                "score":  100,
+                                "file":  "vegetariano.jpg"
+                            },
+                            {
+                                "path":  "C:\\GATOIMG\\ténegro.jpg",
+                                "score":  100,
+                                "file":  "ténegro.jpg"
+                            },
+                            {
+                                "path":  "C:\\GATOIMG\\LATTE.webp",
+                                "score":  100,
+                                "file":  "LATTE.webp"
+                            },
+                            {
+                                "path":  "C:\\GATOIMG\\jugo-de-naranja-destacado.jpg",
+                                "score":  100,
+                                "file":  "jugo-de-naranja-destacado.jpg"
+                            },
+                            {
+                                "path":  "C:\\GATOIMG\\mixto.webp",
+                                "score":  100,
+                                "file":  "mixto.webp"
+                            },
+                            {
+                                "path":  "C:\\GATOIMG\\Mocaccino.webp",
+                                "score":  100,
+                                "file":  "Mocaccino.webp"
+                            },
+                            {
+                                "path":  "C:\\GATOIMG\\Mocaccino.jpg",
+                                "score":  100,
+                                "file":  "Mocaccino.jpg"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\default-product-1781022162085.svg",
+                                "score":  100,
+                                "file":  "default-product-1781022162085.svg"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\chocolate-brownie.webp",
+                                "score":  100,
+                                "file":  "chocolate-brownie.webp"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\default-product-1781023038989.svg",
+                                "score":  100,
+                                "file":  "default-product-1781023038989.svg"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\EXPRESSO.webp",
+                                "score":  100,
+                                "file":  "EXPRESSO.webp"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\default-product.svg",
+                                "score":  100,
+                                "file":  "default-product.svg"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\cafeamericano-1781027945773.webp",
+                                "score":  100,
+                                "file":  "cafeamericano-1781027945773.webp"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\cafe-frappe.webp",
+                                "score":  100,
+                                "file":  "cafe-frappe.webp"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\CAFEAMERICANO.webp",
+                                "score":  100,
+                                "file":  "CAFEAMERICANO.webp"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\cheesecake.webp",
+                                "score":  100,
+                                "file":  "cheesecake.webp"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\CAPUCHINO.webp",
+                                "score":  100,
+                                "file":  "CAPUCHINO.webp"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\Mocaccino.webp",
+                                "score":  100,
+                                "file":  "Mocaccino.webp"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\Mocaccino.jpg",
+                                "score":  100,
+                                "file":  "Mocaccino.jpg"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\muffins-de-arándanos-XL-9.jpg",
+                                "score":  100,
+                                "file":  "muffins-de-arándanos-XL-9.jpg"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\tortadchoco.jpg",
+                                "score":  100,
+                                "file":  "tortadchoco.jpg"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\teverde.webp",
+                                "score":  100,
+                                "file":  "teverde.webp"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\jmango.webp",
+                                "score":  100,
+                                "file":  "jmango.webp"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\jamonq.jpg",
+                                "score":  100,
+                                "file":  "jamonq.jpg"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\jugo-de-naranja-destacado.jpg",
+                                "score":  100,
+                                "file":  "jugo-de-naranja-destacado.jpg"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\mixto.webp",
+                                "score":  100,
+                                "file":  "mixto.webp"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\LATTE.webp",
+                                "score":  100,
+                                "file":  "LATTE.webp"
+                            }
+                        ],
+        "nombre":  "Sandwich de Jamón y Queso",
+        "id":  "6a289269d5252ce5c663cb43"
+    },
+    {
+        "imagenActual":  "/images/default-product.svg",
+        "suggestions":  [
+                            {
+                                "path":  "C:\\GATOIMG\\chocolate-brownie.webp",
+                                "score":  100,
+                                "file":  "chocolate-brownie.webp"
+                            },
+                            {
+                                "path":  "C:\\GATOIMG\\cheesecake.webp",
+                                "score":  100,
+                                "file":  "cheesecake.webp"
+                            },
+                            {
+                                "path":  "C:\\GATOIMG\\EXPRESSO.webp",
+                                "score":  100,
+                                "file":  "EXPRESSO.webp"
+                            },
+                            {
+                                "path":  "C:\\GATOIMG\\jmango.webp",
+                                "score":  100,
+                                "file":  "jmango.webp"
+                            },
+                            {
+                                "path":  "C:\\GATOIMG\\jamonq.jpg",
+                                "score":  100,
+                                "file":  "jamonq.jpg"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\vegetariano.jpg",
+                                "score":  100,
+                                "file":  "vegetariano.jpg"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\ténegro.jpg",
+                                "score":  100,
+                                "file":  "ténegro.jpg"
+                            },
+                            {
+                                "path":  "C:\\GATOIMG\\cafe-frappe.webp",
+                                "score":  100,
+                                "file":  "cafe-frappe.webp"
+                            },
+                            {
+                                "path":  "C:\\GATOIMG\\CAPUCHINO.webp",
+                                "score":  100,
+                                "file":  "CAPUCHINO.webp"
+                            },
+                            {
+                                "path":  "C:\\GATOIMG\\CAFEAMERICANO.webp",
+                                "score":  100,
+                                "file":  "CAFEAMERICANO.webp"
+                            },
+                            {
+                                "path":  "C:\\GATOIMG\\teverde.webp",
+                                "score":  100,
+                                "file":  "teverde.webp"
+                            },
+                            {
+                                "path":  "C:\\GATOIMG\\muffins-de-arándanos-XL-9.jpg",
+                                "score":  100,
+                                "file":  "muffins-de-arándanos-XL-9.jpg"
+                            },
+                            {
+                                "path":  "C:\\GATOIMG\\tortadchoco.jpg",
+                                "score":  100,
+                                "file":  "tortadchoco.jpg"
+                            },
+                            {
+                                "path":  "C:\\GATOIMG\\vegetariano.jpg",
+                                "score":  100,
+                                "file":  "vegetariano.jpg"
+                            },
+                            {
+                                "path":  "C:\\GATOIMG\\ténegro.jpg",
+                                "score":  100,
+                                "file":  "ténegro.jpg"
+                            },
+                            {
+                                "path":  "C:\\GATOIMG\\LATTE.webp",
+                                "score":  100,
+                                "file":  "LATTE.webp"
+                            },
+                            {
+                                "path":  "C:\\GATOIMG\\jugo-de-naranja-destacado.jpg",
+                                "score":  100,
+                                "file":  "jugo-de-naranja-destacado.jpg"
+                            },
+                            {
+                                "path":  "C:\\GATOIMG\\mixto.webp",
+                                "score":  100,
+                                "file":  "mixto.webp"
+                            },
+                            {
+                                "path":  "C:\\GATOIMG\\Mocaccino.webp",
+                                "score":  100,
+                                "file":  "Mocaccino.webp"
+                            },
+                            {
+                                "path":  "C:\\GATOIMG\\Mocaccino.jpg",
+                                "score":  100,
+                                "file":  "Mocaccino.jpg"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\default-product-1781022162085.svg",
+                                "score":  100,
+                                "file":  "default-product-1781022162085.svg"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\chocolate-brownie.webp",
+                                "score":  100,
+                                "file":  "chocolate-brownie.webp"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\default-product-1781023038989.svg",
+                                "score":  100,
+                                "file":  "default-product-1781023038989.svg"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\EXPRESSO.webp",
+                                "score":  100,
+                                "file":  "EXPRESSO.webp"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\default-product.svg",
+                                "score":  100,
+                                "file":  "default-product.svg"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\cafeamericano-1781027945773.webp",
+                                "score":  100,
+                                "file":  "cafeamericano-1781027945773.webp"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\cafe-frappe.webp",
+                                "score":  100,
+                                "file":  "cafe-frappe.webp"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\CAFEAMERICANO.webp",
+                                "score":  100,
+                                "file":  "CAFEAMERICANO.webp"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\cheesecake.webp",
+                                "score":  100,
+                                "file":  "cheesecake.webp"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\CAPUCHINO.webp",
+                                "score":  100,
+                                "file":  "CAPUCHINO.webp"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\Mocaccino.webp",
+                                "score":  100,
+                                "file":  "Mocaccino.webp"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\Mocaccino.jpg",
+                                "score":  100,
+                                "file":  "Mocaccino.jpg"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\muffins-de-arándanos-XL-9.jpg",
+                                "score":  100,
+                                "file":  "muffins-de-arándanos-XL-9.jpg"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\tortadchoco.jpg",
+                                "score":  100,
+                                "file":  "tortadchoco.jpg"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\teverde.webp",
+                                "score":  100,
+                                "file":  "teverde.webp"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\jmango.webp",
+                                "score":  100,
+                                "file":  "jmango.webp"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\jamonq.jpg",
+                                "score":  100,
+                                "file":  "jamonq.jpg"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\jugo-de-naranja-destacado.jpg",
+                                "score":  100,
+                                "file":  "jugo-de-naranja-destacado.jpg"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\mixto.webp",
+                                "score":  100,
+                                "file":  "mixto.webp"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\LATTE.webp",
+                                "score":  100,
+                                "file":  "LATTE.webp"
+                            }
+                        ],
+        "nombre":  "Tostado Mixto",
+        "id":  "6a289269d5252ce5c663cb45"
+    },
+    {
+        "imagenActual":  "/images/default-product.svg",
+        "suggestions":  [
+                            {
+                                "path":  "C:\\GATOIMG\\chocolate-brownie.webp",
+                                "score":  100,
+                                "file":  "chocolate-brownie.webp"
+                            },
+                            {
+                                "path":  "C:\\GATOIMG\\cheesecake.webp",
+                                "score":  100,
+                                "file":  "cheesecake.webp"
+                            },
+                            {
+                                "path":  "C:\\GATOIMG\\EXPRESSO.webp",
+                                "score":  100,
+                                "file":  "EXPRESSO.webp"
+                            },
+                            {
+                                "path":  "C:\\GATOIMG\\jmango.webp",
+                                "score":  100,
+                                "file":  "jmango.webp"
+                            },
+                            {
+                                "path":  "C:\\GATOIMG\\jamonq.jpg",
+                                "score":  100,
+                                "file":  "jamonq.jpg"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\vegetariano.jpg",
+                                "score":  100,
+                                "file":  "vegetariano.jpg"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\ténegro.jpg",
+                                "score":  100,
+                                "file":  "ténegro.jpg"
+                            },
+                            {
+                                "path":  "C:\\GATOIMG\\cafe-frappe.webp",
+                                "score":  100,
+                                "file":  "cafe-frappe.webp"
+                            },
+                            {
+                                "path":  "C:\\GATOIMG\\CAPUCHINO.webp",
+                                "score":  100,
+                                "file":  "CAPUCHINO.webp"
+                            },
+                            {
+                                "path":  "C:\\GATOIMG\\CAFEAMERICANO.webp",
+                                "score":  100,
+                                "file":  "CAFEAMERICANO.webp"
+                            },
+                            {
+                                "path":  "C:\\GATOIMG\\teverde.webp",
+                                "score":  100,
+                                "file":  "teverde.webp"
+                            },
+                            {
+                                "path":  "C:\\GATOIMG\\muffins-de-arándanos-XL-9.jpg",
+                                "score":  100,
+                                "file":  "muffins-de-arándanos-XL-9.jpg"
+                            },
+                            {
+                                "path":  "C:\\GATOIMG\\tortadchoco.jpg",
+                                "score":  100,
+                                "file":  "tortadchoco.jpg"
+                            },
+                            {
+                                "path":  "C:\\GATOIMG\\vegetariano.jpg",
+                                "score":  100,
+                                "file":  "vegetariano.jpg"
+                            },
+                            {
+                                "path":  "C:\\GATOIMG\\ténegro.jpg",
+                                "score":  100,
+                                "file":  "ténegro.jpg"
+                            },
+                            {
+                                "path":  "C:\\GATOIMG\\LATTE.webp",
+                                "score":  100,
+                                "file":  "LATTE.webp"
+                            },
+                            {
+                                "path":  "C:\\GATOIMG\\jugo-de-naranja-destacado.jpg",
+                                "score":  100,
+                                "file":  "jugo-de-naranja-destacado.jpg"
+                            },
+                            {
+                                "path":  "C:\\GATOIMG\\mixto.webp",
+                                "score":  100,
+                                "file":  "mixto.webp"
+                            },
+                            {
+                                "path":  "C:\\GATOIMG\\Mocaccino.webp",
+                                "score":  100,
+                                "file":  "Mocaccino.webp"
+                            },
+                            {
+                                "path":  "C:\\GATOIMG\\Mocaccino.jpg",
+                                "score":  100,
+                                "file":  "Mocaccino.jpg"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\default-product-1781022162085.svg",
+                                "score":  100,
+                                "file":  "default-product-1781022162085.svg"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\chocolate-brownie.webp",
+                                "score":  100,
+                                "file":  "chocolate-brownie.webp"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\default-product-1781023038989.svg",
+                                "score":  100,
+                                "file":  "default-product-1781023038989.svg"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\EXPRESSO.webp",
+                                "score":  100,
+                                "file":  "EXPRESSO.webp"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\default-product.svg",
+                                "score":  100,
+                                "file":  "default-product.svg"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\cafeamericano-1781027945773.webp",
+                                "score":  100,
+                                "file":  "cafeamericano-1781027945773.webp"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\cafe-frappe.webp",
+                                "score":  100,
+                                "file":  "cafe-frappe.webp"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\CAFEAMERICANO.webp",
+                                "score":  100,
+                                "file":  "CAFEAMERICANO.webp"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\cheesecake.webp",
+                                "score":  100,
+                                "file":  "cheesecake.webp"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\CAPUCHINO.webp",
+                                "score":  100,
+                                "file":  "CAPUCHINO.webp"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\Mocaccino.webp",
+                                "score":  100,
+                                "file":  "Mocaccino.webp"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\Mocaccino.jpg",
+                                "score":  100,
+                                "file":  "Mocaccino.jpg"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\muffins-de-arándanos-XL-9.jpg",
+                                "score":  100,
+                                "file":  "muffins-de-arándanos-XL-9.jpg"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\tortadchoco.jpg",
+                                "score":  100,
+                                "file":  "tortadchoco.jpg"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\teverde.webp",
+                                "score":  100,
+                                "file":  "teverde.webp"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\jmango.webp",
+                                "score":  100,
+                                "file":  "jmango.webp"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\jamonq.jpg",
+                                "score":  100,
+                                "file":  "jamonq.jpg"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\jugo-de-naranja-destacado.jpg",
+                                "score":  100,
+                                "file":  "jugo-de-naranja-destacado.jpg"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\mixto.webp",
+                                "score":  100,
+                                "file":  "mixto.webp"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\LATTE.webp",
+                                "score":  100,
+                                "file":  "LATTE.webp"
+                            }
+                        ],
+        "nombre":  "Brownie",
+        "id":  "6a289269d5252ce5c663cb48"
+    },
+    {
+        "imagenActual":  "/images/default-product.svg",
+        "suggestions":  [
+                            {
+                                "path":  "C:\\GATOIMG\\chocolate-brownie.webp",
+                                "score":  100,
+                                "file":  "chocolate-brownie.webp"
+                            },
+                            {
+                                "path":  "C:\\GATOIMG\\cheesecake.webp",
+                                "score":  100,
+                                "file":  "cheesecake.webp"
+                            },
+                            {
+                                "path":  "C:\\GATOIMG\\EXPRESSO.webp",
+                                "score":  100,
+                                "file":  "EXPRESSO.webp"
+                            },
+                            {
+                                "path":  "C:\\GATOIMG\\jmango.webp",
+                                "score":  100,
+                                "file":  "jmango.webp"
+                            },
+                            {
+                                "path":  "C:\\GATOIMG\\jamonq.jpg",
+                                "score":  100,
+                                "file":  "jamonq.jpg"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\vegetariano.jpg",
+                                "score":  100,
+                                "file":  "vegetariano.jpg"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\ténegro.jpg",
+                                "score":  100,
+                                "file":  "ténegro.jpg"
+                            },
+                            {
+                                "path":  "C:\\GATOIMG\\cafe-frappe.webp",
+                                "score":  100,
+                                "file":  "cafe-frappe.webp"
+                            },
+                            {
+                                "path":  "C:\\GATOIMG\\CAPUCHINO.webp",
+                                "score":  100,
+                                "file":  "CAPUCHINO.webp"
+                            },
+                            {
+                                "path":  "C:\\GATOIMG\\CAFEAMERICANO.webp",
+                                "score":  100,
+                                "file":  "CAFEAMERICANO.webp"
+                            },
+                            {
+                                "path":  "C:\\GATOIMG\\teverde.webp",
+                                "score":  100,
+                                "file":  "teverde.webp"
+                            },
+                            {
+                                "path":  "C:\\GATOIMG\\muffins-de-arándanos-XL-9.jpg",
+                                "score":  100,
+                                "file":  "muffins-de-arándanos-XL-9.jpg"
+                            },
+                            {
+                                "path":  "C:\\GATOIMG\\tortadchoco.jpg",
+                                "score":  100,
+                                "file":  "tortadchoco.jpg"
+                            },
+                            {
+                                "path":  "C:\\GATOIMG\\vegetariano.jpg",
+                                "score":  100,
+                                "file":  "vegetariano.jpg"
+                            },
+                            {
+                                "path":  "C:\\GATOIMG\\ténegro.jpg",
+                                "score":  100,
+                                "file":  "ténegro.jpg"
+                            },
+                            {
+                                "path":  "C:\\GATOIMG\\LATTE.webp",
+                                "score":  100,
+                                "file":  "LATTE.webp"
+                            },
+                            {
+                                "path":  "C:\\GATOIMG\\jugo-de-naranja-destacado.jpg",
+                                "score":  100,
+                                "file":  "jugo-de-naranja-destacado.jpg"
+                            },
+                            {
+                                "path":  "C:\\GATOIMG\\mixto.webp",
+                                "score":  100,
+                                "file":  "mixto.webp"
+                            },
+                            {
+                                "path":  "C:\\GATOIMG\\Mocaccino.webp",
+                                "score":  100,
+                                "file":  "Mocaccino.webp"
+                            },
+                            {
+                                "path":  "C:\\GATOIMG\\Mocaccino.jpg",
+                                "score":  100,
+                                "file":  "Mocaccino.jpg"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\default-product-1781022162085.svg",
+                                "score":  100,
+                                "file":  "default-product-1781022162085.svg"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\chocolate-brownie.webp",
+                                "score":  100,
+                                "file":  "chocolate-brownie.webp"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\default-product-1781023038989.svg",
+                                "score":  100,
+                                "file":  "default-product-1781023038989.svg"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\EXPRESSO.webp",
+                                "score":  100,
+                                "file":  "EXPRESSO.webp"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\default-product.svg",
+                                "score":  100,
+                                "file":  "default-product.svg"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\cafeamericano-1781027945773.webp",
+                                "score":  100,
+                                "file":  "cafeamericano-1781027945773.webp"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\cafe-frappe.webp",
+                                "score":  100,
+                                "file":  "cafe-frappe.webp"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\CAFEAMERICANO.webp",
+                                "score":  100,
+                                "file":  "CAFEAMERICANO.webp"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\cheesecake.webp",
+                                "score":  100,
+                                "file":  "cheesecake.webp"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\CAPUCHINO.webp",
+                                "score":  100,
+                                "file":  "CAPUCHINO.webp"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\Mocaccino.webp",
+                                "score":  100,
+                                "file":  "Mocaccino.webp"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\Mocaccino.jpg",
+                                "score":  100,
+                                "file":  "Mocaccino.jpg"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\muffins-de-arándanos-XL-9.jpg",
+                                "score":  100,
+                                "file":  "muffins-de-arándanos-XL-9.jpg"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\tortadchoco.jpg",
+                                "score":  100,
+                                "file":  "tortadchoco.jpg"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\teverde.webp",
+                                "score":  100,
+                                "file":  "teverde.webp"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\jmango.webp",
+                                "score":  100,
+                                "file":  "jmango.webp"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\jamonq.jpg",
+                                "score":  100,
+                                "file":  "jamonq.jpg"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\jugo-de-naranja-destacado.jpg",
+                                "score":  100,
+                                "file":  "jugo-de-naranja-destacado.jpg"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\mixto.webp",
+                                "score":  100,
+                                "file":  "mixto.webp"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\LATTE.webp",
+                                "score":  100,
+                                "file":  "LATTE.webp"
+                            }
+                        ],
+        "nombre":  "Cheesecake",
+        "id":  "6a289269d5252ce5c663cb47"
+    },
+    {
+        "imagenActual":  "/images/default-product.svg",
+        "suggestions":  [
+                            {
+                                "path":  "C:\\GATOIMG\\chocolate-brownie.webp",
+                                "score":  100,
+                                "file":  "chocolate-brownie.webp"
+                            },
+                            {
+                                "path":  "C:\\GATOIMG\\cheesecake.webp",
+                                "score":  100,
+                                "file":  "cheesecake.webp"
+                            },
+                            {
+                                "path":  "C:\\GATOIMG\\EXPRESSO.webp",
+                                "score":  100,
+                                "file":  "EXPRESSO.webp"
+                            },
+                            {
+                                "path":  "C:\\GATOIMG\\jmango.webp",
+                                "score":  100,
+                                "file":  "jmango.webp"
+                            },
+                            {
+                                "path":  "C:\\GATOIMG\\jamonq.jpg",
+                                "score":  100,
+                                "file":  "jamonq.jpg"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\vegetariano.jpg",
+                                "score":  100,
+                                "file":  "vegetariano.jpg"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\ténegro.jpg",
+                                "score":  100,
+                                "file":  "ténegro.jpg"
+                            },
+                            {
+                                "path":  "C:\\GATOIMG\\cafe-frappe.webp",
+                                "score":  100,
+                                "file":  "cafe-frappe.webp"
+                            },
+                            {
+                                "path":  "C:\\GATOIMG\\CAPUCHINO.webp",
+                                "score":  100,
+                                "file":  "CAPUCHINO.webp"
+                            },
+                            {
+                                "path":  "C:\\GATOIMG\\CAFEAMERICANO.webp",
+                                "score":  100,
+                                "file":  "CAFEAMERICANO.webp"
+                            },
+                            {
+                                "path":  "C:\\GATOIMG\\teverde.webp",
+                                "score":  100,
+                                "file":  "teverde.webp"
+                            },
+                            {
+                                "path":  "C:\\GATOIMG\\muffins-de-arándanos-XL-9.jpg",
+                                "score":  100,
+                                "file":  "muffins-de-arándanos-XL-9.jpg"
+                            },
+                            {
+                                "path":  "C:\\GATOIMG\\tortadchoco.jpg",
+                                "score":  100,
+                                "file":  "tortadchoco.jpg"
+                            },
+                            {
+                                "path":  "C:\\GATOIMG\\vegetariano.jpg",
+                                "score":  100,
+                                "file":  "vegetariano.jpg"
+                            },
+                            {
+                                "path":  "C:\\GATOIMG\\ténegro.jpg",
+                                "score":  100,
+                                "file":  "ténegro.jpg"
+                            },
+                            {
+                                "path":  "C:\\GATOIMG\\LATTE.webp",
+                                "score":  100,
+                                "file":  "LATTE.webp"
+                            },
+                            {
+                                "path":  "C:\\GATOIMG\\jugo-de-naranja-destacado.jpg",
+                                "score":  100,
+                                "file":  "jugo-de-naranja-destacado.jpg"
+                            },
+                            {
+                                "path":  "C:\\GATOIMG\\mixto.webp",
+                                "score":  100,
+                                "file":  "mixto.webp"
+                            },
+                            {
+                                "path":  "C:\\GATOIMG\\Mocaccino.webp",
+                                "score":  100,
+                                "file":  "Mocaccino.webp"
+                            },
+                            {
+                                "path":  "C:\\GATOIMG\\Mocaccino.jpg",
+                                "score":  100,
+                                "file":  "Mocaccino.jpg"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\default-product-1781022162085.svg",
+                                "score":  100,
+                                "file":  "default-product-1781022162085.svg"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\chocolate-brownie.webp",
+                                "score":  100,
+                                "file":  "chocolate-brownie.webp"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\default-product-1781023038989.svg",
+                                "score":  100,
+                                "file":  "default-product-1781023038989.svg"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\EXPRESSO.webp",
+                                "score":  100,
+                                "file":  "EXPRESSO.webp"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\default-product.svg",
+                                "score":  100,
+                                "file":  "default-product.svg"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\cafeamericano-1781027945773.webp",
+                                "score":  100,
+                                "file":  "cafeamericano-1781027945773.webp"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\cafe-frappe.webp",
+                                "score":  100,
+                                "file":  "cafe-frappe.webp"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\CAFEAMERICANO.webp",
+                                "score":  100,
+                                "file":  "CAFEAMERICANO.webp"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\cheesecake.webp",
+                                "score":  100,
+                                "file":  "cheesecake.webp"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\CAPUCHINO.webp",
+                                "score":  100,
+                                "file":  "CAPUCHINO.webp"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\Mocaccino.webp",
+                                "score":  100,
+                                "file":  "Mocaccino.webp"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\Mocaccino.jpg",
+                                "score":  100,
+                                "file":  "Mocaccino.jpg"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\muffins-de-arándanos-XL-9.jpg",
+                                "score":  100,
+                                "file":  "muffins-de-arándanos-XL-9.jpg"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\tortadchoco.jpg",
+                                "score":  100,
+                                "file":  "tortadchoco.jpg"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\teverde.webp",
+                                "score":  100,
+                                "file":  "teverde.webp"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\jmango.webp",
+                                "score":  100,
+                                "file":  "jmango.webp"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\jamonq.jpg",
+                                "score":  100,
+                                "file":  "jamonq.jpg"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\jugo-de-naranja-destacado.jpg",
+                                "score":  100,
+                                "file":  "jugo-de-naranja-destacado.jpg"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\mixto.webp",
+                                "score":  100,
+                                "file":  "mixto.webp"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\LATTE.webp",
+                                "score":  100,
+                                "file":  "LATTE.webp"
+                            }
+                        ],
+        "nombre":  "Muffin de Arándanos",
+        "id":  "6a289269d5252ce5c663cb49"
+    },
+    {
+        "imagenActual":  "/images/default-product.svg",
+        "suggestions":  [
+                            {
+                                "path":  "C:\\GATOIMG\\chocolate-brownie.webp",
+                                "score":  100,
+                                "file":  "chocolate-brownie.webp"
+                            },
+                            {
+                                "path":  "C:\\GATOIMG\\cheesecake.webp",
+                                "score":  100,
+                                "file":  "cheesecake.webp"
+                            },
+                            {
+                                "path":  "C:\\GATOIMG\\EXPRESSO.webp",
+                                "score":  100,
+                                "file":  "EXPRESSO.webp"
+                            },
+                            {
+                                "path":  "C:\\GATOIMG\\jmango.webp",
+                                "score":  100,
+                                "file":  "jmango.webp"
+                            },
+                            {
+                                "path":  "C:\\GATOIMG\\jamonq.jpg",
+                                "score":  100,
+                                "file":  "jamonq.jpg"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\vegetariano.jpg",
+                                "score":  100,
+                                "file":  "vegetariano.jpg"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\ténegro.jpg",
+                                "score":  100,
+                                "file":  "ténegro.jpg"
+                            },
+                            {
+                                "path":  "C:\\GATOIMG\\cafe-frappe.webp",
+                                "score":  100,
+                                "file":  "cafe-frappe.webp"
+                            },
+                            {
+                                "path":  "C:\\GATOIMG\\CAPUCHINO.webp",
+                                "score":  100,
+                                "file":  "CAPUCHINO.webp"
+                            },
+                            {
+                                "path":  "C:\\GATOIMG\\CAFEAMERICANO.webp",
+                                "score":  100,
+                                "file":  "CAFEAMERICANO.webp"
+                            },
+                            {
+                                "path":  "C:\\GATOIMG\\teverde.webp",
+                                "score":  100,
+                                "file":  "teverde.webp"
+                            },
+                            {
+                                "path":  "C:\\GATOIMG\\muffins-de-arándanos-XL-9.jpg",
+                                "score":  100,
+                                "file":  "muffins-de-arándanos-XL-9.jpg"
+                            },
+                            {
+                                "path":  "C:\\GATOIMG\\tortadchoco.jpg",
+                                "score":  100,
+                                "file":  "tortadchoco.jpg"
+                            },
+                            {
+                                "path":  "C:\\GATOIMG\\vegetariano.jpg",
+                                "score":  100,
+                                "file":  "vegetariano.jpg"
+                            },
+                            {
+                                "path":  "C:\\GATOIMG\\ténegro.jpg",
+                                "score":  100,
+                                "file":  "ténegro.jpg"
+                            },
+                            {
+                                "path":  "C:\\GATOIMG\\LATTE.webp",
+                                "score":  100,
+                                "file":  "LATTE.webp"
+                            },
+                            {
+                                "path":  "C:\\GATOIMG\\jugo-de-naranja-destacado.jpg",
+                                "score":  100,
+                                "file":  "jugo-de-naranja-destacado.jpg"
+                            },
+                            {
+                                "path":  "C:\\GATOIMG\\mixto.webp",
+                                "score":  100,
+                                "file":  "mixto.webp"
+                            },
+                            {
+                                "path":  "C:\\GATOIMG\\Mocaccino.webp",
+                                "score":  100,
+                                "file":  "Mocaccino.webp"
+                            },
+                            {
+                                "path":  "C:\\GATOIMG\\Mocaccino.jpg",
+                                "score":  100,
+                                "file":  "Mocaccino.jpg"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\default-product-1781022162085.svg",
+                                "score":  100,
+                                "file":  "default-product-1781022162085.svg"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\chocolate-brownie.webp",
+                                "score":  100,
+                                "file":  "chocolate-brownie.webp"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\default-product-1781023038989.svg",
+                                "score":  100,
+                                "file":  "default-product-1781023038989.svg"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\EXPRESSO.webp",
+                                "score":  100,
+                                "file":  "EXPRESSO.webp"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\default-product.svg",
+                                "score":  100,
+                                "file":  "default-product.svg"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\cafeamericano-1781027945773.webp",
+                                "score":  100,
+                                "file":  "cafeamericano-1781027945773.webp"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\cafe-frappe.webp",
+                                "score":  100,
+                                "file":  "cafe-frappe.webp"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\CAFEAMERICANO.webp",
+                                "score":  100,
+                                "file":  "CAFEAMERICANO.webp"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\cheesecake.webp",
+                                "score":  100,
+                                "file":  "cheesecake.webp"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\CAPUCHINO.webp",
+                                "score":  100,
+                                "file":  "CAPUCHINO.webp"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\Mocaccino.webp",
+                                "score":  100,
+                                "file":  "Mocaccino.webp"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\Mocaccino.jpg",
+                                "score":  100,
+                                "file":  "Mocaccino.jpg"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\muffins-de-arándanos-XL-9.jpg",
+                                "score":  100,
+                                "file":  "muffins-de-arándanos-XL-9.jpg"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\tortadchoco.jpg",
+                                "score":  100,
+                                "file":  "tortadchoco.jpg"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\teverde.webp",
+                                "score":  100,
+                                "file":  "teverde.webp"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\jmango.webp",
+                                "score":  100,
+                                "file":  "jmango.webp"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\jamonq.jpg",
+                                "score":  100,
+                                "file":  "jamonq.jpg"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\jugo-de-naranja-destacado.jpg",
+                                "score":  100,
+                                "file":  "jugo-de-naranja-destacado.jpg"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\mixto.webp",
+                                "score":  100,
+                                "file":  "mixto.webp"
+                            },
+                            {
+                                "path":  "C:\\Gatocafee\\frontend\\public\\images\\LATTE.webp",
+                                "score":  100,
+                                "file":  "LATTE.webp"
+                            }
+                        ],
+        "nombre":  "Torta de Chocolate",
+        "id":  "6a289269d5252ce5c663cb46"
+    }
+]

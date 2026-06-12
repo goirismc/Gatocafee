@@ -18,6 +18,9 @@ cajaRouter.post('/:id/cerrar', cajaCtrl.cerrarCaja);
 // ── FINANCIERO ──
 const financieroRouter = express.Router();
 const finCtrl = require('../controllers/financieroController');
+// Ruta pública para consultar una meta por id (útil para checks desde frontend)
+financieroRouter.get('/metas/:id', finCtrl.getMetaPublic);
+// Protegemos el resto de rutas
 financieroRouter.use(protegerRuta);
 financieroRouter.get('/dashboard', finCtrl.getDashboard);
 financieroRouter.get('/punto-equilibrio', adminOGerente, finCtrl.getPuntoEquilibrio);
@@ -27,6 +30,10 @@ financieroRouter.put('/costos-fijos/:id', adminOGerente, finCtrl.actualizarCosto
 financieroRouter.delete('/costos-fijos/:id', soloAdmin, finCtrl.eliminarCostoFijo);
 financieroRouter.get('/metas', adminOGerente, finCtrl.getMetas);
 financieroRouter.post('/metas', adminOGerente, finCtrl.crearOMeta);
+financieroRouter.put('/metas/:id', adminOGerente, finCtrl.actualizarMeta);
+// Fallback: permitir eliminar por mes+año cuando no haya _id (p.ej. restauraciones)
+financieroRouter.delete('/metas/por-mes', soloAdmin, finCtrl.eliminarMetaPorMes);
+financieroRouter.delete('/metas/:id', soloAdmin, finCtrl.eliminarMeta);
 
 // ── REPORTES ──
 const reportesRouter = express.Router();
@@ -39,10 +46,12 @@ reportesRouter.get('/turno/:turno', reportesCtrl.getReporteTurno);
 // ── PROMOCIONES ──
 const promocionesRouter = express.Router();
 const promoCtrl = require('../controllers/promocionesController');
-promocionesRouter.use(protegerRuta);
+
+// Permitir que el POS consulte promociones y valide cupones sin token.
 promocionesRouter.get('/', promoCtrl.getPromociones);
-promocionesRouter.post('/', adminOGerente, promoCtrl.crearPromocion);
 promocionesRouter.post('/validar-cupon', promoCtrl.validarCupon);
-promocionesRouter.put('/:id', adminOGerente, promoCtrl.actualizarPromocion);
+// Rutas de administración requieren autenticación + rol
+promocionesRouter.post('/', protegerRuta, adminOGerente, promoCtrl.crearPromocion);
+promocionesRouter.put('/:id', protegerRuta, adminOGerente, promoCtrl.actualizarPromocion);
 
 module.exports = { cajaRouter, financieroRouter, reportesRouter, promocionesRouter };

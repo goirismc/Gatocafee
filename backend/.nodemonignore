@@ -1,0 +1,6 @@
+# Ignorar archivos generados por la aplicación
+backups/
+backups/*
+**/backups/*
+node_modules/
+*.log

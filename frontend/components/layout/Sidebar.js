@@ -8,8 +8,10 @@ import { useAuth } from '../../lib/AuthContext';
 import {
   Coffee, LayoutDashboard, ShoppingCart, Package,
   Warehouse, Users, DollarSign, BarChart2,
-  Tag, LogOut, ChevronLeft, TrendingUp,
+  Tag, LogOut, ChevronLeft, TrendingUp, Database,
 } from 'lucide-react';
+import api from '../../lib/api';
+import toast from 'react-hot-toast';
 
 const NAV_ITEMS = [
   { href: '/dashboard',   label: 'Dashboard',       icon: LayoutDashboard, roles: ['administrador','gerente','cajero'] },
@@ -28,6 +30,8 @@ export default function Sidebar() {
   const { usuario, logout, tieneRol } = useAuth();
   const pathname = usePathname();
   const [collapsed, setCollapsed] = useState(false);
+  const [backupLoading, setBackupLoading] = useState(false);
+  const [backupModal, setBackupModal] = useState(false);
 
   const itemsVisibles = NAV_ITEMS.filter(item => tieneRol(...item.roles));
 
@@ -37,8 +41,15 @@ export default function Sidebar() {
       transition={{ duration: 0.25, ease: 'easeInOut' }}
       className="h-screen bg-cafe-800 flex flex-col shadow-cafe-lg relative z-20 shrink-0 overflow-hidden"
     >
-      {/* Logo */}
-      <div className="flex items-center gap-3 px-4 py-5 border-b border-cafe-700">
+      {/* Logo (clickable area) */}
+      <div
+        className="flex items-center gap-3 px-4 py-5 border-b border-cafe-700 cursor-pointer select-none"
+        role="button"
+        tabIndex={0}
+        onClick={() => setCollapsed(!collapsed)}
+        onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); setCollapsed(!collapsed); } }}
+        title="Mostrar / Ocultar menú"
+      >
         <div className="w-9 h-9 rounded-xl bg-crema-200 flex items-center justify-center shrink-0">
           <Coffee size={18} className="text-cafe-800" />
         </div>
@@ -82,6 +93,85 @@ export default function Sidebar() {
             </Link>
           );
         })}
+        {/* Botón de Backup justo después de Financiero */}
+        {itemsVisibles.some(i => i.href === '/financiero') && tieneRol('administrador', 'gerente') && (
+          <div className="">
+            <button
+              onClick={() => setBackupModal(true)}
+              disabled={backupLoading}
+              className="flex items-center gap-3 w-full px-3 py-2.5 rounded-xl text-crema-300 hover:bg-cafe-700 hover:text-crema-100 transition-colors"
+            >
+              <Database size={18} className="shrink-0" />
+              {!collapsed && <span className="text-sm font-medium">Backup</span>}
+            </button>
+
+            {/* Modal de confirmación */}
+            {backupModal && (
+              <div className="fixed inset-0 bg-cafe-900/60 flex items-center justify-center z-50 p-4" onClick={() => setBackupModal(false)}>
+                <div className="bg-white w-full max-w-md p-6 rounded-lg shadow-lg" onClick={(e)=>e.stopPropagation()}>
+                  <h3 className="font-semibold text-cafe-800 mb-2">Generar backup</h3>
+                  <p className="text-sm text-cafe-500 mb-4">¿Deseas crear un backup completo de toda la cafetería? Se descargará un archivo JSON con todos los registros.</p>
+                  <div className="flex gap-3">
+                    <button type="button" onClick={()=>setBackupModal(false)} className="btn-secondary flex-1">Cancelar</button>
+                    <button type="button" onClick={async () => {
+                      setBackupModal(false);
+                      // Ejecutar la misma lógica que antes
+                      setBackupLoading(true);
+                      try {
+                        const { data } = await api.post('/backup/crear');
+                        const archivo = data.archivo;
+                        toast.success('Backup creado. Iniciando descarga...');
+                        try {
+                          const resp = await api.get(`/backup/descargar/${archivo}`, { responseType: 'blob' });
+                          const contentType = resp.headers['content-type'] || '';
+                          const url = window.URL.createObjectURL(new Blob([resp.data], { type: contentType || 'application/octet-stream' }));
+                          const a = document.createElement('a');
+                          a.href = url;
+                          a.download = archivo;
+                          document.body.appendChild(a);
+                          a.click();
+                          a.remove();
+                          window.URL.revokeObjectURL(url);
+                        } catch (downloadErr) {
+                          console.error('Error descargando backup:', downloadErr);
+                          // Fallback: intentar obtener el archivo en base64 desde el servidor
+                          try {
+                            const { data: json } = await api.get(`/backup/descargar-json/${archivo}`);
+                            if (json && json.success && json.contenidoBase64) {
+                              const b = atob(json.contenidoBase64);
+                              const arr = new Uint8Array(b.length);
+                              for (let i = 0; i < b.length; i++) arr[i] = b.charCodeAt(i);
+                              const blob = new Blob([arr], { type: json.contentType || 'application/octet-stream' });
+                              const url = window.URL.createObjectURL(blob);
+                              const a = document.createElement('a');
+                              a.href = url;
+                              a.download = archivo;
+                              document.body.appendChild(a);
+                              a.click();
+                              a.remove();
+                              window.URL.revokeObjectURL(url);
+                              toast.success('Descarga completada (fallback)');
+                            } else {
+                              toast.error(json.mensaje || 'Error al descargar backup');
+                            }
+                          } catch (fbErr) {
+                            console.error('Fallback error:', fbErr);
+                            toast.error('Error al descargar backup');
+                          }
+                        }
+                      } catch (err) {
+                        const msg = err.response?.data?.mensaje || err.message || 'Error al crear backup';
+                        toast.error(msg);
+                      } finally {
+                        setBackupLoading(false);
+                      }
+                    }} className="btn-primary flex-1">Aceptar</button>
+                  </div>
+                </div>
+              </div>
+            )}
+          </div>
+        )}
       </nav>
 
       {/* Usuario */}
@@ -102,14 +192,6 @@ export default function Sidebar() {
         </button>
       </div>
 
-      {/* Toggle */}
-      <button onClick={() => setCollapsed(!collapsed)}
-        className="absolute -right-3 top-6 w-6 h-6 rounded-full bg-crema-200 border-2 border-cafe-700 flex items-center justify-center text-cafe-700 hover:bg-crema-300 transition-colors z-30"
-      >
-        <motion.div animate={{ rotate: collapsed ? 180 : 0 }} transition={{ duration: 0.2 }}>
-          <ChevronLeft size={12} />
-        </motion.div>
-      </button>
     </motion.aside>
   );
 }

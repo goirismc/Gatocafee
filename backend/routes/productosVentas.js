@@ -6,15 +6,16 @@ const router = express.Router();
 const ctrl = require('../controllers/productosController');
 const { protegerRuta, adminOGerente } = require('../middleware/auth');
 
-router.use(protegerRuta); // Todas las rutas requieren token
+// Rutas públicas para listar/consultar productos (POS puede acceder sin login).
+// Protegemos únicamente las rutas que modifican datos con protegerRuta + adminOGerente.
 
 router.get('/', ctrl.getProductos);
 router.get('/ranking/top', ctrl.getTopProductos);
-router.get('/margenes', adminOGerente, ctrl.getMargenes);
+router.get('/margenes', protegerRuta, adminOGerente, ctrl.getMargenes);
 router.get('/:id', ctrl.getProducto);
-router.post('/', adminOGerente, ctrl.crearProducto);
-router.put('/:id', adminOGerente, ctrl.actualizarProducto);
-router.delete('/:id', adminOGerente, ctrl.eliminarProducto);
+router.post('/', protegerRuta, adminOGerente, ctrl.crearProducto);
+router.put('/:id', protegerRuta, adminOGerente, ctrl.actualizarProducto);
+router.delete('/:id', protegerRuta, adminOGerente, ctrl.eliminarProducto);
 
 module.exports = router;
 
