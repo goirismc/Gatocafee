@@ -24,6 +24,7 @@ const clienteSchema = new mongoose.Schema(
       trim: true,
     },
     telefono: { type: String, trim: true },
+    direccion: { type: String, trim: true },
     fechaNacimiento: { type: Date },
     // Documento nacional / RUC (CI o RUC según país)
     ci_ruc: {
@@ -57,7 +58,6 @@ clienteSchema.virtual('nombreCompleto').get(function () {
   return this.apellido ? `${this.nombre} ${this.apellido}` : this.nombre;
 });
 
-clienteSchema.index({ email: 1 });
 clienteSchema.index({ totalGastado: -1 });
 
 // mongoose.model() lanza error si intentás registrar el mismo modelo dos veces.

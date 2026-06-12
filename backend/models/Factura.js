@@ -9,10 +9,10 @@ const facturaSchema = new mongoose.Schema(
     total: { type: Number, required: true },
     archivoUrl: { type: String },
     tipo: { type: String, enum: ['electronica', 'nota'], default: 'electronica' },
+    datos: { type: mongoose.Schema.Types.Mixed }, // campos adicionales de factura (razon social, ruc, direccion, etc.)
   },
   { timestamps: true }
 );
 
-facturaSchema.index({ numeroFactura: 1 });
 
 module.exports = mongoose.models.Factura || mongoose.model('Factura', facturaSchema);

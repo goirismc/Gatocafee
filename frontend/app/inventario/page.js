@@ -103,7 +103,7 @@ export default function InventarioPage() {
               </thead>
               <tbody>
                 {itemsFiltrados.map((item,idx)=>(
-                  <motion.tr key={item._id} initial={{opacity:0}} animate={{opacity:1}} transition={{delay:idx*0.03}}
+                  <motion.tr key={item._id || item.id || `item-${idx}`} initial={{opacity:0}} animate={{opacity:1}} transition={{delay:idx*0.03}}
                     className="border-b border-crema-100 hover:bg-crema-50 transition-colors">
                     <td className="px-4 py-3 font-medium text-cafe-900">{item.nombre}</td>
                     <td className="px-4 py-3 text-sm text-cafe-500 capitalize">{item.categoria?.replace('_',' ')}</td>

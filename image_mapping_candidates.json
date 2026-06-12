@@ -1,0 +1,121 @@
+﻿[
+    {
+        "current":  "/images/cafeamericano-1781027945773.webp",
+        "contains":  "cafeamericano-1781027945773.webp",
+        "nombre":  "Café Americano",
+        "id":  "6a289269d5252ce5c663cb39",
+        "exact":  "CAFEAMERICANO.webp"
+    },
+    {
+        "current":  "/images/default-product.svg",
+        "contains":  "",
+        "nombre":  "Cappuccino",
+        "id":  "6a289269d5252ce5c663cb3c",
+        "exact":  ""
+    },
+    {
+        "current":  "/images/default-product.svg",
+        "contains":  "",
+        "nombre":  "Espresso",
+        "id":  "6a289269d5252ce5c663cb3a",
+        "exact":  ""
+    },
+    {
+        "current":  "/images/default-product.svg",
+        "contains":  "LATTE.webp",
+        "nombre":  "Latte",
+        "id":  "6a289269d5252ce5c663cb3b",
+        "exact":  "LATTE.webp"
+    },
+    {
+        "current":  "/images/default-product.svg",
+        "contains":  "Mocaccino.jpg",
+        "nombre":  "Mocaccino",
+        "id":  "6a289269d5252ce5c663cb3d",
+        "exact":  "Mocaccino.jpg"
+    },
+    {
+        "current":  "/images/default-product.svg",
+        "contains":  "ténegro.jpg",
+        "nombre":  "Té Negro",
+        "id":  "6a289269d5252ce5c663cb3f",
+        "exact":  "ténegro.jpg"
+    },
+    {
+        "current":  "/images/default-product.svg",
+        "contains":  "teverde.webp",
+        "nombre":  "Té Verde",
+        "id":  "6a289269d5252ce5c663cb3e",
+        "exact":  "teverde.webp"
+    },
+    {
+        "current":  "/images/default-product.svg",
+        "contains":  "",
+        "nombre":  "Frappé de Café",
+        "id":  "6a289269d5252ce5c663cb42",
+        "exact":  ""
+    },
+    {
+        "current":  "/images/default-product.svg",
+        "contains":  "",
+        "nombre":  "Jugo de Mango",
+        "id":  "6a289269d5252ce5c663cb41",
+        "exact":  ""
+    },
+    {
+        "current":  "/images/default-product.svg",
+        "contains":  "jugo-de-naranja-destacado.jpg",
+        "nombre":  "Jugo de Naranja",
+        "id":  "6a289269d5252ce5c663cb40",
+        "exact":  ""
+    },
+    {
+        "current":  "/images/default-product.svg",
+        "contains":  "",
+        "nombre":  "Sandwich Vegetariano",
+        "id":  "6a289269d5252ce5c663cb44",
+        "exact":  ""
+    },
+    {
+        "current":  "/images/default-product.svg",
+        "contains":  "",
+        "nombre":  "Sandwich de Jamón y Queso",
+        "id":  "6a289269d5252ce5c663cb43",
+        "exact":  ""
+    },
+    {
+        "current":  "/images/default-product.svg",
+        "contains":  "",
+        "nombre":  "Tostado Mixto",
+        "id":  "6a289269d5252ce5c663cb45",
+        "exact":  ""
+    },
+    {
+        "current":  "/images/default-product.svg",
+        "contains":  "chocolate-brownie.webp",
+        "nombre":  "Brownie",
+        "id":  "6a289269d5252ce5c663cb48",
+        "exact":  ""
+    },
+    {
+        "current":  "/images/default-product.svg",
+        "contains":  "cheesecake.webp",
+        "nombre":  "Cheesecake",
+        "id":  "6a289269d5252ce5c663cb47",
+        "exact":  "cheesecake.webp"
+    },
+    {
+        "current":  "/images/default-product.svg",
+        "contains":  "",
+        "nombre":  "Muffin de Arándanos",
+        "id":  "6a289269d5252ce5c663cb49",
+        "exact":  ""
+    },
+    {
+        "current":  "/images/default-product.svg",
+        "contains":  "",
+        "nombre":  "Torta de Chocolate",
+        "id":  "6a289269d5252ce5c663cb46",
+        "exact":  ""
+    }
+]

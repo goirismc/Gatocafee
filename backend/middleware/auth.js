@@ -18,6 +18,10 @@ const protegerRuta = async (req, res, next) => {
     token = req.headers.authorization.split(' ')[1];
   }
 
+  console.log('protegerRuta: Authorization header present:', !!req.headers.authorization, 'token present:', !!token);
+
+  // Sin token: rechazar (no hay bypass en este entorno)
+
   if (!token) {
     return res.status(401).json({
       success: false,
@@ -52,6 +56,7 @@ const protegerRuta = async (req, res, next) => {
     next();
 
   } catch (error) {
+    console.error('protegerRuta error:', error.stack || error);
     if (error.name === 'JsonWebTokenError') {
       return res.status(401).json({
         success: false,

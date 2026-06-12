@@ -50,10 +50,9 @@ clienteSchema.virtual('nombreCompleto').get(function () {
   return this.apellido ? `${this.nombre} ${this.apellido}` : this.nombre;
 });
 
-clienteSchema.index({ email: 1 });
 clienteSchema.index({ totalGastado: -1 }); // Para ranking de frecuentes
 
-module.exports = mongoose.model('Cliente', clienteSchema);
+if (!mongoose.models.Cliente) mongoose.model('Cliente', clienteSchema);
 
 
 // ============================================
