@@ -3,6 +3,7 @@ const router = express.Router();
 const path = require('path');
 const multer = require('multer');
 const { uploadProductImage } = require('../controllers/uploadsController');
+const { protegerRuta } = require('../middleware/auth');
 
 // Guardar en ../frontend/public/images
 const imagesDir = path.resolve(__dirname, '..', '..', 'frontend', 'public', 'images');
@@ -25,6 +26,7 @@ const storage = multer.diskStorage({
 const upload = multer({ storage, limits: { fileSize: 5 * 1024 * 1024 } });
 
 // POST /api/uploads/product-image
-router.post('/product-image', upload.single('file'), uploadProductImage);
+// Autenticación primero para evitar que Multer procese peticiones no autorizadas
+router.post('/product-image', protegerRuta, upload.single('file'), uploadProductImage);
 
 module.exports = router;

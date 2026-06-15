@@ -98,6 +98,8 @@ exports.getCliente = async (req, res) => {
 // ============================================
 exports.actualizarCliente = async (req, res) => {
   try {
+    console.log('IN actualizarCliente - params:', req.params);
+    console.log('IN actualizarCliente - body:', req.body);
     const cliente = await Cliente.findByIdAndUpdate(req.params.id, req.body, {
       new: true,
       runValidators: true,
@@ -107,6 +109,10 @@ exports.actualizarCliente = async (req, res) => {
 
     res.json({ success: true, mensaje: 'Cliente actualizado', cliente });
   } catch (error) {
+    console.error('ERROR actualizarCliente - params:', req.params);
+    console.error('ERROR actualizarCliente - body:', req.body);
+    console.error('ERROR actualizarCliente - name:', error && error.name, 'message:', error && error.message);
+    console.error(error && error.stack);
     res.status(500).json({ success: false, mensaje: 'Error al actualizar cliente' });
   }
 };

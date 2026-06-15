@@ -2,6 +2,7 @@ const path = require('path');
 const fs = require('fs');
 const crypto = require('crypto');
 const Jimp = require('jimp');
+// `file-type` es ESM-only; lo importamos dinámicamente dentro del handler cuando se necesite
 let cloudinary;
 if (process.env.CLOUDINARY_URL || process.env.CLOUDINARY_CLOUD_NAME) {
   cloudinary = require('cloudinary').v2;
@@ -33,40 +34,35 @@ exports.uploadProductImage = async (req, res) => {
       return res.status(400).json({ success: false, mensaje: 'El archivo debe ser una imagen' });
     }
 
-    // Detección por magic-bytes para evitar confusiones de extensión/MIME
-    function detectImageMimeFromPath(p) {
-      try {
-        const fd = fs.openSync(p, 'r');
-        const buf = Buffer.alloc(512);
-        const bytes = fs.readSync(fd, buf, 0, buf.length, 0);
-        fs.closeSync(fd);
-        const b = buf.slice(0, bytes);
-        if (b.length >= 3 && b[0] === 0xff && b[1] === 0xd8 && b[2] === 0xff) return 'image/jpeg';
-        if (b.length >= 8 && b.slice(0,8).equals(Buffer.from([0x89,0x50,0x4E,0x47,0x0D,0x0A,0x1A,0x0A]))) return 'image/png';
-        if (b.length >= 6 && (b.slice(0,6).toString('ascii') === 'GIF87a' || b.slice(0,6).toString('ascii') === 'GIF89a')) return 'image/gif';
-        if (b.length >= 12 && b.slice(0,4).toString('ascii') === 'RIFF' && b.slice(8,12).toString('ascii') === 'WEBP') return 'image/webp';
-        const head = b.toString('utf8', 0, Math.min(b.length, 256)).toLowerCase();
-        if (head.includes('<svg') || head.includes('<?xml') || head.includes('<!doctype svg')) return 'image/svg+xml';
-        return 'unknown';
-      } catch (e) {
-        return 'unknown';
-      }
+    // Detección por contenido usando file-type (import dinámico para compatibilidad CJS/ESM)
+    const fileBuf = fs.readFileSync(filePath);
+    const { fileTypeFromBuffer } = await import('file-type');
+    const ft = await fileTypeFromBuffer(fileBuf);
+    let detected = 'unknown';
+    if (ft && ft.mime) detected = ft.mime;
+    else {
+      // Fallback textual para SVG
+      const head = fileBuf.toString('utf8', 0, Math.min(fileBuf.length, 512)).toLowerCase();
+      if (head.includes('<svg') || head.includes('<?xml')) detected = 'image/svg+xml';
     }
 
-    const detected = detectImageMimeFromPath(filePath);
+    // Rechazar por defecto si no se identifica con seguridad
     if (!detected || detected === 'unknown') {
       try { fs.unlinkSync(filePath); } catch (e) {}
       return res.status(400).json({ success: false, mensaje: 'Tipo de archivo no reconocido o no permitido' });
     }
-    // Bloquear explicitamente SVG por seguridad (no se requiere funcionalmente)
+
+    // Bloquear explícitamente SVG antes de cualquier procesamiento
     if (detected === 'image/svg+xml' || path.extname(req.file.originalname).toLowerCase() === '.svg') {
       try { fs.unlinkSync(filePath); } catch (e) {}
       return res.status(400).json({ success: false, mensaje: 'SVG no permitido' });
     }
-    // Rechazar si el MIME comunicado por el cliente no coincide con la detección por contenido
-    if (!mimetype.toLowerCase().includes(detected.split('/')[1])) {
+
+    // No confiar en req.file.mimetype: comparar la extensión con ft.ext
+    const extFromOriginal = path.extname(req.file.originalname).toLowerCase().replace('.', '');
+    if (ft && extFromOriginal && !ft.ext.includes(extFromOriginal)) {
       try { fs.unlinkSync(filePath); } catch (e) {}
-      return res.status(400).json({ success: false, mensaje: 'El tipo MIME del archivo no coincide con su contenido' });
+      return res.status(400).json({ success: false, mensaje: 'La extensión del archivo no concuerda con su contenido' });
     }
 
     // Redimensionar si es muy grande (max 1024px en el lado mayor)

@@ -20,6 +20,7 @@ export default function ProductosPage() {
   const [form, setForm]           = useState(FORM_VACIO);
   const [guardando, setGuardando] = useState(false);
 
+
   const cargar = () => {
     setLoading(true);
     api.get('/productos').then(r=>setProductos(r.data.productos||[])).finally(()=>setLoading(false));
@@ -161,7 +162,8 @@ export default function ProductosPage() {
                       toast.success('Imagen subida');
                     } catch (err) {
                       console.error(err);
-                      toast.error('Error subiendo imagen');
+                      const msg = err.response?.data?.mensaje || 'Error al subir la imagen';
+                      toast.error(msg);
                     }
                   }}/>
                   {form?.imagen && <div className="mt-2"><img src={form.imagen} alt="preview" className="w-20 h-20 object-cover rounded"/></div>}

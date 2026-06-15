@@ -21,6 +21,7 @@ function validateEnv() {
 
 validateEnv();
 const cors = require('cors');
+const multer = require('multer');
 const helmet = require('helmet');
 const morgan = require('morgan');
 const rateLimit = require('express-rate-limit');
@@ -169,6 +170,11 @@ app.use('*', (req, res) => {
 // ============================================
 app.use((err, req, res, next) => {
   console.error(' Error no manejado:', err);
+
+  // Normalizar errores de Multer (archivo demasiado grande)
+  if (err && (err.code === 'LIMIT_FILE_SIZE' || (typeof err.code === 'string' && err.code.indexOf('LIMIT_') === 0))) {
+    return res.status(413).json({ success: false, mensaje: 'Archivo demasiado grande' });
+  }
 
   // Errores de MongoDB
   if (err.name === 'CastError') {
