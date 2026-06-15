@@ -56,9 +56,15 @@ const seedDatabase = async () => {
     await connectDB();
     console.log('\n Iniciando seed de datos...\n');
 
-    // Limpiar colecciones
+    // Limpiar colecciones (incluir ventas, arqueos y promociones para evitar duplicados)
     await Usuario.deleteMany({});
     await Producto.deleteMany({});
+    // Eliminar ventas y arqueos si existen
+    try { const Venta = mongoose.model('Venta'); await Venta.deleteMany({}); } catch (e) {}
+    try { const ArqueoCaja = mongoose.model('ArqueoCaja'); await ArqueoCaja.deleteMany({}); } catch (e) {}
+    // Eliminar promociones y metas
+    try { const Promocion = mongoose.model('Promocion'); await Promocion.deleteMany({}); } catch (e) {}
+    try { const MetaMensual = mongoose.model('MetaMensual'); await MetaMensual.deleteMany({}); } catch (e) {}
     const Inventario = mongoose.model('Inventario');
     await Inventario.deleteMany({});
     console.log('  Colecciones limpiadas');
@@ -109,6 +115,129 @@ const seedDatabase = async () => {
       { nombre: 'Internet y teléfono', monto: 150000, frecuencia: 'mensual', activo: true },
     ]);
     console.log(' Costos fijos creados');
+
+    // --- PROMOCIONES DE EJEMPLO ---
+    // Asegurar que el modelo de Promocion esté registrado (se define en el controlador)
+    try { require('../controllers/promocionesController'); } catch (e) {}
+    const Promocion = mongoose.model('Promocion');
+    try {
+      await Promocion.create([
+        {
+          nombre: '10% OFF Semana',
+          descripcion: 'Descuento del 10% en todas las compras esta semana',
+          tipo: 'porcentaje',
+          valor: 10,
+          fechaInicio: new Date(Date.now() - 2 * 24 * 60 * 60 * 1000),
+          fechaFin: new Date(Date.now() + 5 * 24 * 60 * 60 * 1000),
+          activo: true,
+          creadoPor: usuarios[0]._id,
+        },
+        {
+          nombre: 'Cupón BIENVENIDA',
+          descripcion: 'Gs. 5000 descuento en la primera compra',
+          tipo: 'cupon',
+          valor: 5000,
+          codigo: 'BIENVENIDA',
+          fechaInicio: new Date(Date.now() - 1 * 24 * 60 * 60 * 1000),
+          fechaFin: new Date(Date.now() + 30 * 24 * 60 * 60 * 1000),
+          activo: true,
+          creadoPor: usuarios[0]._id,
+        },
+      ]);
+      console.log(' Promociones creadas');
+    } catch (e) {
+      console.log(' Error creando promociones (puede que ya existan):', e.message);
+    }
+
+    // --- METAS FINANCIERAS DE EJEMPLO ---
+    const MetaMensual = mongoose.model('MetaMensual');
+    try {
+      await MetaMensual.create([
+        { mes: new Date().getMonth() + 1, año: new Date().getFullYear(), metaVentas: 2000000, metaCantidadVentas: 200, creadoPor: usuarios[0]._id },
+      ]);
+      console.log(' Metas financieras creadas');
+    } catch (e) {
+      console.log(' Error creando metas (puede que ya existan):', e.message);
+    }
+
+    // --- ARQUEOS Y VENTAS DE EJEMPLO ---
+    const ArqueoCaja = mongoose.model('ArqueoCaja');
+    // Asegurar que el modelo Venta esté registrado
+    try { require('../models/Venta'); } catch (e) {}
+    const Venta = mongoose.model('Venta');
+
+    // Crear una caja cerrada y una abierta
+    const cajaCerrada = await ArqueoCaja.create({
+      fecha: new Date(Date.now() - 2 * 60 * 60 * 1000),
+      turno: 'mañana',
+      usuarioApertura: usuarios[0]._id,
+      montoApertura: 100000,
+      horaApertura: new Date(Date.now() - 2 * 60 * 60 * 1000),
+      horaCierre: new Date(Date.now() - 1 * 60 * 60 * 1000),
+      usuarioCierre: usuarios[0]._id,
+      montoCierre: 350000,
+      estado: 'cerrado',
+      totalVentasEfectivo: 250000,
+      totalVentasTarjeta: 0,
+      totalVentas: 250000,
+      cantidadVentas: 5,
+      diferencia: 0,
+    });
+
+    const cajaAbierta = await ArqueoCaja.create({
+      fecha: new Date(),
+      turno: 'tarde',
+      usuarioApertura: usuarios[0]._id,
+      montoApertura: 50000,
+      horaApertura: new Date(),
+      estado: 'abierto',
+    });
+
+    // Crear algunas ventas de ejemplo (aleatorias entre productos existentes)
+    const ventasEjemplo = [];
+    for (let i = 0; i < 8; i++) {
+      const p = productos[i % productos.length];
+      const cantidad = Math.floor(Math.random() * 3) + 1;
+      const precioUnit = p.precioVenta;
+      const costoUnit = p.costoProduccion || Math.round(precioUnit * 0.3);
+      const subtotal = precioUnit * cantidad;
+      const iva = Math.round(subtotal * (p.tasaIVA || 0.1));
+      const total = subtotal + iva;
+
+      ventasEjemplo.push({
+        usuario: usuarios[0]._id,
+        items: [
+          {
+            producto: p._id,
+            nombreProducto: p.nombre,
+            categoria: p.categoria,
+            cantidad,
+            precioUnitario: precioUnit,
+            costoUnitario: costoUnit,
+            tasaIVA: p.tasaIVA || 0.1,
+            subtotal,
+          },
+        ],
+        subtotalSinIVA: subtotal,
+        totalIVA: iva,
+        totalDescuentos: 0,
+        total,
+        costoTotal: costoUnit * cantidad,
+        gananciaTotal: total - (costoUnit * cantidad),
+        metodoPago: i % 2 === 0 ? 'efectivo' : 'tarjeta',
+        montoPagado: total,
+        canal: 'mostrador',
+        estado: 'completada',
+        arqueoCaja: i % 2 === 0 ? cajaCerrada._id : cajaAbierta._id,
+      });
+    }
+
+    // Insertar ventas una a una para que el middleware genere `numeroTicket` secuencialmente
+    for (const vObj of ventasEjemplo) {
+      const v = new Venta(vObj);
+      await v.save();
+    }
+    console.log(' Ventas de ejemplo creadas');
 
     console.log('\n ¡Seed completado exitosamente!\n');
     console.log(' CREDENCIALES DE ACCESO:');

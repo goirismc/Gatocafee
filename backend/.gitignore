@@ -1,2 +1,9 @@
 node_modules
-node_modules
+.env
+.env.local
+
+# Generated files
+dist/
+build/
+.DS_Store
+

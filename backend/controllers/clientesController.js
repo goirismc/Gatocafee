@@ -98,6 +98,8 @@ exports.getCliente = async (req, res) => {
 // ============================================
 exports.actualizarCliente = async (req, res) => {
   try {
+    console.log('IN actualizarCliente - params:', req.params);
+    console.log('IN actualizarCliente - body:', req.body);
     const cliente = await Cliente.findByIdAndUpdate(req.params.id, req.body, {
       new: true,
       runValidators: true,
@@ -107,6 +109,10 @@ exports.actualizarCliente = async (req, res) => {
 
     res.json({ success: true, mensaje: 'Cliente actualizado', cliente });
   } catch (error) {
+    console.error('ERROR actualizarCliente - params:', req.params);
+    console.error('ERROR actualizarCliente - body:', req.body);
+    console.error('ERROR actualizarCliente - name:', error && error.name, 'message:', error && error.message);
+    console.error(error && error.stack);
     res.status(500).json({ success: false, mensaje: 'Error al actualizar cliente' });
   }
 };
@@ -147,7 +153,7 @@ exports.getClientesFrecuentes = async (req, res) => {
 
 // ============================================
 // GET /api/clientes/buscar-rapido
-// Búsqueda rápida para el POS (por nombre o teléfono)
+// Búsqueda rápida para el POS (por nombre, teléfono o documento)
 // ============================================
 exports.buscarRapido = async (req, res) => {
   try {
@@ -156,16 +162,19 @@ exports.buscarRapido = async (req, res) => {
       return res.json({ success: true, clientes: [] });
     }
 
+    const regex = { $regex: q, $options: 'i' };
+
     const clientes = await Cliente.find({
       activo: true,
       $or: [
-        { nombre: { $regex: q, $options: 'i' } },
-        { apellido: { $regex: q, $options: 'i' } },
-        { telefono: { $regex: q, $options: 'i' } },
+        { nombre: regex },
+        { apellido: regex },
+        { telefono: regex },
+        { ci_ruc: regex },
       ],
     })
       .limit(5)
-      .select('nombre apellido telefono puntos nivel');
+      .select('nombre apellido telefono ci_ruc puntos nivel');
 
     res.json({ success: true, clientes });
   } catch (error) {

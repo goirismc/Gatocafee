@@ -15,6 +15,9 @@ export default function CajaPage() {
   const [monto, setMonto]         = useState('');
   const [obs, setObs]             = useState('');
   const [procesando, setProcesando] = useState(false);
+  // Modal de confirmación de cierre de caja
+  const [showCloseCashModal, setShowCloseCashModal] = useState(false);
+  const [closingCash, setClosingCash] = useState(false);
 
   const cargar = () => {
     setLoading(true);
@@ -35,7 +38,13 @@ export default function CajaPage() {
 
   const cerrarCaja = async (e) => {
     e.preventDefault();
-    if (!window.confirm('¿Confirmas el cierre de caja?')) return;
+    // Abrir modal de confirmación visual en lugar de diálogo nativo
+    setShowCloseCashModal(true);
+    return;
+  };
+
+  const confirmarCerrarCaja = async () => {
+    setClosingCash(true);
     setProcesando(true);
     try {
       const { data } = await api.post('/caja/' + estado.caja._id + '/cerrar', {
@@ -50,7 +59,7 @@ export default function CajaPage() {
       }
       setMonto(''); setObs(''); cargar();
     } catch(err) { toast.error(err.response?.data?.mensaje || 'Error'); }
-    finally { setProcesando(false); }
+    finally { setProcesando(false); setClosingCash(false); setShowCloseCashModal(false); }
   };
 
   if (loading) return <AppLayout><div className="p-8"><Spinner size="lg"/></div></AppLayout>;
@@ -124,6 +133,21 @@ export default function CajaPage() {
             </button>
           </form>
         </motion.div>
+
+        {/* Modal confirmación cierre de caja */}
+        {showCloseCashModal && (
+          <div className="fixed inset-0 bg-cafe-900/60 flex items-center justify-center z-50 p-4" onClick={()=>setShowCloseCashModal(false)}>
+            <motion.div initial={{scale:0.95,opacity:0}} animate={{scale:1,opacity:1}}
+              className="bg-white rounded-2xl p-6 w-full max-w-sm shadow-cafe-lg" onClick={e=>e.stopPropagation()}>
+              <h2 className="font-display font-bold text-cafe-800 mb-1">Confirmar cierre</h2>
+              <p className="text-cafe-500 text-sm mb-4">¿Confirmas el cierre de caja?</p>
+              <div className="flex gap-3">
+                <button onClick={()=>setShowCloseCashModal(false)} disabled={closingCash} className="btn-secondary flex-1">Cancelar</button>
+                <button onClick={confirmarCerrarCaja} disabled={closingCash} className="btn-danger flex-1">{closingCash ? 'Procesando cierre...' : 'Confirmar cierre'}</button>
+              </div>
+            </motion.div>
+          </div>
+        )}
 
         {/* Info de niveles de fidelización */}
         <motion.div initial={{opacity:0,y:16}} animate={{opacity:1,y:0}} transition={{delay:0.2}} className="card mt-4">

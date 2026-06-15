@@ -183,3 +183,34 @@ exports.getHistorial = async (req, res) => {
     res.status(500).json({ success: false, mensaje: 'Error al obtener historial' });
   }
 };
+
+
+// ============================================
+// DELETE /api/inventario/:id
+// Eliminar un insumo (hard delete) - requiere admin/gerente
+// ============================================
+exports.eliminarItem = async (req, res) => {
+  try {
+    const item = await Inventario.findById(req.params.id);
+    if (!item) return res.status(404).json({ success: false, mensaje: 'Insumo no encontrado' });
+
+    await Inventario.findByIdAndDelete(req.params.id);
+
+    try {
+      await registrarAuditoria({
+        usuarioId: req.usuario?._id || null,
+        accion: 'ELIMINAR_INVENTARIO',
+        modulo: 'inventario',
+        descripcion: `Insumo eliminado: ${item.nombre} (id: ${item._id})`,
+        ip: req.ip,
+      });
+    } catch (e) {
+      // No bloquear la operación si falla la auditoría
+      console.error('Error registrando auditoría eliminarItem:', e && e.message);
+    }
+
+    res.json({ success: true, mensaje: 'Insumo eliminado correctamente' });
+  } catch (error) {
+    res.status(500).json({ success: false, mensaje: 'Error al eliminar insumo' });
+  }
+};

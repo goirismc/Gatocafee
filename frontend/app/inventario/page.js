@@ -22,6 +22,14 @@ export default function InventarioPage() {
   const [modalMov, setModalMov]   = useState(null); // { item }
   const [mov, setMov]             = useState({ tipo:'entrada', cantidad:'', motivo:'' });
   const [guardando, setGuardando] = useState(false);
+  // Form modal for create/edit insumo
+  const [showFormModal, setShowFormModal] = useState(false);
+  const [formMode, setFormMode] = useState('create'); // 'create' | 'edit'
+  const [formData, setFormData] = useState({ nombre:'', categoria:'insumo', unidadMedida:'unidad', stockActual:0, stockMinimo:10, precioUnitario:0, proveedor:'', descripcion:'' });
+  const [savingItem, setSavingItem] = useState(false);
+  const [editingItemId, setEditingItemId] = useState(null);
+  const [pendingDeleteItem, setPendingDeleteItem] = useState(null);
+  const [deleting, setDeleting] = useState(false);
 
   const cargar = () => {
     setLoading(true);
@@ -31,6 +39,66 @@ export default function InventarioPage() {
     }).finally(()=>setLoading(false));
   };
   useEffect(cargar,[]);
+
+  const openCreateModal = () => {
+    setFormMode('create');
+    setEditingItemId(null);
+    setFormData({ nombre:'', categoria:'insumo', unidadMedida:'unidad', stockActual:0, stockMinimo:10, precioUnitario:0, proveedor:'', descripcion:'' });
+    setShowFormModal(true);
+  };
+
+  const openEditModal = (item) => {
+    setFormMode('edit');
+    setEditingItemId(item._id || item.id);
+    setFormData({
+      nombre: item.nombre || '',
+      categoria: item.categoria || 'insumo',
+      unidadMedida: item.unidadMedida || 'unidad',
+      stockActual: item.stockActual || 0,
+      stockMinimo: item.stockMinimo || 10,
+      precioUnitario: item.precioUnitario || 0,
+      proveedor: item.proveedor || '',
+      descripcion: item.descripcion || '',
+    });
+    setShowFormModal(true);
+  };
+
+  const submitItem = async () => {
+    // Validaciones mínimas
+    if (!formData.nombre || !formData.unidadMedida) return toast.error('Complete nombre y unidad de medida');
+    if (formData.stockActual < 0 || formData.stockMinimo < 0 || formData.precioUnitario < 0) return toast.error('Valores numéricos no pueden ser negativos');
+    setSavingItem(true);
+    try {
+      if (formMode === 'create') {
+        await api.post('/inventario', formData);
+        toast.success('Insumo creado');
+      } else {
+        await api.put(`/inventario/${editingItemId}`, formData);
+        toast.success('Insumo actualizado');
+      }
+      setShowFormModal(false);
+      cargar();
+    } catch (err) {
+      toast.error(err.response?.data?.mensaje || 'Error');
+    } finally {
+      setSavingItem(false);
+    }
+  };
+
+  const eliminarItem = async (item) => {
+    const id = item._id || item.id;
+    setDeleting(true);
+    try {
+      await api.delete(`/inventario/${id}`);
+      toast.success('Insumo eliminado');
+      setPendingDeleteItem(null);
+      cargar();
+    } catch (err) {
+      toast.error(err.response?.data?.mensaje || 'Error al eliminar');
+    } finally {
+      setDeleting(false);
+    }
+  };
 
   const registrarMovimiento = async () => {
     if (!mov.cantidad) return toast.error('Ingresá la cantidad');
@@ -59,9 +127,14 @@ export default function InventarioPage() {
             <h1 className="font-display text-2xl font-bold text-cafe-900">Inventario</h1>
             <p className="text-cafe-500 text-sm">{items.length} insumos registrados</p>
           </div>
-          <button onClick={cargar} className="btn-secondary flex items-center gap-2">
-            <RefreshCw size={14}/> Actualizar
-          </button>
+          <div className="flex items-center gap-2">
+            <button onClick={openCreateModal} className="btn-primary flex items-center gap-2">
+              <Plus size={14}/> Nuevo Insumo
+            </button>
+            <button onClick={cargar} className="btn-secondary flex items-center gap-2">
+              <RefreshCw size={14}/> Actualizar
+            </button>
+          </div>
         </div>
 
         {/* Resumen alertas */}
@@ -103,7 +176,7 @@ export default function InventarioPage() {
               </thead>
               <tbody>
                 {itemsFiltrados.map((item,idx)=>(
-                  <motion.tr key={item._id} initial={{opacity:0}} animate={{opacity:1}} transition={{delay:idx*0.03}}
+                  <motion.tr key={item._id || item.id || `item-${idx}`} initial={{opacity:0}} animate={{opacity:1}} transition={{delay:idx*0.03}}
                     className="border-b border-crema-100 hover:bg-crema-50 transition-colors">
                     <td className="px-4 py-3 font-medium text-cafe-900">{item.nombre}</td>
                     <td className="px-4 py-3 text-sm text-cafe-500 capitalize">{item.categoria?.replace('_',' ')}</td>
@@ -125,6 +198,14 @@ export default function InventarioPage() {
                           className="flex items-center gap-1 px-2 py-1 rounded-lg bg-red-100 text-red-700 text-xs font-medium hover:bg-red-200">
                           <ArrowDown size={12}/> Salida
                         </button>
+                        <button onClick={()=>openEditModal(item)}
+                          className="flex items-center gap-1 px-2 py-1 rounded-lg bg-blue-100 text-blue-700 text-xs font-medium hover:bg-blue-200">
+                          Editar
+                        </button>
+                        <button onClick={()=>setPendingDeleteItem(item)}
+                          className="flex items-center gap-1 px-2 py-1 rounded-lg bg-red-50 text-red-700 text-xs font-medium hover:bg-red-100">
+                          Eliminar
+                        </button>
                       </div>
                     </td>
                   </motion.tr>
@@ -133,6 +214,87 @@ export default function InventarioPage() {
             </table>
           </div>
         </div>
+
+        {/* Modal crear / editar insumo */}
+        {showFormModal && (
+          <div className="fixed inset-0 bg-cafe-900/60 flex items-center justify-center z-50 p-4" onClick={()=>setShowFormModal(false)}>
+            <motion.div initial={{scale:0.95,opacity:0}} animate={{scale:1,opacity:1}}
+              className="bg-white rounded-2xl p-6 w-full max-w-lg shadow-cafe-lg" onClick={e=>e.stopPropagation()}>
+              <h2 className="font-display font-bold text-cafe-800 mb-1">{formMode==='create'?'Nuevo insumo':'Editar insumo'}</h2>
+              <div className="space-y-4">
+                <div>
+                  <label className="label">Nombre</label>
+                  <input className="input" value={formData.nombre} onChange={e=>setFormData(d=>({...d,nombre:e.target.value}))} />
+                </div>
+                <div className="grid grid-cols-2 gap-2">
+                  <div>
+                    <label className="label">Categoría</label>
+                    <select className="input" value={formData.categoria} onChange={e=>setFormData(d=>({...d,categoria:e.target.value}))}>
+                      <option value="materia_prima">Materia prima</option>
+                      <option value="insumo">Insumo</option>
+                      <option value="packaging">Packaging</option>
+                      <option value="limpieza">Limpieza</option>
+                      <option value="otros">Otros</option>
+                    </select>
+                  </div>
+                  <div>
+                    <label className="label">Unidad</label>
+                    <select className="input" value={formData.unidadMedida} onChange={e=>setFormData(d=>({...d,unidadMedida:e.target.value}))}>
+                      <option value="kg">kg</option>
+                      <option value="g">g</option>
+                      <option value="litro">litro</option>
+                      <option value="ml">ml</option>
+                      <option value="unidad">unidad</option>
+                      <option value="caja">caja</option>
+                      <option value="rollo">rollo</option>
+                    </select>
+                  </div>
+                </div>
+                <div className="grid grid-cols-3 gap-2">
+                  <div>
+                    <label className="label">Stock actual</label>
+                    <input type="number" min="0" className="input" value={formData.stockActual} onChange={e=>setFormData(d=>({...d,stockActual:Number(e.target.value)}))} />
+                  </div>
+                  <div>
+                    <label className="label">Stock mínimo</label>
+                    <input type="number" min="0" className="input" value={formData.stockMinimo} onChange={e=>setFormData(d=>({...d,stockMinimo:Number(e.target.value)}))} />
+                  </div>
+                  <div>
+                    <label className="label">Costo unitario</label>
+                    <input type="number" min="0" className="input" value={formData.precioUnitario} onChange={e=>setFormData(d=>({...d,precioUnitario:Number(e.target.value)}))} />
+                  </div>
+                </div>
+                <div>
+                  <label className="label">Proveedor (opcional)</label>
+                  <input className="input" value={formData.proveedor} onChange={e=>setFormData(d=>({...d,proveedor:e.target.value}))} />
+                </div>
+                <div>
+                  <label className="label">Descripción (opcional)</label>
+                  <input className="input" value={formData.descripcion} onChange={e=>setFormData(d=>({...d,descripcion:e.target.value}))} />
+                </div>
+                <div className="flex gap-3">
+                  <button onClick={()=>setShowFormModal(false)} className="btn-secondary flex-1">Cancelar</button>
+                  <button onClick={submitItem} disabled={savingItem} className="btn-primary flex-1">{savingItem? 'Guardando...': (formMode==='create'?'Crear':'Guardar')}</button>
+                </div>
+              </div>
+            </motion.div>
+          </div>
+        )}
+
+        {/* Modal eliminar insumo */}
+        {pendingDeleteItem && (
+          <div className="fixed inset-0 bg-cafe-900/60 flex items-center justify-center z-50 p-4" onClick={()=>setPendingDeleteItem(null)}>
+            <motion.div initial={{scale:0.95,opacity:0}} animate={{scale:1,opacity:1}}
+              className="bg-white rounded-2xl p-6 w-full max-w-sm shadow-cafe-lg" onClick={e=>e.stopPropagation()}>
+              <h2 className="font-display font-bold text-cafe-800 mb-1">Eliminar insumo</h2>
+              <p className="text-cafe-500 text-sm mb-4">¿Estás seguro de que deseas eliminar este insumo? Esta acción no se puede deshacer.</p>
+              <div className="flex gap-3">
+                <button onClick={()=>setPendingDeleteItem(null)} disabled={deleting} className="btn-secondary flex-1">Cancelar</button>
+                <button onClick={()=>eliminarItem(pendingDeleteItem)} disabled={deleting} className="btn-primary flex-1">{deleting ? 'Eliminando...' : 'Eliminar'}</button>
+              </div>
+            </motion.div>
+          </div>
+        )}
 
         {/* Modal movimiento */}
         {modalMov && (

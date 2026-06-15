@@ -1,3 +1,41 @@
+# Gatocafee — Proyecto
+
+Breve guía para desarrollo local y acciones automáticas.
+
+Requisitos:
+- Node.js >= 18
+- MongoDB (local) o acceso a Atlas
+
+Desarrollo backend:
+
+```bash
+cd backend
+# Copiar ejemplo de env y ajustar
+cp .env.example .env
+# Instalar dependencias
+npm install
+# Levantar servidor
+npm run dev
+```
+
+Desarrollo frontend:
+
+```bash
+cd frontend
+cp .env.example .env.local
+npm install
+npm run dev
+```
+
+Scripts útiles:
+- `node backend/scripts/run_login_test_local.js` — probar endpoint de login desde CLI.
+- `node backend/scripts/inspect_collections.js` — listar colecciones en Atlas para diagnóstico.
+
+Buenas prácticas:
+- No subir `.env` al repositorio. Usa `.env.example` como plantilla.
+- Ejecutar `npm audit` regularmente y revisar dependencias.
+
+Roadmap de mejoras: ver `docs/improvements.md`.
 # Gatocafee
 Sistema de gestión para cafetería (backend + frontend).
 

@@ -20,6 +20,7 @@ export default function ProductosPage() {
   const [form, setForm]           = useState(FORM_VACIO);
   const [guardando, setGuardando] = useState(false);
 
+
   const cargar = () => {
     setLoading(true);
     api.get('/productos').then(r=>setProductos(r.data.productos||[])).finally(()=>setLoading(false));
@@ -114,39 +115,39 @@ export default function ProductosPage() {
               <form onSubmit={guardar} className="space-y-4">
                 <div>
                   <label className="label">Nombre *</label>
-                  <input className="input" required value={form.nombre} onChange={e=>setForm({...form,nombre:e.target.value})} placeholder="Ej: Café Americano"/>
+                  <input className="input" required value={form?.nombre ?? ''} onChange={e=>setForm({...form,nombre:e.target.value})} placeholder="Ej: Café Americano"/>
                 </div>
                 <div>
                   <label className="label">Categoría *</label>
-                  <select className="input" value={form.categoria} onChange={e=>setForm({...form,categoria:e.target.value})}>
+                  <select className="input" value={form?.categoria ?? 'bebidas_calientes'} onChange={e=>setForm({...form,categoria:e.target.value})}>
                     {Object.entries(CATS).map(([k,v])=><option key={k} value={k}>{v}</option>)}
                   </select>
                 </div>
                 <div className="grid grid-cols-2 gap-3">
                   <div>
                     <label className="label">Precio venta (Gs.) *</label>
-                    <input type="number" className="input" required min="0" value={form.precioVenta} onChange={e=>setForm({...form,precioVenta:e.target.value})}/>
+                    <input type="number" className="input" required min="0" value={form?.precioVenta ?? ''} onChange={e=>setForm({...form,precioVenta:e.target.value})}/>
                   </div>
                   <div>
                     <label className="label">Costo producción (Gs.) *</label>
-                    <input type="number" className="input" required min="0" value={form.costoProduccion} onChange={e=>setForm({...form,costoProduccion:e.target.value})}/>
+                    <input type="number" className="input" required min="0" value={form?.costoProduccion ?? ''} onChange={e=>setForm({...form,costoProduccion:e.target.value})}/>
                   </div>
                 </div>
                 <div>
                   <label className="label">Tasa IVA</label>
-                  <select className="input" value={form.tasaIVA} onChange={e=>setForm({...form,tasaIVA:parseFloat(e.target.value)})}>
+                  <select className="input" value={form?.tasaIVA ?? 0.10} onChange={e=>setForm({...form,tasaIVA:parseFloat(e.target.value)})}>
                     <option value={0.10}>10% (general)</option>
                     <option value={0.05}>5% (alimentos básicos)</option>
                     <option value={0}>0% (exento)</option>
                   </select>
                 </div>
-                {form.precioVenta && form.costoProduccion && (
+                {(form?.precioVenta || form?.precioVenta === 0) && (form?.costoProduccion || form?.costoProduccion === 0) && (
                   <div className={`p-3 rounded-xl text-sm font-medium ${(form.precioVenta-form.costoProduccion)>0?'bg-green-50 text-green-700':'bg-red-50 text-red-700'}`}>
-                    Margen: {GS(form.precioVenta-form.costoProduccion)} ({form.precioVenta>0?((( form.precioVenta-form.costoProduccion)/form.precioVenta)*100).toFixed(1):0}%)
+                    Margen: {GS((form?.precioVenta||0)-(form?.costoProduccion||0))} ({(form?.precioVenta>0?((((form?.precioVenta||0)-(form?.costoProduccion||0))/(form?.precioVenta||1))*100).toFixed(1):0)}%)
                   </div>
                 )}
                 <div className="flex items-center gap-2">
-                  <input type="checkbox" id="disp" checked={form.disponible} onChange={e=>setForm({...form,disponible:e.target.checked})} className="w-4 h-4 accent-cafe-700"/>
+                  <input type="checkbox" id="disp" checked={form?.disponible ?? true} onChange={e=>setForm({...form,disponible:e.target.checked})} className="w-4 h-4 accent-cafe-700"/>
                   <label htmlFor="disp" className="text-sm text-cafe-700">Disponible para la venta</label>
                 </div>
                 <div>
@@ -161,10 +162,11 @@ export default function ProductosPage() {
                       toast.success('Imagen subida');
                     } catch (err) {
                       console.error(err);
-                      toast.error('Error subiendo imagen');
+                      const msg = err.response?.data?.mensaje || 'Error al subir la imagen';
+                      toast.error(msg);
                     }
                   }}/>
-                  {form.imagen && <div className="mt-2"><img src={form.imagen} alt="preview" className="w-20 h-20 object-cover rounded"/></div>}
+                  {form?.imagen && <div className="mt-2"><img src={form.imagen} alt="preview" className="w-20 h-20 object-cover rounded"/></div>}
                 </div>
                 <div className="flex gap-3 pt-2">
                   <button type="button" onClick={()=>setModal(false)} className="btn-secondary flex-1">Cancelar</button>

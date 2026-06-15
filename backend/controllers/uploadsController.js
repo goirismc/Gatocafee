@@ -1,6 +1,8 @@
 const path = require('path');
 const fs = require('fs');
+const crypto = require('crypto');
 const Jimp = require('jimp');
+// `file-type` es ESM-only; lo importamos dinámicamente dentro del handler cuando se necesite
 let cloudinary;
 if (process.env.CLOUDINARY_URL || process.env.CLOUDINARY_CLOUD_NAME) {
   cloudinary = require('cloudinary').v2;
@@ -32,6 +34,37 @@ exports.uploadProductImage = async (req, res) => {
       return res.status(400).json({ success: false, mensaje: 'El archivo debe ser una imagen' });
     }
 
+    // Detección por contenido usando file-type (import dinámico para compatibilidad CJS/ESM)
+    const fileBuf = fs.readFileSync(filePath);
+    const { fileTypeFromBuffer } = await import('file-type');
+    const ft = await fileTypeFromBuffer(fileBuf);
+    let detected = 'unknown';
+    if (ft && ft.mime) detected = ft.mime;
+    else {
+      // Fallback textual para SVG
+      const head = fileBuf.toString('utf8', 0, Math.min(fileBuf.length, 512)).toLowerCase();
+      if (head.includes('<svg') || head.includes('<?xml')) detected = 'image/svg+xml';
+    }
+
+    // Rechazar por defecto si no se identifica con seguridad
+    if (!detected || detected === 'unknown') {
+      try { fs.unlinkSync(filePath); } catch (e) {}
+      return res.status(400).json({ success: false, mensaje: 'Tipo de archivo no reconocido o no permitido' });
+    }
+
+    // Bloquear explícitamente SVG antes de cualquier procesamiento
+    if (detected === 'image/svg+xml' || path.extname(req.file.originalname).toLowerCase() === '.svg') {
+      try { fs.unlinkSync(filePath); } catch (e) {}
+      return res.status(400).json({ success: false, mensaje: 'SVG no permitido' });
+    }
+
+    // No confiar en req.file.mimetype: comparar la extensión con ft.ext
+    const extFromOriginal = path.extname(req.file.originalname).toLowerCase().replace('.', '');
+    if (ft && extFromOriginal && !ft.ext.includes(extFromOriginal)) {
+      try { fs.unlinkSync(filePath); } catch (e) {}
+      return res.status(400).json({ success: false, mensaje: 'La extensión del archivo no concuerda con su contenido' });
+    }
+
     // Redimensionar si es muy grande (max 1024px en el lado mayor)
     try {
       const image = await Jimp.read(filePath);
@@ -52,10 +85,13 @@ exports.uploadProductImage = async (req, res) => {
     // Si Cloudinary está configurado, subir y devolver la URL segura
     if (cloudinary) {
       try {
+        // Generar public_id seguro y controlado por servidor
+        const safeId = `products/${crypto.randomUUID()}`;
         const uploaded = await cloudinary.uploader.upload(filePath, {
           folder: 'gatocafee/products',
-          use_filename: true,
-          unique_filename: true,
+          public_id: safeId,
+          use_filename: false,
+          overwrite: false,
         });
         // Eliminar archivo local
         try { fs.unlinkSync(filePath); } catch (e) { /* ignore */ }

@@ -126,11 +126,11 @@ exports.validarCupon = async (req, res) => {
       });
     }
 
-    // Calcular el descuento
+    // Calcular el descuento (tratar 'cupon' como monto fijo)
     let descuento = 0;
     if (promo.tipo === 'porcentaje') {
       descuento = Math.round(montoCompra * (promo.valor / 100));
-    } else if (promo.tipo === 'monto_fijo') {
+    } else if (promo.tipo === 'monto_fijo' || promo.tipo === 'cupon') {
       descuento = Math.min(promo.valor, montoCompra); // No puede superar el monto
     }
 

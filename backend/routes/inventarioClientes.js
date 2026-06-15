@@ -27,5 +27,7 @@ clientesRouter.get('/buscar-rapido', clientesCtrl.buscarRapido);
 clientesRouter.get('/:id', clientesCtrl.getCliente);
 clientesRouter.post('/', clientesCtrl.crearCliente);
 clientesRouter.put('/:id', clientesCtrl.actualizarCliente);
+// Permitir eliminación de insumos (solo administradores o gerentes)
+inventarioRouter.delete('/:id', adminOGerente, inventarioCtrl.eliminarItem);
 
 module.exports = { inventarioRouter, clientesRouter };

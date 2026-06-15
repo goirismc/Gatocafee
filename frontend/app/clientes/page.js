@@ -16,7 +16,7 @@ const NIVEL_CONFIG = {
   platinum: { label: 'Platinum', color: 'bg-purple-100 text-purple-700', icon: <Crown size={12}/> },
 };
 
-const FORM_VACIO = { nombre:'', apellido:'', email:'', telefono:'', ci_ruc:'', notas:'' };
+const FORM_VACIO = { nombre:'', apellido:'', email:'', telefono:'', ci_ruc:'', direccion:'', notas:'' };
 
 export default function ClientesPage() {
   const [clientes, setClientes]   = useState([]);
@@ -40,7 +40,7 @@ export default function ClientesPage() {
   const abrirCrear = () => { setEditando(null); setForm(FORM_VACIO); setModal(true); };
   const abrirEditar = (c) => {
     setEditando(c._id);
-    setForm({ nombre: c.nombre, apellido: c.apellido||'', email: c.email||'', telefono: c.telefono||'', notas: c.notas||'' });
+    setForm({ nombre: c.nombre, apellido: c.apellido||'', email: c.email||'', telefono: c.telefono||'', ci_ruc: c.ci_ruc||'', direccion: c.direccion||'', notas: c.notas||'' });
     setModal(true);
   };
 
@@ -90,39 +90,42 @@ export default function ClientesPage() {
             onChange={e => { setBusqueda(e.target.value); cargar(e.target.value); }}/>
         </div>
 
-        {/* Grid de clientes */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        {/* Lista compacta de clientes (renglones) */}
+        <div className="space-y-2">
           {clientes.map((c, idx) => {
             const niv = NIVEL_CONFIG[c.nivel] || NIVEL_CONFIG.bronce;
             return (
               <motion.div key={c._id}
-                initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: idx * 0.04 }}
-                className="card hover:shadow-cafe transition-shadow cursor-pointer"
+                initial={{ opacity: 0, y: 6 }} animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: idx * 0.02 }}
+                className="flex items-center justify-between p-3 rounded-lg hover:bg-crema-50 border border-crema-100 cursor-pointer"
                 onClick={() => verPerfil(c._id)}
               >
-                <div className="flex items-start justify-between mb-3">
-                  <div className="w-11 h-11 rounded-2xl bg-cafe-gradient flex items-center justify-center text-crema-100 font-display font-bold text-lg">
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 rounded-lg bg-cafe-gradient flex items-center justify-center text-crema-100 font-display font-bold text-base">
                     {c.nombre.charAt(0).toUpperCase()}
                   </div>
-                  <span className={`badge ${niv.color} flex items-center gap-1`}>
-                    {niv.icon} {niv.label}
-                  </span>
-                </div>
-                <h3 className="font-semibold text-cafe-900">{c.nombre} {c.apellido || ''}</h3>
-                {c.email && <p className="text-xs text-cafe-400 mt-0.5">{c.email}</p>}
-                {c.telefono && <p className="text-xs text-cafe-400">{c.telefono}</p>}
-                <div className="grid grid-cols-3 gap-2 mt-3 pt-3 border-t border-crema-200 text-center">
                   <div>
+                    <div className="flex items-center gap-2">
+                      <h3 className="font-semibold text-cafe-900">{c.nombre} {c.apellido || ''}</h3>
+                      <span className={`badge ${niv.color} flex items-center gap-1 ml-2`}>{niv.icon} {niv.label}</span>
+                    </div>
+                    <p className="text-xs text-cafe-400">{c.ci_ruc || ''}{c.direccion ? ' · ' + c.direccion : ''}</p>
+                    <p className="text-xs text-cafe-400">{c.email || ''}{c.telefono ? ' · ' + c.telefono : ''}</p>
+                  </div>
+                </div>
+
+                <div className="flex items-center gap-4">
+                  <div className="text-center">
                     <p className="font-bold text-cafe-800 text-sm">{c.totalCompras || 0}</p>
                     <p className="text-xs text-cafe-400">Compras</p>
                   </div>
-                  <div>
+                  <div className="text-center">
                     <p className="font-bold text-cafe-800 text-sm">{c.puntos || 0}</p>
                     <p className="text-xs text-cafe-400">Puntos</p>
                   </div>
-                  <div>
-                    <p className="font-bold text-cafe-800 text-xs">{GS(c.totalGastado)}</p>
+                  <div className="text-center">
+                    <p className="font-bold text-cafe-800 text-sm">{GS(c.totalGastado)}</p>
                     <p className="text-xs text-cafe-400">Total</p>
                   </div>
                 </div>
@@ -144,28 +147,32 @@ export default function ClientesPage() {
                 <div className="grid grid-cols-2 gap-3">
                   <div>
                     <label className="label">Nombre *</label>
-                    <input className="input" required value={form.nombre} onChange={e => setForm({...form, nombre: e.target.value})}/>
+                    <input className="input" required value={form?.nombre ?? ''} onChange={e => setForm({...form, nombre: e.target.value})}/>
                   </div>
                   <div>
                     <label className="label">Apellido</label>
-                    <input className="input" value={form.apellido} onChange={e => setForm({...form, apellido: e.target.value})}/>
+                    <input className="input" value={form?.apellido ?? ''} onChange={e => setForm({...form, apellido: e.target.value})}/>
                   </div>
                 </div>
                 <div>
                   <label className="label">CI / RUC</label>
-                  <input className="input" value={form.ci_ruc} onChange={e => setForm({...form, ci_ruc: e.target.value})} placeholder="1234567-8 / 80012345-6" />
+                  <input className="input" value={form?.ci_ruc ?? ''} onChange={e => setForm({...form, ci_ruc: e.target.value})} placeholder="1234567-8 / 80012345-6" />
                 </div>
                 <div>
                   <label className="label">Email</label>
-                  <input type="email" className="input" value={form.email} onChange={e => setForm({...form, email: e.target.value})}/>
+                  <input type="email" className="input" value={form?.email ?? ''} onChange={e => setForm({...form, email: e.target.value})}/>
                 </div>
                 <div>
                   <label className="label">Teléfono</label>
-                  <input className="input" placeholder="+595 981 000 000" value={form.telefono} onChange={e => setForm({...form, telefono: e.target.value})}/>
+                  <input className="input" placeholder="+595 981 000 000" value={form?.telefono ?? ''} onChange={e => setForm({...form, telefono: e.target.value})}/>
+                </div>
+                <div>
+                  <label className="label">Dirección</label>
+                  <input className="input" placeholder="Av. Principal 123" value={form?.direccion ?? ''} onChange={e => setForm({...form, direccion: e.target.value})}/>
                 </div>
                 <div>
                   <label className="label">Notas</label>
-                  <textarea className="input" rows={2} value={form.notas} onChange={e => setForm({...form, notas: e.target.value})}/>
+                  <textarea className="input" rows={2} value={form?.notas ?? ''} onChange={e => setForm({...form, notas: e.target.value})}/>
                 </div>
                 <div className="flex gap-3 pt-2">
                   <button type="button" onClick={() => setModal(false)} className="btn-secondary flex-1">Cancelar</button>
