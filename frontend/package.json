@@ -7,8 +7,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint",
-    "lint:fix": "next lint --fix || true",
+    "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
+    "lint:fix": "eslint . --ext .js,.jsx,.ts,.tsx --fix || true",
     "format": "npx prettier --write \"**/*.{js,jsx,ts,tsx,json,css,md}\" || true",
     "check-env": "node scripts/check_env.js"
   },
